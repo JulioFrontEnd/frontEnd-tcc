@@ -1,0 +1,63 @@
+@import '../../global/variables.scss';
+
+.bottom-menu{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    font-size: 1.5em;
+    align-items: baseline;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    box-shadow: 0px -6px 16px -10px rgba(0,0,0,0.45);
+    z-index: -1;
+    
+    div{
+        padding: 3%;
+        margin: 2%;
+        cursor: pointer;
+        opacity: .7;
+        &:hover{
+            opacity: 1;
+        }
+    }
+
+    .clicked{
+        border-radius: 5%;
+        font-size: 1.4em;
+        opacity: 1;
+    }
+}
+
+.bottom-menu-dark{
+    background-color: $dark-blackColor;
+    color:  $dark-whiteColor;
+    .clicked{
+        border-bottom: 4px solid $dark-contrastColor;
+    }
+}
+
+.bottom-menu-light{
+    background-color: $light-blueColor;
+    color:  $light-whiteColor;
+    .clicked{
+        border-bottom: 4px solid $light-contrastColor;
+    }
+}
+
+/* 
+    NOTAS:
+    ICON SIZE
+    width
+*/
+
+@media only screen and (min-width: 900px) {
+    .bottom-menu{
+        position: fixed;
+        align-items: center;
+        bottom:2%;
+        left: 50%;
+        transform: translate(-50%,0);
+        width: 30vw;
+    }
+}

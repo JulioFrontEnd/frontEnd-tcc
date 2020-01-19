@@ -10,7 +10,7 @@ export default class ListItems extends React.Component{
                 id:1,
                 name:"Home",
                 icon:"fas fa-home",
-                link:"/menu/home",
+                link:"/menu/",
             },{
                 id:2,
                 name:"Configurações",

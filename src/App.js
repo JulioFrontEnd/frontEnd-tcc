@@ -4,6 +4,8 @@ import {Provider} from "react-redux";
 import ThemeStore from './components/reducers/theme';
 import Menu from './components/menu';
 import BottomMenu from './components/bottomMenu';
+import mainPage from './components/mainPage';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           */}
           <Switch>
             <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
+            <Route exact path="/menu" component={mainPage} />
           </Switch>
           {/*
             SWITCH DE ROTAS FIXAS DE BAIXO DAS PÁGINAS

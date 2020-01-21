@@ -23,8 +23,6 @@ class BottomMenu extends React.Component{
                 [item]:1,
             }
         })
-
-        localStorage.removeItem('bottomMenu_classNames');
     }
 
     selectOption = async (valor,path="/menu")=>{

@@ -19,6 +19,9 @@
             align-items: center;
             justify-content: center;
             div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 margin-top: 13%;
                 padding: 17%;
                 border-radius: 50%;
@@ -43,6 +46,10 @@
     .option-menu{
         .content{
             border: 1px solid $dark-blueColor;
+            &:hover{
+                transition: background-color .7s;
+                background-color: rgba($color: $dark-blueColor, $alpha: .3);
+            }
             div{
                 color: $dark-whiteColor;
                 background: linear-gradient(135deg, $dark-blueWhiteColor 0%,$dark-blueColor 50%,#b381ef 100%);
@@ -77,5 +84,33 @@
     }
     h2{
         color: $light-blueColor;
+    }
+}
+
+
+
+
+
+@media only screen and (min-width: 900px) {
+    .main-page{
+        .option-menu{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: -1%;
+            .content{
+                cursor: pointer;
+                border-radius: 10px;
+                min-width: 21vw;
+                height: 25vh;
+                padding: 2%;
+                margin:2vw;
+                div{
+                    padding: 15%;
+                    i{
+                        font-size: 1.3em;
+                    }
+                }
+            }
+        }
     }
 }

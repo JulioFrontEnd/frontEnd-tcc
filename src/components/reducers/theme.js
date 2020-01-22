@@ -9,7 +9,7 @@ const initial_state = {
         name:'light',
     }],
 
-    actualTheme:"dark",
+    actualTheme:"light",
 }
 
 const reducer = (state = initial_state, action)=>{

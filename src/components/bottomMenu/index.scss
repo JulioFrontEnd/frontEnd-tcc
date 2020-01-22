@@ -1,5 +1,4 @@
 @import '../../global/variables.scss';
-
 .bottom-menu{
     display: flex;
     width: 100vw;
@@ -30,7 +29,7 @@
 }
 
 .bottom-menu-dark{
-    background-color: $dark-blackColor;
+    background-color: rgba($color: $dark-blackColor, $alpha: .8);
     color:  $dark-whiteColor;
     .clicked{
         border-bottom: 4px solid $dark-contrastColor;
@@ -38,7 +37,7 @@
 }
 
 .bottom-menu-light{
-    background-color: $light-blueColor;
+    background-color: rgba($color: $light-blackColor, $alpha: .8);
     color:  $light-whiteColor;
     .clicked{
         border-bottom: 4px solid $light-contrastColor;

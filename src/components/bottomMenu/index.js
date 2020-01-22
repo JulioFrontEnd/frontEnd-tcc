@@ -5,6 +5,7 @@ import './index.scss';
 class BottomMenu extends React.Component{
 
     state = {
+        classBottomMenu:"",
         classNames:{
             history:0,
             home:1,
@@ -23,6 +24,16 @@ class BottomMenu extends React.Component{
                 [item]:1,
             }
         })
+
+        window.onscroll = () => this.handleScroll();
+    }
+
+    handleScroll = ()=>{
+        if(document.documentElement.scrollTop > 10){
+            this.setState({classBottomMenu:"menu-disabled-content"});
+        }else{
+            this.setState({classBottomMenu:""});
+        }
     }
 
     selectOption = async (valor,path="/menu")=>{
@@ -42,7 +53,7 @@ class BottomMenu extends React.Component{
     render(){
         const theme = this.props.theme;
         return(
-            <div className={`bottom-menu bottom-menu-${theme}`}>
+            <div className={`bottom-menu bottom-menu-${theme} ${this.state.classBottomMenu}`}>
                 <div onClick={()=>this.selectOption("history","/menu/history")} className={((this.state.classNames.history)?"clicked":"")}>
                     <i className="fas fa-history"></i>
                 </div>

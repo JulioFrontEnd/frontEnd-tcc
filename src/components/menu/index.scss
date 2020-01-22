@@ -1,5 +1,7 @@
 @import '../../global/variables.scss';
-
+.menu-disabled-content{
+    display: none !important;
+}
 @keyframes menu-items {
     from{
         margin-left: 100vw;
@@ -10,9 +12,6 @@
 }
 .menu{
     position: relative;
-    .menu-disabled-content{
-        display: none;
-    }
     .menu-enabled-content{
         position: absolute;
         width: 100%;

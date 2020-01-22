@@ -35,6 +35,50 @@ class MainPage extends React.Component{
                 iconId:"fas fa-user-plus",
                 path:"/menu/peoplePlus",
             },
+            {
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },
+            {
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },
+            {
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },
+            {
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },{
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },{
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },{
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },{
+                id:4,
+                title:"Clientes",
+                iconId:"fas fa-user-plus",
+                path:"/menu/peoplePlus",
+            },
         ];
 
 
@@ -48,7 +92,7 @@ class MainPage extends React.Component{
 
         const theme = this.props.theme;
         return(
-            <div className={`main-page main-page-${theme}`}>
+            <div className={`main-page main-page-${theme} global-theme-${theme}`}>
                 /
                 <h2>ACESSO RÁPIDO</h2>
                 <div className="option-menu">
@@ -56,10 +100,12 @@ class MainPage extends React.Component{
                     data.map(item=>{
                         return( 
                             <div key={item.id} className="content" onClick={()=>this.redirectTo(item.path)}>
+                                <div className="content-all">
                                 <div>
                                     <i className={item.iconId}></i>
                                 </div>
                                 <p>{item.title}</p>
+                                </div>
                             </div>
                         )
                     })

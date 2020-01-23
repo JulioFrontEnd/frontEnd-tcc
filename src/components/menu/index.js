@@ -18,7 +18,6 @@ class Menu extends React.Component{
     alternateMenu = ()=>{
         this.setState({enabled_menu:(!(this.state.enabled_menu))});
     }
-
     render(){
         // HTML DO MENU
         const theme = this.props.theme;

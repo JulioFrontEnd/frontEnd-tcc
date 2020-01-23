@@ -101,7 +101,34 @@
 
 
 
-
+@media only screen and (min-device-width: 480px) 
+                   and (max-device-width: 640px) 
+                   and (orientation: landscape) 
+{
+    .main-page{
+        .option-menu{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: -1%;
+            .content{
+                cursor: pointer;
+                border-radius: 10px;
+                min-width: 29vw;
+                height: 50vh;
+                margin:2vw;
+                .content-all{
+                    padding: 2%;
+                    div{
+                        padding: 15%;
+                        i{
+                            font-size: 1.3em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media only screen and (min-width: 900px) {
     .main-page{

@@ -5,6 +5,7 @@ import ThemeStore from './components/reducers/theme';
 import Menu from './components/menu';
 import BottomMenu from './components/bottomMenu';
 import mainPage from './components/mainPage';
+import userPage from './components/user';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Switch>
             <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
             <Route exact path="/menu" component={mainPage} />
+            <Route exact path="/popop/user" component={userPage} />
           </Switch>
           {/*
             SWITCH DE ROTAS FIXAS DE BAIXO DAS PÁGINAS

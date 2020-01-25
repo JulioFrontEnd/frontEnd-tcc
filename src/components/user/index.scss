@@ -1,0 +1,113 @@
+@import '../../global/variables.scss';
+.user-page{
+    .container{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        overflow-x: hidden;
+        left: 0;
+        width: 100vw;
+        .div{
+            overflow: auto;
+            padding:2%;
+            height: 80vh;
+            width: 95%;
+            position: absolute;
+            left: 50%;
+            top: 5%;
+            transform: translate(-50%);
+            text-align: center;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+                p{
+                    text-transform: uppercase;
+                }
+            i{
+                padding: 8.5%;
+                border-radius: 50%;
+                font-size: 2.5em;
+                
+                
+            }
+        }
+    }
+}
+
+.user-page-dark{
+    .container{
+        background: url("../../img/background-user.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        .div{
+            border-radius: 10px;
+            background-color: rgba($color: white, $alpha: .95);
+            p{
+                b{
+                    color: $dark-blueColor;
+                }
+            }
+            i{
+                color: $dark-blueColor;
+                border: 4px solid $dark-blueColor;
+            }
+        }
+    }
+}
+
+.user-page-light{
+    .container{
+        background: url("../../img/background-user.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        .div{
+            border-radius: 10px;
+            background-color: rgba($color: white, $alpha: .95);
+            p{
+                b{
+                    color: $light-blueColor;
+                }
+            }
+            i{
+                color: $light-blueColor;
+                border: 4px solid $light-blueColor;
+            }
+        }
+    }
+}
+
+/***** 
+
+    nota:
+    circulo gigante
+    bottom position irrelevante
+****/
+
+@media only screen and (min-width: 900px) {
+    .user-page{
+        .container{
+            .div{
+                box-shadow: -5px 4px 23px 1px rgba(0,0,0,0.75);
+                padding:2%;
+                height: 100vh;
+                border-radius: unset;
+                width: 40vw;
+                position: absolute;
+                left: initial;
+                right: 0;
+                top: 0;
+                transform: translate(0);
+                    p{
+                        text-transform: uppercase;
+                    }
+                i{
+                    font-size: 2em;
+                }
+            }
+        }
+    }
+    
+}

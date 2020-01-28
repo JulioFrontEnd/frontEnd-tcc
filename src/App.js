@@ -6,6 +6,7 @@ import Menu from './components/menu';
 import BottomMenu from './components/bottomMenu';
 import mainPage from './components/mainPage';
 import userPage from './components/user';
+import back from './components/back';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           */}
           <Switch>
             <Route path="/menu" component={Menu} />
+            <Route path="/popop" component={back} />
           </Switch>
           
           {/*

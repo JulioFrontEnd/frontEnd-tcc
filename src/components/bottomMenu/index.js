@@ -24,7 +24,7 @@ class BottomMenu extends React.Component{
                 [item]:1,
             }
         })
-
+        
         window.onscroll = () => this.handleScroll();
     }
 

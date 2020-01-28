@@ -22,6 +22,7 @@
             align-items: center;
             flex-direction: column;
                 p{
+                    padding: 2%;
                     text-transform: uppercase;
                 }
             i{
@@ -45,8 +46,10 @@
             border-radius: 10px;
             background-color: rgba($color: white, $alpha: .95);
             p{
+                border-bottom: 1px solid $dark-blueColor;
                 b{
                     color: $dark-blueColor;
+                    
                 }
             }
             i{
@@ -67,6 +70,7 @@
             border-radius: 10px;
             background-color: rgba($color: white, $alpha: .95);
             p{
+                border-bottom: 1px solid $light-blueColor;
                 b{
                     color: $light-blueColor;
                 }

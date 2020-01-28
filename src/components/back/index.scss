@@ -1,0 +1,41 @@
+@import '../../global/variables.scss';
+
+.back{
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+    z-index: 100;
+    padding: 15px;
+    border-radius: 50%;
+    transition: all .7s;
+    cursor: pointer;
+    
+    i{
+        font-size: 2em;
+    }
+}
+
+.back-dark{
+    background-color: $dark-blackColor;
+    i{
+        color: $dark-whiteColor;
+    }
+    &:hover{
+        background-color: $dark-whiteColor;
+        i{
+            color: $dark-blueColor;
+        }
+    }
+}
+.back-light{
+    background-color: $light-whiteColor;
+    i{
+        color: $light-blueColor;
+    }
+    &:hover{
+        background-color: $light-blueColor;
+        i{
+            color: $light-blackColor;
+        }
+    }
+}

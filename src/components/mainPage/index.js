@@ -1,13 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './index.scss';
+import Intermediate from '../_intermediate';
 
 class MainPage extends React.Component{
-
-    redirectTo(link){
-        window.location.href = link;
-    }
-
     render(){
         // configuração de telas
         const data = [
@@ -80,37 +75,10 @@ class MainPage extends React.Component{
                 path:"/menu/peoplePlus",
             },
         ];
-
-
-
-
-
-
-
-
-
-
         const theme = this.props.theme;
         return(
-            <div className={`main-page main-page-${theme} global-theme-${theme}`}>
-                /
-                <h2>ACESSO RÁPIDO</h2>
-                <div className="option-menu">
-                {
-                    data.map(item=>{
-                        return( 
-                            <div key={item.id} className="content" onClick={()=>this.redirectTo(item.path)}>
-                                <div className="content-all">
-                                <div>
-                                    <i className={item.iconId}></i>
-                                </div>
-                                <p>{item.title}</p>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-                </div>
+            <div>
+                <Intermediate theme={theme} data={data} title="ACESSO RÁPIDO" />
             </div>
         );
     }

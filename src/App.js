@@ -7,6 +7,7 @@ import BottomMenu from './components/bottomMenu';
 import mainPage from './components/mainPage';
 import userPage from './components/user';
 import back from './components/back';
+import peoplePlus from './components/peoplePlus';
 
 
 function App() {
@@ -26,9 +27,16 @@ function App() {
             SWITCH DE ROTAS DE PAGINAS DINÂMICAS
           */}
           <Switch>
+            {/* ROTAS DE LOGIN */}
             <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
+
+            {/* ROTAS MENU */}
             <Route exact path="/menu" component={mainPage} />
+            <Route exact path="/menu/peoplePlus" component={peoplePlus} />
+
+            {/* ROTAS POPOP */}
             <Route exact path="/popop/user" component={userPage} />
+            
           </Switch>
           {/*
             SWITCH DE ROTAS FIXAS DE BAIXO DAS PÁGINAS

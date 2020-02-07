@@ -8,6 +8,7 @@ import mainPage from './components/mainPage';
 import userPage from './components/user';
 import back from './components/back';
 import peoplePlus from './components/peoplePlus';
+import peoplePlusAdd from './components/peoplePlus/create.js';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
             {/* ROTAS POPOP */}
             <Route exact path="/popop/user" component={userPage} />
+            <Route exact path="/popop/peoplePlus/add" component={peoplePlusAdd} />
             
           </Switch>
           {/*

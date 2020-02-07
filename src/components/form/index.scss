@@ -1,0 +1,122 @@
+@import '../../global/variables.scss';
+.form-create{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-left: 4%;
+    padding-right: 4%;
+    
+
+    div{
+        margin-bottom: 4%;
+        h2{
+            margin: 0;
+            margin-bottom: 4%;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        input{
+            width: 100%;
+            padding: 2%;
+            border: none;
+            background-color: transparent;
+            
+            &::placeholder{
+                opacity: 1;
+            }
+        }
+        p{
+            text-align: end;
+            font-size: .9em;
+        }
+        button{
+            transition: all .7s;
+            margin-top: 4%;
+            padding: 4%;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            margin-left: 50%;
+            transform: translate(-50%,0);
+        }   
+    }
+}
+
+.form-create-dark{
+    background-color: $dark-blackColor;
+    div{
+        h2{
+            color: transparentize($color: $dark-blueColor, $amount: .4);
+        }
+        input{
+            color: $dark-whiteColor;
+            border-bottom: 1px solid transparentize($color: $dark-blueColor, $amount: .4);
+            &::placeholder{
+                text-transform: uppercase;
+                color: transparentize($color: $dark-whiteColor, $amount: .4);
+            }
+        }
+        button{
+            border: 1px solid transparentize($color: $dark-blueColor, $amount: .4);
+            color: transparentize($color: $dark-blueColor, $amount: .4);
+            &:hover{
+                cursor: pointer;
+                background-color: transparentize($color: $dark-blueColor, $amount: .4);
+                color: $dark-blackColor;
+            }
+        }
+        p{
+            color: $dark-contrastColor;
+        }
+    }
+}
+.form-create-light{
+    background-color: $light-whiteColor;
+    div{
+        h2{
+            color: $light-blueColor;
+        }
+        input{
+            color: $light-blueColor;
+            border-bottom: 1px solid $light-blueColor;
+            &::placeholder{
+                text-transform: uppercase;
+                color: transparentize($color: $light-blueColor, $amount: 0.2);
+            }
+        }
+        button{
+            border: 1px solid $light-blueColor;
+            color: $light-blueColor;
+            &:hover{
+                cursor: pointer;
+                background-color: $light-blueColor;
+                color: $light-whiteColor;
+            }
+        }
+        p{
+            color: $light-contrastColor;
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 900px) {
+    .form-create{
+        padding-left: 1%;
+        padding-right: 1%;
+        div{
+            margin-bottom: 2%;
+            width: 50vw;
+            input{
+                padding: 1%;
+            }
+            button{
+                padding: 2%;
+            }   
+        }
+    }
+}

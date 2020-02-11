@@ -15,7 +15,8 @@ function App() {
   return (
     <div>
     <div id="message">
-        <i className="fas fa-mobile-alt"></i>
+      <div className="ICONE"><i className="fas fa-mobile-alt"></i></div>
+        
         <div>POR FAVOR, DEIXE O CELULAR EM PÉ</div>
         <p>Esse sistema foi pensado para telas verticais.</p>
     </div>

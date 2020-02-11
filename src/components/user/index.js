@@ -11,7 +11,7 @@ class UserPage extends React.Component{
             <div className={`user-page user-page-${theme}`}>
                 <div className="container">
                     <SimpleBar style={{ minHeight: '300px' }} className="div">
-                        <i className="far fa-user"></i>
+                        <p className="i"><i className="far fa-user"></i></p>
                         <p><b>NOME:</b> Julio César da Silva Moreira</p>
                         <p><b>CARGO:</b> Programador Front End</p>
                         <p><b>CPF:</b> XXX.XXX.XXX-XX</p>

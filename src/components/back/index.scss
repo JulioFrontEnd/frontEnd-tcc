@@ -6,25 +6,23 @@
     left: 1vw;
     z-index: 100;
     padding: 15px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     transition: all .7s;
     cursor: pointer;
-    
-    i{
-        font-size: 2em;
-    }
+    font-size: 2em;
 }
 
 .back-dark{
     background-color: $dark-blackColor;
-    i{
         color: $dark-whiteColor;
-    }
     &:hover{
         background-color: $dark-whiteColor;
-        i{
             color: $dark-blueColor;
-        }
     }
 }
 .back-light{
@@ -34,8 +32,6 @@
     }
     &:hover{
         background-color: $light-blueColor;
-        i{
             color: $light-whiteColor;
-        }
     }
 }

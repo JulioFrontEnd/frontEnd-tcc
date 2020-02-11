@@ -25,12 +25,17 @@
                     padding: 2%;
                     text-transform: uppercase;
                 }
-            i{
+            .i{
                 padding: 8.5%;
+                height: 100px;
+                width: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 50%;
+                transform: translate(-50%,0);
                 border-radius: 50%;
                 font-size: 2.5em;
-                
-                
             }
         }
     }
@@ -52,7 +57,7 @@
                     
                 }
             }
-            i{
+            .i{
                 color: $dark-blueColor;
                 border: 4px solid $dark-blueColor;
             }
@@ -75,7 +80,7 @@
                     color: $light-blueColor;
                 }
             }
-            i{
+            .i{
                 color: $light-blueColor;
                 border: 4px solid $light-blueColor;
             }
@@ -107,7 +112,7 @@
                     p{
                         text-transform: uppercase;
                     }
-                i{
+                .i{
                     font-size: 2em;
                 }
             }

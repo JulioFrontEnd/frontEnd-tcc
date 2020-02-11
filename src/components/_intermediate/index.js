@@ -22,10 +22,10 @@ class Intermediate extends React.Component{
                         return( 
                             <div key={item.id} className="content" onClick={()=>this.redirectTo(item.path)}>
                                 <div className="content-all">
-                                <div>
+                                <div className="icon">
                                     <i className={item.iconId}></i>
                                 </div>
-                                <p>{item.title}</p>
+                                    <p>{item.title}</p>
                                 </div>
                             </div>
                         )

@@ -50,17 +50,6 @@
     width
 */
 
-@media only screen and (min-device-width: 480px) 
-                   and (max-device-width: 640px) 
-                   and (orientation: landscape) 
-{
-    .bottom-menu{
-        font-size: 1.2em;
-        div{
-            padding:1%;
-        }
-    }
-}
 
 @media only screen and (min-width: 900px) {
     .bottom-menu{

@@ -39,21 +39,46 @@ body{
                    and (max-device-width: 640px) 
                    and (orientation: landscape) 
 {
-    .global-theme-dark{
-        height: initial;
-        background: $dark-blackColor url("./img/dark-wallpaper.png");
-        background-size: 100%;
-        background-position-x: center;
-        background-repeat: no-repeat;
-    }
+    // .global-theme-dark{
+    //     height: initial;
+    //     background: $dark-blackColor url("./img/dark-wallpaper.png");
+    //     background-size: 100%;
+    //     background-position-x: center;
+    //     background-repeat: no-repeat;
+    // }
 
-    .global-theme-light{
-        height: initial;
-        background: $light-blackColor url("./img/light-wallpaper.png");
-        background-size: cover;
-        background-repeat: no-repeat;
+    // .global-theme-light{
+    //     height: initial;
+    //     background: $light-blackColor url("./img/light-wallpaper.png");
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    // }
+    #root{
+        display: none;
     }
+    #message{
+        display: flex !important;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $dark-blackColor;
+        color: $dark-whiteColor;
+        p{
+            color: $dark-contrastColor;
+        }
+        div{
+            font-size: 1.5em;
+        }
+        *{
+            margin: 2% 0;
+        }
+        i{
+            font-size: 4em;
+        }
     
+    }
 }
 
 @media only screen and (min-width: 900px) {

@@ -29,7 +29,7 @@ function App() {
           */}
           <Switch>
             {/* ROTAS DE LOGIN */}
-            <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
+            
 
             {/* ROTAS MENU */}
             <Route exact path="/menu" component={mainPage} />

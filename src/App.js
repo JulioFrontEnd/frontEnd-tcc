@@ -13,7 +13,14 @@ import peoplePlusAdd from './components/peoplePlus/create.js';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+    <div id="message">
+        <i className="fas fa-mobile-alt"></i>
+        <div>POR FAVOR, DEIXE O CELULAR EM PÉ</div>
+        <p>Esse sistema foi pensado para telas verticais.</p>
+    </div>
+    <div id="App">
+      
       <BrowserRouter>
         <Provider store={ThemeStore}>
           {/*
@@ -29,7 +36,7 @@ function App() {
           */}
           <Switch>
             {/* ROTAS DE LOGIN */}
-            
+            <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
 
             {/* ROTAS MENU */}
             <Route exact path="/menu" component={mainPage} />
@@ -48,6 +55,7 @@ function App() {
           </Switch>
         </Provider>
       </BrowserRouter>
+    </div>
     </div>
   );
 }

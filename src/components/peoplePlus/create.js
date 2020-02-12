@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Form from '../form';
+import Form from '../_form';
 
 class peoplePlusCreate extends React.Component{
     render(){

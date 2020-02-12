@@ -1,0 +1,162 @@
+@import '../../global/variables.scss';
+.list{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-left: 4%;
+    padding-right: 4%;
+    div{
+        div{
+            margin-bottom: 4%;
+            h2{
+                margin: 0;
+                margin-bottom: 4%;
+                font-size: 1.2em;
+                text-align: center;
+            }
+        }
+
+        .content{
+            cursor: pointer;
+            width: 100%;
+            padding: 4%;
+            transition: all .7s;
+            box-shadow: 0px 10px 28px -4px rgba(0,0,0,0.35);
+            .principal{
+                font-size: 1.2em;
+            }
+            .secondary{
+                opacity: .6;
+            }
+        }
+    }
+
+}
+
+.list-dark{
+    background-color: $dark-blackColor;
+    color: $dark-whiteColor;
+    div{
+        h2{
+            color:$dark-blueColor;
+        }
+    }
+    .content{
+        background-color: $dark-extraBlackColor;
+        border: .01px solid transparentize($color: $dark-blueColor, $amount: .4);
+        &:hover{
+            background-color: transparentize($color: $dark-blueColor, $amount: .4);
+        }
+        p{
+            span{
+                color:$dark-blueColor;
+            }
+        }
+    }
+
+}
+
+.list-light{
+    background-color: $light-whiteColor;
+    color: $light-blackColor;
+    div{
+        h2{
+            color:$light-blueColor;
+        }
+    }
+    .content{
+        background-color: $light-whiteColor;
+        &:hover{
+            background-color: transparentize($color: $light-blueColor, $amount: .4);
+        }
+        p{
+            span{
+                color:$light-blueColor;
+            }
+        }
+    }
+
+}
+
+
+.popop-read{
+    padding: 4%;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2em;
+    .icons-popop{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        *{
+            font-size: 1.4em;
+            cursor: pointer;
+            opacity: .9;
+            &:hover{
+                opacity: 1;
+            }
+        }
+
+    }
+}
+
+.popop-read-light{
+    background-color: $light-whiteColor;
+    .icons-popop{
+        .delete{
+            color: $light-contrastColor;
+        }
+        .alter{
+            color: $light-blueColor;
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .list{
+        div{
+            div{
+                width: 100%;
+                text-align: center;
+                h2{
+                    font-size: 2em;
+                }
+            }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .content{
+                margin: 1%;
+                width: 40%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                .principal{
+                    font-size: 1.6em;
+                }
+        }
+    }}
+
+    .popop-read{
+        padding: 1%;
+        .icons-popop{
+            width: 50%;
+            *{
+                font-size: 1.7em;
+            }
+        }
+    }
+}

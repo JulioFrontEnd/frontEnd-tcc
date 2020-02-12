@@ -124,6 +124,19 @@
     }
 }
 
+.popop-read-dark{
+    background-color: $dark-blackColor;
+    color: $dark-whiteColor;
+    .icons-popop{
+        .delete{
+            color: $dark-contrastColor;
+        }
+        .alter{
+            color: $dark-blueColor;
+        }
+    }
+}
+
 @media only screen and (min-width: 900px) {
     .list{
         div{

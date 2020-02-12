@@ -16,7 +16,7 @@ class peoplePlus extends React.Component{
                 id:2,
                 title:"LISTAR",
                 iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus/read",
+                path:"/popop/peoplePlus/read",
             },
             
         ];

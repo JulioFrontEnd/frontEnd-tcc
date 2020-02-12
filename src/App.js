@@ -46,6 +46,7 @@ function App() {
             {/* ROTAS POPOP */}
             <Route exact path="/popop/user" component={userPage} />
             <Route exact path="/popop/peoplePlus/add" component={peoplePlusAdd} />
+            <Route exact path="/popop/peoplePlus/read" component={peoplePlusAdd} />
             
           </Switch>
           {/*

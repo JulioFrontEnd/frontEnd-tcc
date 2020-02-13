@@ -69,7 +69,7 @@ export default class form extends React.Component{
                         }else{
                             return(
                                 <div key={item.name}>
-                                    <input maxLength={item.max} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={this.state.forSubmit[item.name]} />
+                                    <input autocomplete="off" maxLength={item.max} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={this.state.forSubmit[item.name]} />
                                     {((!(item.format))?"":<p>{item.format}</p>)}
                                 </div>
                             ); 

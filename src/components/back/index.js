@@ -5,7 +5,7 @@ import './index.scss';
 class Back extends React.Component{
 
     return = async ()=>{
-        localStorage.setItem('bottomMenu_classNames',"home");
+        await localStorage.setItem('bottomMenu_classNames',"home");
         this.props.history.goBack();
     }
     render(){

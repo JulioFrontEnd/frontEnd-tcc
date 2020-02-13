@@ -3,10 +3,13 @@ import './index.scss';
 
 
 export default class list extends React.Component{
-    state={}
+    state={
+        popop:<div></div>
+    }
+    
     
     componentDidMount(){
-        this.setState({theme:this.props.theme})
+        this.setState({theme:this.props.theme,popop:this.props.popop})
     }
     render(){
         

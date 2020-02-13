@@ -21,15 +21,25 @@ class peoplePlusRead extends React.Component{
 
         const divder = 
         <div className={"popop-read popop-read-"+this.props.theme}>
-            <p><span>NOME: </span>{dataEspecifica.nome}</p>
-            <p><span>CPF: </span>{dataEspecifica.cpf}</p>
-
-
             <div className="icons-popop">
                 <div className="delete"><i className="fas fa-trash-alt"></i></div>
                 <div className="alter"><i className="fas fa-user-edit"></i></div>
                 <div className="close" onClick={this.close}><i className="fas fa-times"></i></div>
             </div>
+
+
+
+            <div className="special-content">
+                <p><span>NOME: </span>{dataEspecifica.nome}</p>
+                <p><span>CPF: </span>{dataEspecifica.cpf}</p>
+                <p><span>RG: </span>{dataEspecifica.cpf}</p>
+                <p><span>CEP: </span>{dataEspecifica.cpf}</p>
+                <p><span>CEP: </span>{dataEspecifica.cpf}</p>
+                <p><span>CEP: </span>{dataEspecifica.cpf}</p>
+                <p><span>CEP: </span>{dataEspecifica.cpf}</p>
+                <p><span>CEP: </span>{dataEspecifica.cpf}</p>
+                <p><span>TELEFONE: </span>{dataEspecifica.cpf}</p>   
+            </div> 
         </div>;
 
         this.setState({

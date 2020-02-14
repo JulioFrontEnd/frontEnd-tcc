@@ -10,8 +10,7 @@
     
 
     div{
-        margin-left: 50%;
-        transform: translate(-50%,0);
+        
         margin-bottom: 4%;
         h2{
             margin: 0;
@@ -111,6 +110,8 @@
         padding-left: 1%;
         padding-right: 1%;
         div{
+            margin-left: 50%;
+            transform: translate(-50%,0);
             margin-bottom: 2%;
             width: 50vw;
             input{

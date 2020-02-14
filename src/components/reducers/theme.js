@@ -9,11 +9,12 @@ const initial_state = {
         name:'light',
     }],
 
-    actualTheme:"dark",
+    actualTheme:((localStorage.getItem('theme')!==null)?localStorage.getItem('theme'):"dark"),
 }
 
 const reducer = (state = initial_state, action)=>{
     return state;
+
 }
 
 const ThemeStore = createStore(reducer);

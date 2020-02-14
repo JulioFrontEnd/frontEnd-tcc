@@ -7,6 +7,30 @@
     padding-top: 80px;
     padding-left: 4%;
     padding-right: 4%;
+    .list-input{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 8%;
+        input{
+            min-width: 40%;
+            padding: 1%;
+            border: none;
+            background-color: transparent;
+            
+            &::placeholder{
+                opacity: 1;
+            }
+        }
+        div{
+            display: flex;
+            align-items: center;
+            padding: 1%;
+            max-width: 60px;
+            font-size: 1.6em;
+            margin-bottom: 0;
+        }
+    }
     div{
         div{
             margin-bottom: 4%;
@@ -35,9 +59,22 @@
 
 }
 
+
+
+
 .list-dark{
     background-color: $dark-blackColor;
     color: $dark-whiteColor;
+    .list-input{
+        input{
+        color: $dark-whiteColor;
+            border-bottom: 1px solid transparentize($color: $dark-blueColor, $amount: .4);
+            &::placeholder{
+                text-transform: uppercase;
+                color: transparentize($color: $dark-whiteColor, $amount: .4);
+            }
+        }
+    }
     div{
         h2{
             color:$dark-blueColor;
@@ -61,6 +98,16 @@
 .list-light{
     background-color: $light-whiteColor;
     color: $light-blackColor;
+    .list-input{
+        input{
+            color: $light-blueColor;
+            border-bottom: 1px solid $light-blueColor;
+            &::placeholder{
+                text-transform: uppercase;
+                color: transparentize($color: $light-blueColor, $amount: 0.2);
+            }
+        }
+    }
     div{
         h2{
             color:$light-blueColor;
@@ -116,6 +163,14 @@
 
 .popop-read-light{
     background-color: $light-whiteColor;
+    .special-content{
+        p{
+            span{
+                color: $light-blueColor;
+            }
+            border-bottom: 1px solid $light-blueColor;
+        }
+    }
     .icons-popop{
         .delete{
             color: $light-contrastColor;

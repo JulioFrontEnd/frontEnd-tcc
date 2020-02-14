@@ -2,6 +2,15 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 export default class ListItems extends React.Component{
+    teste = ()=>{
+        if(localStorage.getItem('theme') === "dark"){
+            localStorage.setItem('theme',"light")
+        }else{
+            localStorage.setItem('theme',"dark")
+        }
+
+        console.log(localStorage.getItem('theme'))
+    }
     render(){
 
         // My Menu Items
@@ -29,7 +38,7 @@ export default class ListItems extends React.Component{
                         animation: "menu-items ."+item.id+"s",
                     }
                 return(
-                    <div className="menu-item" key={item.id} style={style}>
+                    <div className="menu-item" key={item.id} style={style} onClick={this.teste}>
                         <i className={item.icon}></i>
                         <Link to={item.link}>{item.name}</Link>
                     </div>

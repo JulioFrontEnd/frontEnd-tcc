@@ -10,7 +10,17 @@
     
 
     div{
-        
+        .hiped{
+            cursor: pointer;
+            margin-top: 5%;
+            .hipedBall{
+                position: absolute;
+                transition: all .7s;
+            }
+            b{
+                margin-left: 120%;
+            }
+        }
         margin-bottom: 4%;
         h2{
             margin: 0;
@@ -19,6 +29,7 @@
             text-align: center;
         }
         input{
+            margin:5% 0 2% 0; 
             width: 100%;
             padding: 2%;
             border: none;
@@ -31,6 +42,7 @@
         p{
             text-align: end;
             font-size: .9em;
+            margin-bottom: -4%;
         }
         button{
             transition: all .7s;
@@ -42,13 +54,23 @@
             background-color: transparent;
             margin-left: 50%;
             transform: translate(-50%,0);
-        }   
+        }
+           
     }
 }
 
 .form-create-dark{
     background-color: $dark-blackColor;
     div{
+        .hiped{
+            background-color: $dark-blueColor;
+            .hipedBall{
+                background-color: $dark-blackColor;
+            }
+            b{
+                color: transparentize($color: $dark-whiteColor, $amount: .4);
+            }
+        }
         h2{
             color: transparentize($color: $dark-blueColor, $amount: .4);
         }
@@ -72,11 +94,24 @@
         p{
             color: $dark-contrastColor;
         }
+        span{
+            text-transform: uppercase;
+            color: transparentize($color: $dark-whiteColor, $amount: .4);
+        }
     }
 }
 .form-create-light{
     background-color: $light-whiteColor;
     div{
+        .hiped{
+            background-color: $light-blueColor;
+            .hipedBall{
+                background-color: $light-whiteColor;
+            }
+            b{
+                color:$light-blueColor;
+            }
+        }
         h2{
             color: $light-blueColor;
         }
@@ -100,6 +135,10 @@
         p{
             color: $light-contrastColor;
         }
+        span{
+            text-transform: uppercase;
+            color: transparentize($color: $light-blueColor, $amount: 0.2);
+        }
     }
 }
 
@@ -110,8 +149,7 @@
         padding-left: 1%;
         padding-right: 1%;
         div{
-            margin-left: 50%;
-            transform: translate(-50%,0);
+            
             margin-bottom: 2%;
             width: 50vw;
             input{

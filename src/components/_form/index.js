@@ -1,17 +1,11 @@
 import React from 'react';
 import './index.scss';
-
-/**
- * <div>
-    <input type='text' name="cpf" placeholder="Put Here your CPF" />
-    <p>xxx.xxx.xxx-xx</p>
-    </div>
- * 
- */
+import API from "../services/base";
 
 export default class form extends React.Component{
     state={
-        forSubmit:{}
+        forSubmit:{sexo:1,CPF:"",RG:"",CEP:"",telefone:"",nome:"",dataDeNascimento:"",endereco:"",nacionalidade:"",ativo:1},
+        themeContent:{hipedBallDirection:'0%'}
     }
 
     handleChange = (e)=>{
@@ -45,9 +39,37 @@ export default class form extends React.Component{
 
     }
 
+
+    hipedBallHandler = ()=>{
+        if(this.state.themeContent.hipedBallDirection === '0%'){
+            this.setState({forSubmit:{...this.state.forSubmit,sexo:0},themeContent:{hipedBallDirection:'50%'}})
+        }else{
+            this.setState({forSubmit:{...this.state.forSubmit,sexo:1},themeContent:{hipedBallDirection:'0%'}})
+        }
+    }
+
+    submitContent = ()=>{
+        console.log(this.state.forSubmit)
+        API.post(this.props.url,{params:this.state.forSubmit}).then((response)=>{
+            console.log(response.data);
+        });
+    }
+
     render(){
         const data = this.props.data;
         const theme = this.props.theme;
+        const hiped = {
+            width:'75px',
+            height:'25px',
+            borderRadius:'75px',
+            position: 'relative',
+        };
+        const hipedBall = {
+            left:this.state.themeContent.hipedBallDirection,
+            width : (parseFloat(hiped.width) / 2) + 'px',
+            height: hiped.height,
+            borderRadius : (parseFloat(hiped.width) / 2) + 'px',
+        }
         return(
             <div className={`form-create form-create-${theme}`}>
                 <div>
@@ -60,16 +82,23 @@ export default class form extends React.Component{
 
                 {
                     data.map((item)=>{
-                        if(item.name === "binary"){
+                        if(item.type === "binary"){
                             return(
                                 <div key={item.name}>
-                                    Nothing
+                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    
+                                    <div className='hiped' style={hiped} onClick={this.hipedBallHandler}>
+                                        <div className='hipedBall' style={hipedBall}></div>
+                                        <b>{((this.state.forSubmit.sexo === 1 || this.state.forSubmit.sexo === undefined)?item.option[0]:item.option[1])}</b>
+                                    </div>
+                                    
                                 </div>
                             );
                         }else{
                             return(
                                 <div key={item.name}>
-                                    <input autocomplete="off" maxLength={item.max} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={this.state.forSubmit[item.name]} />
+                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={this.state.forSubmit[item.name]} />
                                     {((!(item.format))?"":<p>{item.format}</p>)}
                                 </div>
                             ); 
@@ -78,7 +107,7 @@ export default class form extends React.Component{
                 }
 
                 <div>
-                    <button>ENVIAR</button>
+                    <button onClick={this.submitContent}>ENVIAR</button>
                 </div>
             </div>
         );

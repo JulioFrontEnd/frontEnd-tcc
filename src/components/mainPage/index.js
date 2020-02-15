@@ -12,68 +12,6 @@ class MainPage extends React.Component{
                 iconId:"fas fa-user-plus",
                 path:"/menu/peoplePlus",
             },
-            {
-                id:2,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
-            {
-                id:3,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
-            {
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
-            {
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
-            {
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
-            {
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
-            {
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },{
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },{
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },{
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },{
-                id:4,
-                title:"Clientes",
-                iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
-            },
         ];
         const theme = this.props.theme;
         return(

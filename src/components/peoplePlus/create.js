@@ -31,6 +31,14 @@ class peoplePlusCreate extends React.Component{
                 max:"9",
             },
             {
+                name:"RG",
+                option:false,
+                format:"Apenas numeros",
+                type:"text",
+                placeholder:"DIGITE SEU RG",
+                max:"7",
+            },
+            {
                 name:"telefone",
                 option:false,
                 format:"(xx) xxxxx-xxxx",
@@ -38,11 +46,43 @@ class peoplePlusCreate extends React.Component{
                 placeholder:"DIGITE SEU CELULAR",
                 max:"15",
             },
+            {
+                name:"dataDeNascimento",
+                option:false,
+                format:"MM/DD/AAAA",
+                type:"date",
+                placeholder:"DATA DE NASCIMENTO",
+                max:false,
+            },
+            {
+                name:"endereco",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SEU ENDEREÇO",
+                max:"255",
+            },
+            {
+                name:"nacionalidade",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SUA NACIONALIDADE",
+                max:"255",
+            },
+            {
+                name:"sexo",
+                option:["Masculino","Feminino"],
+                format:false,
+                type:"binary",
+                placeholder:"DIGITE SEU SEXO",
+                max:"255",
+            },
         ];
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" />
+                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/CadastrarPessoas" />
             </div>
         );
     }

@@ -2,14 +2,16 @@ import React from 'react';
 import './index.scss';
 
 
+
 export default class list extends React.Component{
     state={
-        popop:<div></div>
+        popop:<div></div>,
+        list:[],
     }
     
     
     componentDidMount(){
-        this.setState({theme:this.props.theme,popop:this.props.popop})
+        this.setState({theme:this.props.theme,popop:this.props.popop});
     }
     render(){
         

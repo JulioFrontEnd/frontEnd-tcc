@@ -44,7 +44,7 @@ class peoplePlusCreate extends React.Component{
                 format:"(xx) xxxxx-xxxx",
                 type:"text",
                 placeholder:"DIGITE SEU CELULAR",
-                max:"15",
+                max:"16",
             },
             {
                 name:"dataDeNascimento",
@@ -78,11 +78,20 @@ class peoplePlusCreate extends React.Component{
                 placeholder:"DIGITE SEU SEXO",
                 max:"255",
             },
+            {
+                name:"ativo",
+                option:"",
+                format:false,
+                type:"hidden",
+                placeholder:"",
+                value:1,
+                max:"255",
+            },
         ];
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/CadastrarPessoas" />
+                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/popop/peoplePlus/read"/>
             </div>
         );
     }

@@ -29,7 +29,7 @@ export default class form extends React.Component{
         }else if(e.target.name === "telefone"){
             let telefone = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
-            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{3})(\d)/, '($1) $2')
             .replace(/(\d{5})(\d)/, '$1-$2'); 
 
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:telefone}})
@@ -48,10 +48,22 @@ export default class form extends React.Component{
         }
     }
 
-    submitContent = ()=>{
-        console.log(this.state.forSubmit)
-        API.post(this.props.url,{params:this.state.forSubmit}).then((response)=>{
-            console.log(response.data);
+    submitContent = async ()=>{
+        const data = await this.props.data;
+        let url = await this.props.url + "?";
+        
+        await data.map((item)=>{
+            return(
+                url = url + item.name + "=" + this.state.forSubmit[item.name] + "&"
+            );
+        });
+
+        url = await url.substring(0,(url.length - 1));
+        
+        console.log(url);
+
+        API.post(url).then((response)=>{
+            window.location.href = this.props.posUrl;
         });
     }
 
@@ -94,6 +106,8 @@ export default class form extends React.Component{
                                     
                                 </div>
                             );
+                        }else if(item.type === "hidden"){
+                            return <span key={item.name}></span>
                         }else{
                             return(
                                 <div key={item.name}>

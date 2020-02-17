@@ -105,7 +105,6 @@ export default class form extends React.Component{
 
                 {
                     data.map((item)=>{
-                        
                         if(item.type === "binary"){
                             return(
                                 <div key={item.name}>
@@ -133,7 +132,7 @@ export default class form extends React.Component{
                                     name={item.name} placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
                                     className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
-                                    {((!(item.format))?"":<p>{item.format}</p>)}
+                                    {((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}
                                 </div>
                             );
                         }else{
@@ -144,7 +143,7 @@ export default class form extends React.Component{
                                     placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} 
                                     className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
-                                    {((!(item.format))?"":<p>{item.format}</p>)}
+                                    {((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}
                                 </div>
                             ); 
                         }

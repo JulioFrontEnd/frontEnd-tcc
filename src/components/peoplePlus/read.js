@@ -14,7 +14,8 @@ class peoplePlusRead extends React.Component{
     }
 
     delete = (id)=>{
-        API.delete('/delete/'+id).then((response)=>{
+        console.log(id);
+        API.delete('/deletarCliente/'+id).then((response)=>{
             this.close();
             this.componentDidMount();
         });

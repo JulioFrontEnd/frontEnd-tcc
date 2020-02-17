@@ -4,14 +4,20 @@ import API from "../services/base";
 
 export default class form extends React.Component{
     state={
-        forSubmit:{sexo:1,CPF:"",RG:"",CEP:"",telefone:"",nome:"",dataDeNascimento:"",endereco:"",nacionalidade:"",ativo:1},
-        themeContent:{hipedBallDirection:'0%'}
+        forSubmit:{},
+    }
+
+    componentDidMount(){
+        this.beValue();
     }
 
     handleChange = (e)=>{
         /*
             If para changes especiais
         */
+
+        console.log(this.state.forSubmit)
+
         if(e.target.name === "CPF"){
             let cpf = e.target.value
               .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
@@ -21,6 +27,13 @@ export default class form extends React.Component{
               .replace(/(-\d{2})\d+?$/, '$1');
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:cpf}})
 
+        }else if(e.target.name.substring(0,4) === "data"){
+            let data = e.target.value
+            .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
+            .replace(/(\d{2})(\d)/, '$1-$2')
+            .replace(/(\d{2})(\d)/, '$1-$2'); 
+
+            this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:data.split("-").reduce(function(p, c){ return c + "-" +p })}});
         }else if(e.target.name === "CEP"){
             let CEP = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
@@ -40,12 +53,17 @@ export default class form extends React.Component{
     }
 
 
-    hipedBallHandler = ()=>{
-        if(this.state.themeContent.hipedBallDirection === '0%'){
-            this.setState({forSubmit:{...this.state.forSubmit,sexo:0},themeContent:{hipedBallDirection:'50%'}})
+    hipedBallHandler = (a)=>{
+        if(this.state.forSubmit[a] === 1){
+            this.setState({forSubmit:{...this.state.forSubmit,[a]:0}})
         }else{
-            this.setState({forSubmit:{...this.state.forSubmit,sexo:1},themeContent:{hipedBallDirection:'0%'}})
+            this.setState({forSubmit:{...this.state.forSubmit,[a]:1}})
         }
+    }
+
+    beValue = async ()=>{
+        const data = await this.props.data;
+        data.map((item)=>this.setState({forSubmit:{...this.state.forSubmit,[item.name]:item.value,}}));
     }
 
     submitContent = async ()=>{
@@ -59,12 +77,10 @@ export default class form extends React.Component{
         });
 
         url = await url.substring(0,(url.length - 1));
-        
-        console.log(url);
 
         API.post(url).then((response)=>{
             window.location.href = this.props.posUrl;
-        });
+        }).catch((e)=>{console.log(e)});
     }
 
     render(){
@@ -76,12 +92,6 @@ export default class form extends React.Component{
             borderRadius:'75px',
             position: 'relative',
         };
-        const hipedBall = {
-            left:this.state.themeContent.hipedBallDirection,
-            width : (parseFloat(hiped.width) / 2) + 'px',
-            height: hiped.height,
-            borderRadius : (parseFloat(hiped.width) / 2) + 'px',
-        }
         return(
             <div className={`form-create form-create-${theme}`}>
                 <div>
@@ -94,25 +104,39 @@ export default class form extends React.Component{
 
                 {
                     data.map((item)=>{
+                        
                         if(item.type === "binary"){
                             return(
                                 <div key={item.name}>
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
                                     
-                                    <div className='hiped' style={hiped} onClick={this.hipedBallHandler}>
-                                        <div className='hipedBall' style={hipedBall}></div>
-                                        <b>{((this.state.forSubmit.sexo === 1 || this.state.forSubmit.sexo === undefined)?item.option[0]:item.option[1])}</b>
+                                    <div className='hiped' style={hiped} onClick={()=>this.hipedBallHandler(item.name)}>
+                                        <div className='hipedBall' style={({
+                                            left:((this.state.forSubmit[item.name]===1)?"0%":"50%"),
+                                            width : (parseFloat(hiped.width) / 2) + 'px',
+                                            height: hiped.height,
+                                            borderRadius : (parseFloat(hiped.width) / 2) + 'px',
+                                        })}></div>
+                                        <b>{((this.state.forSubmit[item.name]===1 || this.state.forSubmit[item.name]===undefined)?item.option[0]:item.option[1])}</b>
                                     </div>
                                     
                                 </div>
                             );
                         }else if(item.type === "hidden"){
                             return <span key={item.name}></span>
+                        }else if(item.name === "dataDeNascimento"){
+                            return(
+                                <div key={item.name}>
+                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} />
+                                    {((!(item.format))?"":<p>{item.format}</p>)}
+                                </div>
+                            );
                         }else{
                             return(
                                 <div key={item.name}>
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={this.state.forSubmit[item.name]} />
+                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} />
                                     {((!(item.format))?"":<p>{item.format}</p>)}
                                 </div>
                             ); 

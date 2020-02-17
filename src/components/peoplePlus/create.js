@@ -13,6 +13,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU NOME",
                 max:"255",
+                value:""
             },
             {
                 name:"CPF",
@@ -21,6 +22,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU CPF",
                 max:"14",
+                value:""
             },
             {
                 name:"CEP",
@@ -29,6 +31,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU CEP",
                 max:"9",
+                value:""
             },
             {
                 name:"RG",
@@ -37,6 +40,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU RG",
                 max:"7",
+                value:""
             },
             {
                 name:"telefone",
@@ -45,6 +49,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU CELULAR",
                 max:"16",
+                value:""
             },
             {
                 name:"dataDeNascimento",
@@ -52,7 +57,8 @@ class peoplePlusCreate extends React.Component{
                 format:"MM/DD/AAAA",
                 type:"date",
                 placeholder:"DATA DE NASCIMENTO",
-                max:false,
+                max:"10",
+                value:""
             },
             {
                 name:"endereco",
@@ -61,6 +67,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU ENDEREÇO",
                 max:"255",
+                value:""
             },
             {
                 name:"nacionalidade",
@@ -69,6 +76,7 @@ class peoplePlusCreate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SUA NACIONALIDADE",
                 max:"255",
+                value:""
             },
             {
                 name:"sexo",
@@ -77,6 +85,7 @@ class peoplePlusCreate extends React.Component{
                 type:"binary",
                 placeholder:"DIGITE SEU SEXO",
                 max:"255",
+                value:1
             },
             {
                 name:"ativo",
@@ -91,7 +100,7 @@ class peoplePlusCreate extends React.Component{
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/popop/peoplePlus/read"/>
+                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/popop/peoplePlus"/>
             </div>
         );
     }

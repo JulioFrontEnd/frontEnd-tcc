@@ -29,6 +29,7 @@
             text-align: center;
         }
         input{
+            transition: all .7s;
             outline: none;
             margin:5% 0 2% 0; 
             width: 100%;
@@ -83,6 +84,9 @@
                 color: transparentize($color: $dark-whiteColor, $amount: .4);
             }
         }
+        .error{
+            border: 1px solid $dark-contrastColor;
+        }
         button{
             border: 1px solid transparentize($color: $dark-blueColor, $amount: .4);
             color: transparentize($color: $dark-blueColor, $amount: .4);
@@ -123,6 +127,9 @@
                 text-transform: uppercase;
                 color: transparentize($color: $light-blueColor, $amount: 0.2);
             }
+        }
+        .error{
+            border: 1px solid $light-contrastColor;
         }
         button{
             border: 1px solid $light-blueColor;

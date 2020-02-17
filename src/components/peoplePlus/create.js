@@ -54,7 +54,7 @@ class peoplePlusCreate extends React.Component{
             {
                 name:"dataDeNascimento",
                 option:false,
-                format:"MM/DD/AAAA",
+                format:"DD-MM-AAAA",
                 type:"date",
                 placeholder:"DATA DE NASCIMENTO",
                 max:"10",
@@ -100,7 +100,7 @@ class peoplePlusCreate extends React.Component{
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/popop/peoplePlus"/>
+                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/menu/peoplePlus"/>
             </div>
         );
     }

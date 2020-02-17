@@ -75,12 +75,13 @@ export default class form extends React.Component{
                 url = url + item.name + "=" + this.state.forSubmit[item.name] + "&"
             );
         });
-
+        
         url = await url.substring(0,(url.length - 1));
-
         API.post(url).then((response)=>{
             window.location.href = this.props.posUrl;
-        }).catch((e)=>{console.log(e)});
+        }).catch((error)=>{
+            this.setState({error:error.response.data});
+        });
     }
 
     render(){
@@ -128,7 +129,10 @@ export default class form extends React.Component{
                             return(
                                 <div key={item.name}>
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} />
+                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
+                                    name={item.name} placeholder={item.placeholder} onChange={this.handleChange} 
+                                    value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
+                                    className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
                                     {((!(item.format))?"":<p>{item.format}</p>)}
                                 </div>
                             );
@@ -136,7 +140,10 @@ export default class form extends React.Component{
                             return(
                                 <div key={item.name}>
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} placeholder={item.placeholder} onChange={this.handleChange} value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} />
+                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} 
+                                    placeholder={item.placeholder} onChange={this.handleChange} 
+                                    value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} 
+                                    className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
                                     {((!(item.format))?"":<p>{item.format}</p>)}
                                 </div>
                             ); 

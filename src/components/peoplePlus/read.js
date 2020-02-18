@@ -7,6 +7,7 @@ class peoplePlusRead extends React.Component{
     state={
         popop:<div></div>,
         data:[],
+        searchDefaultValue:"",
     }
 
     close = ()=>{
@@ -19,6 +20,20 @@ class peoplePlusRead extends React.Component{
             this.close();
             this.componentDidMount();
         });
+    }
+
+    search = (e)=>{
+        this.setState({searchDefaultValue:e.target.value});
+
+        if(e.target.value !== ""){
+            API.get("/pesquisarClientes?nome="+e.target.value).then((response)=>{
+                this.setState({data:response.data.data,});
+            });
+        }else{
+            this.componentDidMount();
+        }
+        
+        
     }
 
     // PRECISA SER CONFIGURADO
@@ -72,6 +87,10 @@ class peoplePlusRead extends React.Component{
         return(
             
             <List theme={theme} title="LISTA DE CLIENTES" popop={this.state.popop}>
+                <div className="list-input">
+                    <input placeholder="DIGITE PARA PESQUISAR" onChange={this.search} value={this.state.searchDefaultValue} />
+                    <div><i className="fas fa-search"></i></div>
+                </div>
                 {this.state.data.map(item=>{
                     return(
                         <div key={item.id} onClick={()=>this.popopShow(item.id)} className="content">

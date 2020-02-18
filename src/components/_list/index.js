@@ -17,11 +17,6 @@ export default class list extends React.Component{
         
         return(
             <div className={`list list-${this.state.theme}`}>
-                <div className="list-input">
-                    <input placeholder="DIGITE PARA PESQUISAR" />
-                    <div><i className="fas fa-search"></i></div>
-                    
-                </div>
                 {this.props.popop}
                 <div>
                     <div>

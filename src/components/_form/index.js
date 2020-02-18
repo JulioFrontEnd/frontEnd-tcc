@@ -5,10 +5,14 @@ import API from "../services/base";
 export default class form extends React.Component{
     state={
         forSubmit:{},
+        containerError:<span></span>,
     }
 
     componentDidMount(){
         this.beValue();
+    }
+    closePopop = ()=>{
+        this.setState({containerError:<span></span>,})
     }
 
     handleChange = (e)=>{
@@ -81,6 +85,11 @@ export default class form extends React.Component{
             window.location.href = this.props.posUrl;
         }).catch((error)=>{
             this.setState({error:error.response.data});
+            this.setState({containerError:<div className="popop-error">
+                <div onClick={this.closePopop}><i class="fas fa-times"></i></div>
+                <h3>OPPS...</h3>
+                <p>Algum dado inserido está incorreto, por favor preencha novamente!</p>
+            </div>,});
         });
     }
 
@@ -95,6 +104,7 @@ export default class form extends React.Component{
         };
         return(
             <div className={`form-create form-create-${theme}`}>
+                {this.state.containerError}
                 <div>
                     <h2>{this.props.title}</h2>
                 </div>

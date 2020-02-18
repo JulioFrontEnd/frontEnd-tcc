@@ -1,4 +1,13 @@
 @import '../../global/variables.scss';
+@keyframes flowTop {
+    from {transform: translate(0,-200%);}
+    to {transform: translate(-50%,0);}
+}
+@keyframes flowLeft {
+    from {transform: translate(-200%,0);}
+    to {transform: translate(0,0);}
+}
+
 .form-create{
     width: 100vw;
     min-height: 100vh;
@@ -8,6 +17,35 @@
     padding-left: 4%;
     padding-right: 4%;
     
+    .popop-error{
+        transform: translate(-50%,0);
+        animation: flowTop .7s linear .0002s;
+        box-shadow: 0px 22px 80px 1px rgba(0,0,0,0.75);
+
+        width: 90vw;
+        position: fixed;
+        left: 50%;
+        top: 2%;
+
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        z-index: 200;
+        padding-top: 4%;
+        min-height: 20vh;
+        h3{
+            font-size: 1.3em;
+        }
+        
+        div{
+            cursor: pointer;
+            right: 2%;
+            top: 6%;
+            font-size: 2em;
+            position: absolute;
+        }
+    }
 
     div{
         .hiped{
@@ -63,6 +101,10 @@
 
 .form-create-dark{
     background-color: $dark-blackColor;
+    .popop-error{
+        background-color: $dark-whiteColor;
+        border-left: 2vw solid $dark-contrastColor;
+    }
     div{
         .hiped{
             background-color: $dark-blueColor;
@@ -107,6 +149,10 @@
 }
 .form-create-light{
     background-color: $light-whiteColor;
+    .popop-error{
+        background-color: $light-whiteColor;
+        border-left: 2vw solid $light-contrastColor;
+    }
     div{
         .hiped{
             background-color: $light-blueColor;
@@ -156,6 +202,31 @@
     .form-create{
         padding-left: 1%;
         padding-right: 1%;
+        .popop-error{
+            transform: translate(0,0);
+            animation: flowLeft .7s linear .001s;
+            box-shadow: 0px 22px 80px 1px rgba(0,0,0,0.75);
+    
+            width: 60vw;
+            position: fixed;
+            left: 2%;
+            top: 2%;
+    
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            z-index: 200;
+            padding-top: 2%;
+            min-height: 25vh;
+            div{
+                right: -40%;
+                top: 5%;
+                cursor: pointer;
+                font-size: 2em;
+                position: absolute;
+            }
+        }
         div{
             
             margin-bottom: 2%;

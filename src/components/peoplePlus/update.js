@@ -91,7 +91,7 @@ class peoplePlusUpdate extends React.Component{
                 type:"binary",
                 placeholder:"DIGITE SEU SEXO",
                 max:"255",
-                value:((values[0].sexo)?1:0)
+                value:((values[0].sexo === true)?1:0)
             },
             {
                 name:"ativo",
@@ -99,20 +99,20 @@ class peoplePlusUpdate extends React.Component{
                 format:false,
                 type:"hidden",
                 placeholder:"",
-                value:((values[0].ativo)?1:0),
+                value:((values[0].ativo === true)?1:0),
                 max:"255",
             },
         ]})
     }
     render(){
-        const {Id} = this.props.match.params;
+        const {id} = this.props.match.params;
         // configuração de telas
         const data = this.state.data;
         
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="Atualize o cliente" url={"/atualizarCliente/"+Id} posUrl="/menu/peoplePlus"/>
+                <Form theme={theme} data={data} title="Atualize o cliente" url={"/atualizarCliente/"+id} posUrl="/menu/peoplePlus"/>
             </div>
         );
     }

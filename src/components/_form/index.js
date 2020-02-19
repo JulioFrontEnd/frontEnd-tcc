@@ -6,10 +6,14 @@ export default class form extends React.Component{
     state={
         forSubmit:{},
         containerError:<span></span>,
+        preload:false,
     }
 
-    componentDidMount(){
-        this.beValue();
+    componentDidUpdate(){
+        if(this.state.preload === false){
+            this.beValue();
+            this.setState({preload:true});
+        }
     }
     closePopop = ()=>{
         this.setState({containerError:<span></span>,})
@@ -19,8 +23,6 @@ export default class form extends React.Component{
         /*
             If para changes especiais
         */
-
-        console.log(this.state.forSubmit)
 
         if(e.target.name === "CPF"){
             let cpf = e.target.value
@@ -81,12 +83,13 @@ export default class form extends React.Component{
         });
         
         url = await url.substring(0,(url.length - 1));
+
         API.post(url).then((response)=>{
             window.location.href = this.props.posUrl;
         }).catch((error)=>{
             this.setState({error:error.response.data});
             this.setState({containerError:<div className="popop-error">
-                <div onClick={this.closePopop}><i class="fas fa-times"></i></div>
+                <div onClick={this.closePopop}><i className="fas fa-times"></i></div>
                 <h3>OPPS...</h3>
                 <p>Algum dado inserido está incorreto, por favor preencha novamente!</p>
             </div>,});

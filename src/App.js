@@ -10,6 +10,7 @@ import back from './components/back';
 import peoplePlus from './components/peoplePlus';
 import peoplePlusCreate from './components/peoplePlus/create.js';
 import peoplePlusRead from './components/peoplePlus/read.js';
+import peoplePlusUpdate from './components/peoplePlus/update.js';
 
 
 function App() {
@@ -37,17 +38,15 @@ function App() {
             SWITCH DE ROTAS DE PAGINAS DINÂMICAS
           */}
           <Switch>
-            {/* ROTAS DE LOGIN */}
+            {/* ROTAS Principais */}
             <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
-
-            {/* ROTAS MENU */}
             <Route exact path="/menu" component={mainPage} />
-            <Route exact path="/menu/peoplePlus" component={peoplePlus} />
-
-            {/* ROTAS POPOP */}
             <Route exact path="/popop/user" component={userPage} />
+            {/* CRUD PESSOA */}
+            <Route exact path="/menu/peoplePlus" component={peoplePlus} />
             <Route exact path="/popop/peoplePlus/add" component={peoplePlusCreate} />
             <Route exact path="/popop/peoplePlus/read" component={peoplePlusRead} />
+            <Route exact path="/popop/peoplePlus/update/:id" component={peoplePlusUpdate} />
             
           </Switch>
           {/*

@@ -13,6 +13,9 @@ class peoplePlusRead extends React.Component{
     close = ()=>{
         this.setState({popop:<div></div>});
     }
+    alterLink = (id)=>{
+        window.location.href = "/popop/peoplePlus/update/"+id;
+    }
 
     delete = (id)=>{
         console.log(id);
@@ -27,7 +30,7 @@ class peoplePlusRead extends React.Component{
 
         if(e.target.value !== ""){
             API.get("/pesquisarClientes?nome="+e.target.value).then((response)=>{
-                this.setState({data:response.data.data,});
+                this.setState({data:response.data,});
             });
         }else{
             this.componentDidMount();
@@ -48,8 +51,8 @@ class peoplePlusRead extends React.Component{
         const divder = 
         <div className={"popop-read popop-read-"+this.props.theme}>
             <div className="icons-popop">
-                <div className="delete" onClick={()=>this.delete(id)}><i className="fas fa-trash-alt"></i></div>
-                <div className="alter"><i className="fas fa-user-edit"></i></div>
+                <div className="delete" onClick={()=>this.delete(dataEspecifica.id)}><i className="fas fa-trash-alt"></i></div>
+                <div className="alter" onClick={()=>this.alterLink(dataEspecifica.id)}><i className="fas fa-user-edit"></i></div>
                 <div className="close" onClick={this.close}><i className="fas fa-times"></i></div>
             </div>
 

@@ -3,18 +3,16 @@ import './index.scss';
 import API from "../services/base";
 
 export default class form extends React.Component{
+    
     state={
         forSubmit:{},
+        load:0,
         containerError:<span></span>,
     }
 
-    componentDidMount(){
-        this.beValue();
-    }
     closePopop = ()=>{
         this.setState({containerError:<span></span>,})
     }
-
     handleChange = (e)=>{
         /*
             If para changes especiais
@@ -58,6 +56,7 @@ export default class form extends React.Component{
 
 
     hipedBallHandler = (a)=>{
+
         if(this.state.forSubmit[a] === 1){
             this.setState({forSubmit:{...this.state.forSubmit,[a]:0}})
         }else{
@@ -65,9 +64,8 @@ export default class form extends React.Component{
         }
     }
 
-    beValue = async ()=>{
-        const data = await this.props.data;
-        data.map((item)=>this.setState({forSubmit:{...this.state.forSubmit,[item.name]:item.value,}}));
+    beValue = (d,p)=>{
+        this.setState({forSubmit:{...this.state.forSubmit,[d]:p}})
     }
 
     submitContent = async ()=>{
@@ -84,9 +82,10 @@ export default class form extends React.Component{
         API.post(url).then((response)=>{
             window.location.href = this.props.posUrl;
         }).catch((error)=>{
+            console.log(error)
             this.setState({error:error.response.data});
             this.setState({containerError:<div className="popop-error">
-                <div onClick={this.closePopop}><i class="fas fa-times"></i></div>
+                <div onClick={this.closePopop}><i className="fas fa-times"></i></div>
                 <h3>OPPS...</h3>
                 <p>Algum dado inserido está incorreto, por favor preencha novamente!</p>
             </div>,});
@@ -129,7 +128,7 @@ export default class form extends React.Component{
                                         })}></div>
                                         <b>{((this.state.forSubmit[item.name]===1 || this.state.forSubmit[item.name]===undefined)?item.option[0]:item.option[1])}</b>
                                     </div>
-                                    
+                                    {((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}
                                 </div>
                             );
                         }else if(item.type === "hidden"){
@@ -146,6 +145,7 @@ export default class form extends React.Component{
                                 </div>
                             );
                         }else{
+                            
                             return(
                                 <div key={item.name}>
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
@@ -159,6 +159,8 @@ export default class form extends React.Component{
                         }
                     })
                 }
+
+                
 
                 <div>
                     <button onClick={this.submitContent}>ENVIAR</button>

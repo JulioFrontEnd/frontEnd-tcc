@@ -55,7 +55,7 @@ class peoplePlusUpdate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU CELULAR",
                 max:"16",
-                value:values[0].RG
+                value:values[0].telefone
             },
             {
                 name:"dataDeNascimento",

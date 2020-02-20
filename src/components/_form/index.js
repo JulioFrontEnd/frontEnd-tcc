@@ -11,6 +11,7 @@ export default class form extends React.Component{
 
     componentDidUpdate(){
         if(this.state.preload === false){
+            
             this.beValue();
             this.setState({preload:true});
         }
@@ -83,7 +84,7 @@ export default class form extends React.Component{
         });
         
         url = await url.substring(0,(url.length - 1));
-
+        console.log(url)
         API.post(url).then((response)=>{
             window.location.href = this.props.posUrl;
         }).catch((error)=>{
@@ -91,7 +92,7 @@ export default class form extends React.Component{
             this.setState({containerError:<div className="popop-error">
                 <div onClick={this.closePopop}><i className="fas fa-times"></i></div>
                 <h3>OPPS...</h3>
-                <p>Algum dado inserido está incorreto, por favor preencha novamente!</p>
+                <b>Algum dado inserido está incorreto, por favor preencha novamente!</b>
             </div>,});
         });
     }

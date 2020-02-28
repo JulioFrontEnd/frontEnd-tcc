@@ -10,12 +10,18 @@ export default class form extends React.Component{
     }
 
     componentDidUpdate(){
-        if(this.state.preload === false){
-            
+        if(this.state.preload === false && this.props.update === "true"){
             this.beValue();
             this.setState({preload:true});
         }
     }
+    componentDidMount(){
+        if(this.state.preload === false && this.props.update === "false"){
+            this.beValue();
+            this.setState({preload:true});
+        }
+    }
+    
     closePopop = ()=>{
         this.setState({containerError:<span></span>,})
     }
@@ -79,12 +85,12 @@ export default class form extends React.Component{
         
         await data.map((item)=>{
             return(
-                url = url + item.name + "=" + this.state.forSubmit[item.name] + "&"
+                url = url + item.name + "=" + ((this.state.forSubmit[item.name]===undefined)?"":this.state.forSubmit[item.name]) + "&"
             );
         });
         
         url = await url.substring(0,(url.length - 1));
-        console.log(url)
+        console.log(url);
         API.post(url).then((response)=>{
             window.location.href = this.props.posUrl;
         }).catch((error)=>{
@@ -131,7 +137,7 @@ export default class form extends React.Component{
                                             height: hiped.height,
                                             borderRadius : (parseFloat(hiped.width) / 2) + 'px',
                                         })}></div>
-                                        <b>{((this.state.forSubmit[item.name]===1 || this.state.forSubmit[item.name]===undefined)?item.option[0]:item.option[1])}</b>
+                                        <b>{((this.state.forSubmit[item.name]===0 || this.state.forSubmit[item.name]===undefined)?item.option[1]:item.option[0])}</b>
                                     </div>
                                     
                                 </div>

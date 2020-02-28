@@ -8,10 +8,13 @@ import mainPage from './components/mainPage';
 import userPage from './components/user';
 import back from './components/back';
 import peoplePlus from './components/peoplePlus';
+import companionPlus from './components/companionPlus';
 import peoplePlusCreate from './components/peoplePlus/create.js';
+import companionCreate from './components/companionPlus/create.js';
 import peoplePlusRead from './components/peoplePlus/read.js';
+import companionPlusRead from './components/companionPlus/read.js';
 import peoplePlusUpdate from './components/peoplePlus/update.js';
-
+import companionPlusUpdate from './components/companionPlus/update.js';
 
 function App() {
   return (
@@ -42,11 +45,16 @@ function App() {
             <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
             <Route exact path="/menu" component={mainPage} />
             <Route exact path="/popop/user" component={userPage} />
-            {/* CRUD PESSOA */}
+            {/* CRUD CLIENTE */}
             <Route exact path="/menu/peoplePlus" component={peoplePlus} />
             <Route exact path="/popop/peoplePlus/add" component={peoplePlusCreate} />
             <Route exact path="/popop/peoplePlus/read" component={peoplePlusRead} />
             <Route exact path="/popop/peoplePlus/update/:id" component={peoplePlusUpdate} />
+            {/* CRUD ACOMPANHANTE */}
+            <Route exact path="/menu/companionPlus" component={companionPlus} />
+            <Route exact path="/popop/companionPlus/add" component={companionCreate} />
+            <Route exact path="/popop/companionPlus/read" component={companionPlusRead} />
+            <Route exact path="/popop/companionPlus/update/:id" component={companionPlusUpdate} />
             
           </Switch>
           {/*

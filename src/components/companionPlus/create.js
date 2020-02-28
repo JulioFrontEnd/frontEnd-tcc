@@ -1,17 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import API from "../services/base";
 import Form from '../_form';
 
-class peoplePlusUpdate extends React.Component{
-    state = {
-        data:[]
-    }
-    async componentDidMount(){
-        let {id} = this.props.match.params;
-        let values = await API.get('/editarCliente/'+id).then((Response)=>{return Response.data});
-
-        this.setState({data:[
+class companionPlusCreate extends React.Component{
+    render(){
+        // configuração de telas
+        const data = [
             {
                 name:"nome",
                 option:false,
@@ -19,7 +13,16 @@ class peoplePlusUpdate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU NOME",
                 max:"255",
-                value:values[0].nome
+                value:""
+            },
+            {
+                name:"CPF",
+                option:false,
+                format:"xxx.xxx.xxx-xx",
+                type:"text",
+                placeholder:"DIGITE SEU CPF",
+                max:"14",
+                value:""
             },
             {
                 name:"CEP",
@@ -28,16 +31,25 @@ class peoplePlusUpdate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU CEP",
                 max:"9",
-                value:values[0].CEP
+                value:""
+            },
+            {
+                name:"RG",
+                option:false,
+                format:"Apenas numeros",
+                type:"text",
+                placeholder:"DIGITE SEU RG",
+                max:"7",
+                value:""
             },
             {
                 name:"telefone",
                 option:false,
-                format:"(xx) xxxxx-xxxx",
+                format:"(xxx) xxxxx-xxxx",
                 type:"text",
                 placeholder:"DIGITE SEU CELULAR",
                 max:"16",
-                value:values[0].telefone
+                value:""
             },
             {
                 name:"dataDeNascimento",
@@ -46,7 +58,7 @@ class peoplePlusUpdate extends React.Component{
                 type:"date",
                 placeholder:"DATA DE NASCIMENTO",
                 max:"10",
-                value:values[0].dataDeNascimento
+                value:""
             },
             {
                 name:"endereco",
@@ -55,7 +67,7 @@ class peoplePlusUpdate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SEU ENDEREÇO",
                 max:"255",
-                value:values[0].endereco
+                value:""
             },
             {
                 name:"nacionalidade",
@@ -64,7 +76,7 @@ class peoplePlusUpdate extends React.Component{
                 type:"text",
                 placeholder:"DIGITE SUA NACIONALIDADE",
                 max:"255",
-                value:values[0].nacionalidade
+                value:""
             },
             {
                 name:"sexo",
@@ -73,7 +85,16 @@ class peoplePlusUpdate extends React.Component{
                 type:"binary",
                 placeholder:"DIGITE SEU SEXO",
                 max:"255",
-                value:((values[0].sexo === true)?1:0)
+                value:1
+            },
+            {
+                name:"responsavel",
+                option:["Sim","Não"],
+                format:false,
+                type:"binary",
+                placeholder:"DIGITE SEU RESPONSAVEL?",
+                max:"255",
+                value:1
             },
             {
                 name:"ativo",
@@ -81,24 +102,18 @@ class peoplePlusUpdate extends React.Component{
                 format:false,
                 type:"hidden",
                 placeholder:"",
-                value:((values[0].ativo === true)?1:0),
+                value:1,
                 max:"255",
             },
-        ]})
-    }
-    render(){
-        const {id} = this.props.match.params;
-        // configuração de telas
-        const data = this.state.data;
-        
+        ];
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="Atualize o cliente" url={"/atualizarCliente/"+id} posUrl="/menu/peoplePlus" update="true"/>
+                <Form theme={theme} data={data} title="ADICIONE O ACOMPANHANTE" url="/cadastrarAcompanhante" posUrl="/menu/companionPlus" update="false" />
             </div>
         );
     }
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(peoplePlusUpdate);
+export default connect(state=>({theme:state.actualTheme}))(companionPlusCreate);

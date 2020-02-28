@@ -2,31 +2,32 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Intermediate from '../_intermediate';
 
-class MainPage extends React.Component{
+class companionPlus extends React.Component{
     render(){
         // configuração de telas
         const data = [
             {
                 id:1,
-                title:"Clientes",
+                title:"ADICIONAR",
                 iconId:"fas fa-user-plus",
-                path:"/menu/peoplePlus",
+                path:"/popop/companionPlus/add",
             },
             {
                 id:2,
-                title:"Acompanhante",
-                iconId:"fas fa-user-friends",
-                path:"/menu/companionPlus",
+                title:"LISTAR",
+                iconId:"fas fa-user-plus",
+                path:"/popop/companionPlus/read",
             },
+            
         ];
         const theme = this.props.theme;
         return(
             <div>
-                <Intermediate theme={theme} data={data} title="ACESSO RÁPIDO" />
+                <Intermediate theme={theme} data={data} title="GERENCIE OS ACOMPANHANTES" />
             </div>
         );
     }
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(MainPage);
+export default connect(state=>({theme:state.actualTheme}))(companionPlus);

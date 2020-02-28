@@ -45,7 +45,7 @@ class peoplePlusCreate extends React.Component{
             {
                 name:"telefone",
                 option:false,
-                format:"(xx) xxxxx-xxxx",
+                format:"(xxx) xxxxx-xxxx",
                 type:"text",
                 placeholder:"DIGITE SEU CELULAR",
                 max:"16",
@@ -100,7 +100,7 @@ class peoplePlusCreate extends React.Component{
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/menu/peoplePlus"/>
+                <Form theme={theme} data={data} title="ADICIONE O CLIENTE" url="/cadastrarCliente" posUrl="/menu/peoplePlus" update="false"/>
             </div>
         );
     }

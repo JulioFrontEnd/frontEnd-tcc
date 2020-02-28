@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import List from '../_list';
 import API from '../services/base';
 
-class peoplePlusRead extends React.Component{
+class companionPlusRead extends React.Component{
     state={
         popop:<div></div>,
         data:[],
@@ -14,12 +14,12 @@ class peoplePlusRead extends React.Component{
         this.setState({popop:<div></div>});
     }
     alterLink = (id)=>{
-        window.location.href = "/popop/peoplePlus/update/"+id;
+        window.location.href = "/popop/companionPlus/update/"+id;
     }
 
     delete = (id)=>{
         console.log(id);
-        API.delete('/deletarCliente/'+id).then((response)=>{
+        API.delete('/deletarAcompanhante/'+id).then((response)=>{
             this.close();
             this.componentDidMount();
         });
@@ -29,7 +29,7 @@ class peoplePlusRead extends React.Component{
         this.setState({searchDefaultValue:e.target.value});
 
         if(e.target.value !== ""){
-            API.get("/pesquisarClientes?nome="+e.target.value).then((response)=>{
+            API.get("/pesquisarAcompanhante?nome="+e.target.value).then((response)=>{
                 this.setState({data:response.data,});
             });
         }else{
@@ -80,7 +80,7 @@ class peoplePlusRead extends React.Component{
     
     
     componentDidMount(){
-        API.get('/listarCliente').then((response)=>{
+        API.get('/listarAcompanhante').then((response)=>{
             this.setState({data:response.data,});
         });
     }
@@ -89,7 +89,7 @@ class peoplePlusRead extends React.Component{
         const theme = this.props.theme;
         return(
             
-            <List theme={theme} title="LISTA DE CLIENTES" popop={this.state.popop}>
+            <List theme={theme} title="LISTA DE ACOMPANHANTES" popop={this.state.popop}>
                 <div className="list-input">
                     <input placeholder="DIGITE PARA PESQUISAR" onChange={this.search} value={this.state.searchDefaultValue} />
                     <div><i className="fas fa-search"></i></div>
@@ -108,4 +108,4 @@ class peoplePlusRead extends React.Component{
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(peoplePlusRead);
+export default connect(state=>({theme:state.actualTheme}))(companionPlusRead);

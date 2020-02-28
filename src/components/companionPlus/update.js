@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import API from "../services/base";
 import Form from '../_form';
 
-class peoplePlusUpdate extends React.Component{
+class companionPlusUpdate extends React.Component{
     state = {
         data:[]
     }
     async componentDidMount(){
         let {id} = this.props.match.params;
-        let values = await API.get('/editarCliente/'+id).then((Response)=>{return Response.data});
+        let values = await API.get('/editarAcompanhante/'+id).then((Response)=>{return Response.data});
 
         this.setState({data:[
             {
@@ -84,6 +84,15 @@ class peoplePlusUpdate extends React.Component{
                 value:((values[0].ativo === true)?1:0),
                 max:"255",
             },
+            {
+                name:"responsavel",
+                option:["Sim","Não"],
+                format:false,
+                type:"binary",
+                placeholder:"DIGITE SEU RESPONSAVEL?",
+                max:"255",
+                value:((values[0].value === true)?1:0),
+            },
         ]})
     }
     render(){
@@ -101,4 +110,4 @@ class peoplePlusUpdate extends React.Component{
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(peoplePlusUpdate);
+export default connect(state=>({theme:state.actualTheme}))(companionPlusUpdate);

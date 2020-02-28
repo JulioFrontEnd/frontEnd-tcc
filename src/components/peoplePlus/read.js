@@ -66,7 +66,7 @@ class peoplePlusRead extends React.Component{
                 <p><span>ENDEREÇO: </span><br />{dataEspecifica.endereco}</p>
                 <p><span>CEP: </span><br />{dataEspecifica.CEP}</p>
                 <p><span>TELEFONE: </span><br />{dataEspecifica.telefone}</p>
-                <p><span>NACIOALIDADE: </span><br />{dataEspecifica.nacionalidade}</p>
+                <p><span>NACIONALIDADE: </span><br />{dataEspecifica.nacionalidade}</p>
                 <p><span>SEXO: </span><br />{((dataEspecifica.sexo)?"Masculino":"Feminino")}</p>
                 <p><span>SITUAÇÃO: </span><br />{((dataEspecifica.ativo)?"ATIVO NO SISTEMA":"DESATIVADO NO SISTEMA")}</p>
                 <p><span>DATA DE CADASTRO: </span><br />{dataEspecifica.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>

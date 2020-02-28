@@ -103,7 +103,7 @@ class companionPlusUpdate extends React.Component{
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="Atualize o cliente" url={"/atualizarCliente/"+id} posUrl="/menu/peoplePlus" update="true"/>
+                <Form theme={theme} data={data} title="Atualize o cliente" url={"/atualizarAcompanhante/"+id} posUrl="/menu/peoplePlus" update="true"/>
             </div>
         );
     }

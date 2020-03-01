@@ -26,10 +26,11 @@ export default class form extends React.Component{
         this.setState({containerError:<span></span>,})
     }
 
-    handleChange = (e)=>{
+    handleChange = (e,aditional = "")=>{
         /*
             If para changes especiais
         */
+        
 
         if(e.target.name === "CPF"){
             let cpf = e.target.value
@@ -39,6 +40,20 @@ export default class form extends React.Component{
               .replace(/(\d{3})(\d{1,2})/, '$1-$2')
               .replace(/(-\d{2})\d+?$/, '$1');
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:cpf}})
+
+        }else if(e.target.name.split("_").reduce(function(p, c){ return p }) === "search"){
+            this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:e.target.value}})
+            API.get(aditional.url+aditional.parameter+e.target.value).then((response)=>{
+                this.setState({container:
+                    response.data.map(item=>{
+                        return(
+                            <div key={item.id} onClick={()=>this.popopShow(item.id)} className={"content "+((item.ativo === true)?"":"unable")}>
+                                <p className="principal"><span>{aditional.option[0]}:</span><br></br>{item[aditional.option[0]]}</p>
+                                <p className="secondary"><span>{aditional.option[1]}:</span><br></br>{item[aditional.option[1]]}</p>
+                            </div>
+                        );
+                    })});
+            });
 
         }else if(e.target.name.substring(0,4) === "data"){
             let data = e.target.value
@@ -152,7 +167,30 @@ export default class form extends React.Component{
                                     name={item.name} placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
                                     className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
-                                    {((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}
+                                     {/* ====== FORMAT ======== */}
+                                     <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}</div>
+                                </div>
+                            );
+                        }else if(item.type === "select"){
+                            return(
+                                <div key={item.name}>
+                                    {/* ====== TITULO ======== */}
+                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    
+                                    {/* ====== INPUT ======== */}
+                                    <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
+                                    name={("search_"+item.name)} placeholder={item.placeholder} onChange={(e)=>this.handleChange(e,item)} 
+
+                                    value={((this.state.forSubmit["search_"+item.name] !== undefined)?this.state.forSubmit["search_"+item.name]:"")} 
+                                    className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
+
+                                    {/* ====== VALORES ======== */}
+                                    <div className="input_search_value">
+                                        {this.state.container}
+                                    </div>
+
+                                    {/* ====== FORMAT ======== */}
+                                    <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}</div>
                                 </div>
                             );
                         }else{
@@ -163,7 +201,8 @@ export default class form extends React.Component{
                                     placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} 
                                     className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
-                                    {((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}
+                                     {/* ====== FORMAT ======== */}
+                                     <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}</div>
                                 </div>
                             ); 
                         }

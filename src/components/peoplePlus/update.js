@@ -77,10 +77,10 @@ class peoplePlusUpdate extends React.Component{
             },
             {
                 name:"ativo",
-                option:"",
+                option:["Ativo","Desativado"],
                 format:false,
-                type:"hidden",
-                placeholder:"",
+                type:"binary",
+                placeholder:"ATIVO NO SISTEMA",
                 value:((values[0].ativo === true)?1:0),
                 max:"255",
             },

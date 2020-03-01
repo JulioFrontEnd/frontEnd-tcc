@@ -46,8 +46,6 @@ class companionPlusRead extends React.Component{
         const dataEspecifica = await datas.find((d=>{
             return d.id === id;
         }));
-
-
         const divder = 
         <div className={"popop-read popop-read-"+this.props.theme}>
             <div className="icons-popop">
@@ -79,10 +77,20 @@ class companionPlusRead extends React.Component{
     }
     
     
-    componentDidMount(){
-        API.get('/listarAcompanhante').then((response)=>{
+    async componentDidMount(){
+        await API.get('/listarAcompanhante').then((response)=>{
             this.setState({data:response.data,});
         });
+        const {id} = this.props.match.params;
+        if(id !== undefined){
+            this.state.data.map(item=>{
+                if(item.id === parseInt(id)){
+                    return this.popopShow(parseInt(id));
+                }else{
+                    return false
+                }
+            })
+        }
     }
     render(){
         // configuração de telas

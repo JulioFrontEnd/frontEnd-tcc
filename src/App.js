@@ -53,7 +53,7 @@ function App() {
             {/* CRUD ACOMPANHANTE */}
             <Route exact path="/menu/companionPlus" component={companionPlus} />
             <Route exact path="/popop/companionPlus/add" component={companionCreate} />
-            <Route exact path="/popop/companionPlus/read" component={companionPlusRead} />
+            <Route exact path="/popop/companionPlus/read/:id?" component={companionPlusRead} />
             <Route exact path="/popop/companionPlus/update/:id" component={companionPlusUpdate} />
             
           </Switch>

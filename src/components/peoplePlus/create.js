@@ -88,6 +88,17 @@ class peoplePlusCreate extends React.Component{
                 value:1
             },
             {
+                name:"Acompanhante_idAcompanhante",
+                option:["nome","CPF"],
+                parameter:"?nome=",
+                format:"NÃO OBRIGATÓRIO",
+                type:"select",
+                url:"/pesquisarAcompanhante",
+                placeholder:"CADASTRE O ACOMPANHANTE",
+                max:"255",
+                value:""
+            },
+            {
                 name:"ativo",
                 option:"",
                 format:false,

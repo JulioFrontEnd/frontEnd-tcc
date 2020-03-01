@@ -17,6 +17,22 @@
     padding-left: 4%;
     padding-right: 4%;
     
+    .input_search_value{
+        .content{
+            cursor: pointer;
+            width: 100%;
+            padding: 4%;
+            transition: all .7s;
+            box-shadow: 0px 10px 28px -4px rgba(0,0,0,0.35);
+            .principal{
+                font-size: 1.2em;
+            }
+            .secondary{
+                opacity: .6;
+            }
+        }
+    }
+
     .popop-error{
         transform: translate(-50%,0);
         animation: flowTop .7s linear .0002s;
@@ -84,10 +100,12 @@
             font-size: .9em;
             margin-bottom: -4%;
         }
-        p{
-            text-align: end;
-            font-size: .9em;
-            margin-bottom: -4%;
+        .error-logger{
+            p{
+                text-align: end;
+                font-size: .9em;
+                margin-bottom: -4%;
+            }
         }
         button{
             transition: all .7s;
@@ -106,6 +124,21 @@
 
 .form-create-dark{
     background-color: $dark-blackColor;
+    .input_search_value{
+        .content{
+            color: $dark-whiteColor;
+            background-color: $dark-extraBlackColor;
+            border: .01px solid transparentize($color: $dark-blueColor, $amount: .4);
+            &:hover{
+                background-color: transparentize($color: $dark-blueColor, $amount: .4);
+            }
+            p{
+                span{
+                    color:$dark-blueColor;
+                }
+            }
+        }
+    }
     .popop-error{
         background-color: $dark-whiteColor;
         border-left: 2vw solid $dark-contrastColor;
@@ -146,9 +179,12 @@
         b{
             color: $dark-contrastColor;
         }
-        p{
-            color: $dark-contrastColor;
+        .error-logger{
+            p{
+                color: $dark-contrastColor;
+            }
         }
+        
         span{
             text-transform: uppercase;
             color: transparentize($color: $dark-whiteColor, $amount: .4);
@@ -157,6 +193,19 @@
 }
 .form-create-light{
     background-color: $light-whiteColor;
+    .input_search_value{
+        .content{
+            background-color: $light-whiteColor;
+            &:hover{
+                background-color: transparentize($color: $light-blueColor, $amount: .4);
+            }
+            p{
+                span{
+                    color:$light-blueColor;
+                }
+            }
+        }
+    }
     .popop-error{
         background-color: $light-whiteColor;
         border-left: 2vw solid $light-contrastColor;
@@ -197,8 +246,10 @@
         b{
             color: $light-contrastColor;
         }
-        p{
-            color: $light-contrastColor;
+        .error-logger{
+            p{
+                color: $light-contrastColor;
+            }
         }
         span{
             text-transform: uppercase;

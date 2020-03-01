@@ -91,7 +91,7 @@ class peoplePlusCreate extends React.Component{
                 name:"Acompanhante_idAcompanhante",
                 option:["nome","CPF"],
                 parameter:"?nome=",
-                format:"NÃO OBRIGATÓRIO",
+                format:<div>Acompanhante não cadastrado? clique <a href={"/popop/companionPlus/add"} >AQUI</a></div>,
                 type:"select",
                 url:"/pesquisarAcompanhante",
                 placeholder:"CADASTRE O ACOMPANHANTE",

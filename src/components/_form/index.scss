@@ -18,6 +18,9 @@
     padding-right: 4%;
     
     .input_search_value{
+        .unable{
+            opacity: .3;
+        }
         .content{
             cursor: pointer;
             width: 100%;
@@ -138,6 +141,10 @@
                 }
             }
         }
+        .selected{
+            border: .01px solid $dark-successColor;
+            background-color: transparentize($color: $dark-blueColor, $amount: .4);
+        }
     }
     .popop-error{
         background-color: $dark-whiteColor;
@@ -180,6 +187,12 @@
             color: $dark-contrastColor;
         }
         .error-logger{
+            div{
+                a{
+                    color: $dark-blueColor;
+                    font-weight: bold;
+                }
+            }
             p{
                 color: $dark-contrastColor;
             }
@@ -204,6 +217,10 @@
                     color:$light-blueColor;
                 }
             }
+        }
+        .selected{
+            border: .01px solid $light-successColor;
+            background-color: transparentize($color: $light-blueColor, $amount: .4);
         }
     }
     .popop-error{
@@ -247,6 +264,12 @@
             color: $light-contrastColor;
         }
         .error-logger{
+            div{
+                a{
+                    color: $light-blueColor;
+                    font-weight: bold;
+                }
+            }
             p{
                 color: $light-contrastColor;
             }

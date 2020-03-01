@@ -61,6 +61,10 @@ class peoplePlusRead extends React.Component{
             <div className="special-content">
                 <p><span>NOME: </span><br />{dataEspecifica.nome}</p>
                 <p><span>CPF: </span><br />{dataEspecifica.CPF}</p>
+                {
+                ((dataEspecifica.Acompanhante_idAcompanhante !== null && dataEspecifica.Acompanhante_idAcompanhante !== undefined)?
+                    <a className="linked" href={"/popop/companionPlus/read/"+dataEspecifica.Acompanhante_idAcompanhante}><p><span>CLIQUE PARA VER O ACOMPANHANTE</span></p></a>:"")
+                }
                 <p><span>DATA DE NASCIMENTO: </span><br />{dataEspecifica.dataDeNascimento.split("-").reduce(function(p, c){ return c + "-" +p })}</p>
                 <p><span>RG: </span><br />{dataEspecifica.RG}</p>
                 <p><span>ENDEREÇO: </span><br />{dataEspecifica.endereco}</p>

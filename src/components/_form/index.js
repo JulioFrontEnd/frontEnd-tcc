@@ -31,7 +31,6 @@ export default class form extends React.Component{
             If para changes especiais
         */
         
-
         if(e.target.name === "CPF"){
             let cpf = e.target.value
               .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
@@ -47,7 +46,16 @@ export default class form extends React.Component{
                 this.setState({container:
                     response.data.map(item=>{
                         return(
-                            <div key={item.id} onClick={()=>this.popopShow(item.id)} className={"content "+((item.ativo === true)?"":"unable")}>
+                            <div key={item.id} id={"Content_id_"+item.id} onClick={async ()=>{
+                                    await this.setState({forSubmit:{...this.state.forSubmit, [aditional.name]:item.id}});
+                                    let x = await document.querySelectorAll(".content");
+                                    let i = await 0;
+                                    for (i = 0; i < x.length; i++) {
+                                        await x[i].classList.remove("selected");
+                                    }
+
+                                    document.getElementById("Content_id_"+item.id).classList.add("selected");
+                                }} className={"content "+((item.ativo === true)?"":"unable")}>
                                 <p className="principal"><span>{aditional.option[0]}:</span><br></br>{item[aditional.option[0]]}</p>
                                 <p className="secondary"><span>{aditional.option[1]}:</span><br></br>{item[aditional.option[1]]}</p>
                             </div>

@@ -34,6 +34,9 @@
                 opacity: .6;
             }
         }
+        .selected{
+            transition: all .2s;
+        }
     }
 
     .popop-error{
@@ -133,7 +136,7 @@
             background-color: $dark-extraBlackColor;
             border: .01px solid transparentize($color: $dark-blueColor, $amount: .4);
             &:hover{
-                background-color: transparentize($color: $dark-blueColor, $amount: .4);
+                background-color: transparentize($color: $dark-whiteColor, $amount: .8);
             }
             p{
                 span{
@@ -142,8 +145,8 @@
             }
         }
         .selected{
-            border: .01px solid $dark-successColor;
-            background-color: transparentize($color: $dark-blueColor, $amount: .4);
+            border: 2px solid $dark-successColor;
+            background-color: transparentize($color: $dark-whiteColor, $amount: .8);
         }
     }
     .popop-error{
@@ -210,7 +213,7 @@
         .content{
             background-color: $light-whiteColor;
             &:hover{
-                background-color: transparentize($color: $light-blueColor, $amount: .4);
+                background-color: transparentize($color: $light-blackColor, $amount: .7);
             }
             p{
                 span{
@@ -219,8 +222,8 @@
             }
         }
         .selected{
-            border: .01px solid $light-successColor;
-            background-color: transparentize($color: $light-blueColor, $amount: .4);
+            border: 2px solid $light-successColor;
+            background-color: transparentize($color: $light-blackColor, $amount: .9);
         }
     }
     .popop-error{

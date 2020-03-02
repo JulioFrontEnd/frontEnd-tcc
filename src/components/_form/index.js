@@ -170,7 +170,9 @@ export default class form extends React.Component{
                         }else if(item.name === "dataDeNascimento"){
                             return(
                                 <div key={item.name}>
+                                    {/* ====== TITULO ========
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    */}
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
                                     name={item.name} placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
@@ -182,8 +184,10 @@ export default class form extends React.Component{
                         }else if(item.type === "select"){
                             return(
                                 <div key={item.name}>
-                                    {/* ====== TITULO ======== */}
+                                    {/* ====== TITULO ========
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    */}
+                                    
                                     
                                     {/* ====== INPUT ======== */}
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
@@ -204,7 +208,9 @@ export default class form extends React.Component{
                         }else{
                             return(
                                 <div key={item.name}>
+                                    {/* ====== TITULO ========
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    */}
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} 
                                     placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} 

@@ -18,6 +18,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-user-friends",
                 path:"/menu/companionPlus",
             },
+            {
+                id:3,
+                title:"Funcionários",
+                iconId:"fas fa-user-tie",
+                path:"/menu/collaboratorPlus",
+            },
         ];
         const theme = this.props.theme;
         return(

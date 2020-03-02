@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Intermediate from '../_intermediate';
 
-class companionPlus extends React.Component{
+class collaboratorPlus extends React.Component{
     render(){
         // configuração de telas
         const data = [
@@ -10,24 +10,24 @@ class companionPlus extends React.Component{
                 id:1,
                 title:"ADICIONAR",
                 iconId:"fas fa-user-plus",
-                path:"/popop/companionPlus/add",
+                path:"/popop/collaboratorPlus/add",
             },
             {
                 id:2,
                 title:"LISTAR",
                 iconId:"fas fa-list-ul",
-                path:"/popop/companionPlus/read",
+                path:"/popop/collaboratorPlus/read",
             },
             
         ];
         const theme = this.props.theme;
         return(
             <div>
-                <Intermediate theme={theme} data={data} title="GERENCIE OS ACOMPANHANTES" />
+                <Intermediate theme={theme} data={data} title="GERENCIE OS FUNCIONÁRIOS" />
             </div>
         );
     }
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(companionPlus);
+export default connect(state=>({theme:state.actualTheme}))(collaboratorPlus);

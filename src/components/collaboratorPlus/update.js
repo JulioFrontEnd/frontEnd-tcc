@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import API from "../services/base";
 import Form from '../_form';
 
-class peoplePlusUpdate extends React.Component{
+class collaboratorPlusUpdate extends React.Component{
     state = {
         data:[]
     }
     async componentDidMount(){
         let {id} = this.props.match.params;
-        let values = await API.get('/editarCliente/'+id).then((Response)=>{return Response.data});
+        let values = await API.get('/editarColaboradores/'+id).then((Response)=>{return Response.data});
 
         this.setState({data:[
             {
@@ -21,6 +21,16 @@ class peoplePlusUpdate extends React.Component{
                 max:"255",
                 value:values[0].nome
             },
+            {
+                name:"cargo",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SEU CARGO",
+                max:"255",
+                value:values[0].cargo
+            },
+            
             {
                 name:"CEP",
                 option:false,
@@ -49,6 +59,15 @@ class peoplePlusUpdate extends React.Component{
                 value:values[0].dataDeNascimento
             },
             {
+                name:"dataDeAdmissao",
+                option:false,
+                format:"DD-MM-AAAA",
+                type:"date",
+                placeholder:"DATA DE ADMISSÂO",
+                max:"10",
+                value:values[0].dataDeAdmissao
+            },
+            {
                 name:"endereco",
                 option:false,
                 format:false,
@@ -67,6 +86,60 @@ class peoplePlusUpdate extends React.Component{
                 value:values[0].nacionalidade
             },
             {
+                name:"conta",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SUA CONTA",
+                max:"255",
+                value:values[0].conta
+            },
+            {
+                name:"digito",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"Dígito da conta",
+                max:"1",
+                value:values[0].digito
+            },
+            {
+                name:"tipoDaConta",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE O TIPO DA CONTA",
+                max:"255",
+                value:values[0].tipoDaConta
+            },
+            {
+                name:"agencia",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SUA AGENCIA",
+                max:"4",
+                value:values[0].agencia
+            },
+            {
+                name:"banco",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SEU BANCO",
+                max:"255",
+                value:values[0].banco
+            },
+            {
+                name:"salario",
+                option:false,
+                format:false,
+                type:"text",
+                placeholder:"DIGITE SEU SALÁRIO",
+                max:"255",
+                value:((values[0].salario/100).toFixed(2)).toString().replace(".", ",")
+            },
+            {
                 name:"sexo",
                 option:["Masculino","Feminino"],
                 format:false,
@@ -75,23 +148,13 @@ class peoplePlusUpdate extends React.Component{
                 max:"255",
                 value:((values[0].sexo === true)?1:0)
             },
-            {
-                name:"Acompanhante_idAcompanhante",
-                option:["nome","CPF"],
-                parameter:"?nome=",
-                format:<p>Acompanhante não cadastrado? clique <a href={"/popop/companionPlus/add"} >AQUI</a></p>,
-                type:"select",
-                url:"/pesquisarAcompanhante",
-                placeholder:"DIGITE SEU ACOMPANHANTE/RESPONSÁVEL",
-                max:"255",
-                value:values[0].Acompanhante_idAcompanhante,
-            },
+
             {
                 name:"ativo",
-                option:["Ativo","Desativado"],
+                option:["Sim","Não"],
                 format:false,
                 type:"binary",
-                placeholder:"ATIVO NO SISTEMA",
+                placeholder:"ATIVO",
                 value:((values[0].ativo === true)?1:0),
                 max:"255",
             },
@@ -105,11 +168,11 @@ class peoplePlusUpdate extends React.Component{
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="Atualize o cliente" url={"/atualizarCliente/"+id} posUrl="/menu/peoplePlus" update="true"/>
+                <Form theme={theme} data={data} title="Atualize o Funcionário" url={"/atualizarColaboradores/"+id} posUrl="/menu/collaboratorPlus" update="true"/>
             </div>
         );
     }
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(peoplePlusUpdate);
+export default connect(state=>({theme:state.actualTheme}))(collaboratorPlusUpdate);

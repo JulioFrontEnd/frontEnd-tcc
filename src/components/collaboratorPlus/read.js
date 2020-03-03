@@ -64,9 +64,10 @@ class collaboratorPlusRead extends React.Component{
                 <p><span>NOME: </span><br />{dataEspecifica.nome}</p>
                 <p><span>PIS: </span><br />{dataEspecifica.PIS}</p>
                 <p><span>CPF: </span><br />{dataEspecifica.CPF}</p>
+                <p><span>DATA DE ADMISSÃO: </span><br />{dataEspecifica.dataDeAdmissao.split("-").reduce(function(p, c){ return c + "-" +p })}</p>
                 <p><span>CONTA: </span><br />{dataEspecifica.conta}</p>
                 <p><span>TIPO DE CONTA: </span><br />{dataEspecifica.tipoDaConta}</p>
-                <p><span>SALARIO: </span><br />{(dataEspecifica.salario/100).toFixed(2)}</p>
+                <p><span>SALARIO: </span><br />{((dataEspecifica.salario/100).toFixed(2)).toString().replace(".", ",")}</p>
                 <p><span>DATA DE NASCIMENTO: </span><br />{dataEspecifica.dataDeNascimento.split("-").reduce(function(p, c){ return c + "-" +p })}</p>
                 <p><span>RG: </span><br />{dataEspecifica.RG}</p>
                 <p><span>ENDEREÇO: </span><br />{dataEspecifica.endereco}</p>

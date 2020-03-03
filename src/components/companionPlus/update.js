@@ -77,10 +77,10 @@ class companionPlusUpdate extends React.Component{
             },
             {
                 name:"ativo",
-                option:"",
+                option:["Sim","Não"],
                 format:false,
-                type:"hidden",
-                placeholder:"",
+                type:"binary",
+                placeholder:"ATIVO",
                 value:((values[0].ativo === true)?1:0),
                 max:"255",
             },

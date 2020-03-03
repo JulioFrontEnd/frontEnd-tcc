@@ -11,12 +11,14 @@ import peoplePlus from './components/peoplePlus';
 import companionPlus from './components/companionPlus';
 import collaboratorPlus from './components/collaboratorPlus';
 import peoplePlusCreate from './components/peoplePlus/create.js';
-import companionCreate from './components/companionPlus/create.js';
+import companionPlusCreate from './components/companionPlus/create.js';
+import collaboratorPlusCreate from './components/collaboratorPlus/create.js';
 import peoplePlusRead from './components/peoplePlus/read.js';
 import companionPlusRead from './components/companionPlus/read.js';
 import collaboratorPlusRead from './components/collaboratorPlus/read.js';
 import peoplePlusUpdate from './components/peoplePlus/update.js';
 import companionPlusUpdate from './components/companionPlus/update.js';
+import collaboratorPlusUpdate from './components/collaboratorPlus/update.js';
 
 function App() {
   return (
@@ -54,12 +56,14 @@ function App() {
             <Route exact path="/popop/peoplePlus/update/:id" component={peoplePlusUpdate} />
             {/* CRUD ACOMPANHANTE */}
             <Route exact path="/menu/companionPlus" component={companionPlus} />
-            <Route exact path="/popop/companionPlus/add" component={companionCreate} />
+            <Route exact path="/popop/companionPlus/add" component={companionPlusCreate} />
             <Route exact path="/popop/companionPlus/read/:id?" component={companionPlusRead} />
             <Route exact path="/popop/companionPlus/update/:id" component={companionPlusUpdate} />
             {/* CRUD COLLABORATOR */}
             <Route exact path="/menu/collaboratorPlus" component={collaboratorPlus} />
+            <Route exact path="/popop/collaboratorPlus/add" component={collaboratorPlusCreate} />
             <Route exact path="/popop/collaboratorPlus/read/:id?" component={collaboratorPlusRead} />
+            <Route exact path="/popop/collaboratorPlus/update/:id" component={collaboratorPlusUpdate} />
             
 
           </Switch>

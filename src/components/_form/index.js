@@ -75,6 +75,20 @@ export default class form extends React.Component{
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             .replace(/(\d{5})(\d)/, '$1-$2'); 
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
+        }else if(e.target.name === "RG"){
+            let CEP = e.target.value
+            .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
+            this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
+        }else if(e.target.name === "salario"){
+            let salario = e.target.value.replace(/,\D/g, '');
+            this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:salario}})
+        }else if(e.target.name === "PIS"){
+            let PIS = e.target.value
+            .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
+            .replace(/(\d{3})(\d)/, '$1.$2') // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
+            .replace(/^(\d{3})\.(\d{5})(\d)/, "$1.$2.$3")
+            .replace(/(\d{3})\.(\d{5})\.(\d{2})(\d)/, "$1.$2.$3-$4");
+            this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:PIS}})
         }else if(e.target.name === "telefone"){
             let telefone = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
@@ -107,9 +121,15 @@ export default class form extends React.Component{
         let url = await this.props.url + "?";
         
         await data.map((item)=>{
-            return(
-                ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name] + "&")     
-            );
+            if(item.name === "salario"){
+                return(
+                    ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name].replace(/,/, '') + "&")     
+                );
+            }else{
+                return(
+                    ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name] + "&")     
+                );
+            }
         });
         
         url = await url.substring(0,(url.length - 1));
@@ -167,7 +187,7 @@ export default class form extends React.Component{
                             );
                         }else if(item.type === "hidden"){
                             return <span key={item.name}></span>
-                        }else if(item.name === "dataDeNascimento"){
+                        }else if(item.type === "date"){
                             return(
                                 <div key={item.name}>
                                     {/* ====== TITULO ========

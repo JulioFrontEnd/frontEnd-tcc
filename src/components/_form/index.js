@@ -108,7 +108,7 @@ export default class form extends React.Component{
         
         await data.map((item)=>{
             return(
-                url = url + item.name + "=" + ((this.state.forSubmit[item.name]===undefined)?"":this.state.forSubmit[item.name]) + "&"
+                ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name] + "&")     
             );
         });
         
@@ -202,7 +202,7 @@ export default class form extends React.Component{
                                     </div>
 
                                     {/* ====== FORMAT ======== */}
-                                    <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}</div>
+                                    <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":item.format):((this.state.error[item.name] === undefined)?((!(item.format))?"":item.format):<p>{this.state.error[item.name]}</p>))}</div>
                                 </div>
                             );
                         }else{

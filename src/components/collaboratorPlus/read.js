@@ -106,7 +106,7 @@ class collaboratorPlusRead extends React.Component{
         const theme = this.props.theme;
         return(
             
-            <List theme={theme} title="LISTA DE ACOMPANHANTES" popop={this.state.popop}>
+            <List theme={theme} title="LISTA DE FUNCIONÁRIOS" popop={this.state.popop}>
                 <div className="list-input">
                     <input placeholder="DIGITE PARA PESQUISAR" onChange={this.search} value={this.state.searchDefaultValue} />
                     <div><i className="fas fa-search"></i></div>

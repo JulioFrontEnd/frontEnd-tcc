@@ -153,7 +153,7 @@ class collaboratorPlusCreate extends React.Component{
             {
                 name:"salario",
                 option:false,
-                format:false,
+                format:"valor completo, exemplo: 1500,00",
                 type:"text",
                 placeholder:"DIGITE SEU SALÁRIO",
                 max:"255",

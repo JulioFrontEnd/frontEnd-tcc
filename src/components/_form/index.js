@@ -190,9 +190,7 @@ export default class form extends React.Component{
                         }else if(item.type === "date"){
                             return(
                                 <div key={item.name}>
-                                    {/* ====== TITULO ========
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    */}
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
                                     name={item.name} placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
@@ -204,9 +202,7 @@ export default class form extends React.Component{
                         }else if(item.type === "select"){
                             return(
                                 <div key={item.name}>
-                                    {/* ====== TITULO ========
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    */}
                                     
                                     
                                     {/* ====== INPUT ======== */}
@@ -222,15 +218,13 @@ export default class form extends React.Component{
                                     </div>
 
                                     {/* ====== FORMAT ======== */}
-                                    <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":item.format):((this.state.error[item.name] === undefined)?((!(item.format))?"":item.format):<p>{this.state.error[item.name]}</p>))}</div>
+                                    <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}</div>
                                 </div>
                             );
                         }else{
                             return(
                                 <div key={item.name}>
-                                    {/* ====== TITULO ========
                                     <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    */}
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} 
                                     placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} 

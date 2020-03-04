@@ -24,6 +24,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-user-tie",
                 path:"/menu/collaboratorPlus",
             },
+            {
+                id:4,
+                title:"Dentistas",
+                iconId:"fas fa-user-md",
+                path:"/menu/dentistPlus",
+            },
         ];
         const theme = this.props.theme;
         return(

@@ -9,16 +9,20 @@ import userPage from './components/user';
 import back from './components/back';
 import peoplePlus from './components/peoplePlus';
 import companionPlus from './components/companionPlus';
+import dentistPlus from './components/dentistPlus';
 import collaboratorPlus from './components/collaboratorPlus';
 import peoplePlusCreate from './components/peoplePlus/create.js';
 import companionPlusCreate from './components/companionPlus/create.js';
 import collaboratorPlusCreate from './components/collaboratorPlus/create.js';
+import dentistPlusCreate from './components/dentistPlus/create.js';
 import peoplePlusRead from './components/peoplePlus/read.js';
 import companionPlusRead from './components/companionPlus/read.js';
+import dentistPlusRead from './components/dentistPlus/read.js';
 import collaboratorPlusRead from './components/collaboratorPlus/read.js';
 import peoplePlusUpdate from './components/peoplePlus/update.js';
 import companionPlusUpdate from './components/companionPlus/update.js';
 import collaboratorPlusUpdate from './components/collaboratorPlus/update.js';
+import dentistPlusUpdate from './components/dentistPlus/update.js';
 
 function App() {
   return (
@@ -64,7 +68,11 @@ function App() {
             <Route exact path="/popop/collaboratorPlus/add" component={collaboratorPlusCreate} />
             <Route exact path="/popop/collaboratorPlus/read/:id?" component={collaboratorPlusRead} />
             <Route exact path="/popop/collaboratorPlus/update/:id" component={collaboratorPlusUpdate} />
-            
+            {/* CRUD DENTISTA */}
+            <Route exact path="/menu/dentistPlus" component={dentistPlus} />
+            <Route exact path="/popop/dentistPlus/add" component={dentistPlusCreate} />
+            <Route exact path="/popop/dentistPlus/read/:id?" component={dentistPlusRead} />
+            <Route exact path="/popop/dentistPlus/update/:id" component={dentistPlusUpdate} />
 
           </Switch>
           {/*

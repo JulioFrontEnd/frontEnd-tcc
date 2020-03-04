@@ -154,6 +154,7 @@
         border-left: 2vw solid $dark-contrastColor;
     }
     div{
+        
         .hiped{
             background-color: $dark-blueColor;
             .hipedBall{
@@ -203,7 +204,7 @@
         
         span{
             text-transform: uppercase;
-            color: transparentize($color: $dark-whiteColor, $amount: .4);
+            color:$dark-blueColor;
         }
     }
 }
@@ -279,7 +280,7 @@
         }
         span{
             text-transform: uppercase;
-            color: transparentize($color: $light-blueColor, $amount: 0.2);
+            color: $light-blueColor;
         }
     }
 }
@@ -308,7 +309,7 @@
             padding-top: 2%;
             min-height: 25vh;
             div{
-                right: -40%;
+                left: 2%;
                 top: 5%;
                 cursor: pointer;
                 font-size: 2em;
@@ -318,7 +319,7 @@
         div{
             
             margin-bottom: 2%;
-            width: 50vw;
+            width: 96vw;
             input{
                 padding: 1%;
             }

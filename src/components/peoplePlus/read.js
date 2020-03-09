@@ -22,7 +22,6 @@ class peoplePlusRead extends React.Component{
     }
 
     delete = (id)=>{
-        console.log(id);
         API.delete('/deletarCliente/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
             this.close();
@@ -94,7 +93,7 @@ class peoplePlusRead extends React.Component{
         });
         const success = localStorage.getItem('popop-success-list');
         // eslint-disable-next-line
-        if(success == "true"){
+        if(success === "true"){
             localStorage.setItem('popop-success-list',"false");
             this.setState({containerSuccess:<Popop theme={this.props.theme} msg="Dado deletado com sucessso!" type="success" reload={true} />,});
         }

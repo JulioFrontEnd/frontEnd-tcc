@@ -15,7 +15,7 @@ class Intermediate extends React.Component{
 
         if(success === "true"){
             localStorage.setItem('popop-success',"false");
-            this.setState({containerSuccess:<Popop theme={this.props.theme} msg="Dado inserido com sucessso!" type="success" />,});
+            this.setState({containerSuccess:<Popop theme={this.props.theme} msg="O cadastro foi efetuado com sucesso!!!" type="success" />,});
         }
     }
 

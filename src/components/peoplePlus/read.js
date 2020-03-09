@@ -2,12 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import List from '../_list';
 import API from '../services/base';
+import Popop from '../_popop/index';
 
 class peoplePlusRead extends React.Component{
+    
     state={
         popop:<div></div>,
         data:[],
         searchDefaultValue:"",
+        containerSuccess:<span></span>,
+
     }
 
     close = ()=>{
@@ -19,7 +23,8 @@ class peoplePlusRead extends React.Component{
 
     delete = (id)=>{
         console.log(id);
-        API.delete('/deletarCliente/'+id).then((response)=>{
+        API.delete('/deletarCliente/'+id).then(async(response)=>{
+            await localStorage.setItem('popop-success-list',"true");
             this.close();
             this.componentDidMount();
         });
@@ -87,6 +92,12 @@ class peoplePlusRead extends React.Component{
         API.get('/listarCliente').then((response)=>{
             this.setState({data:response.data,});
         });
+        const success = localStorage.getItem('popop-success-list');
+        // eslint-disable-next-line
+        if(success == "true"){
+            localStorage.setItem('popop-success-list',"false");
+            this.setState({containerSuccess:<Popop theme={this.props.theme} msg="Dado deletado com sucessso!" type="success" reload={true} />,});
+        }
     }
     render(){
         // configuração de telas
@@ -94,6 +105,7 @@ class peoplePlusRead extends React.Component{
         return(
             
             <List theme={theme} title="LISTA DE CLIENTES" popop={this.state.popop}>
+                {this.state.containerSuccess}
                 <div className="list-input">
                     <input placeholder="DIGITE PARA PESQUISAR" onChange={this.search} value={this.state.searchDefaultValue} />
                     <div><i className="fas fa-search"></i></div>

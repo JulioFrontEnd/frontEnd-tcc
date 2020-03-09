@@ -1,0 +1,94 @@
+@import '../../global/variables.scss';
+@keyframes flowTop {
+    from {transform: translate(0,-200%);}
+    to {transform: translate(-50%,0);}
+}
+@keyframes flowLeft {
+    from {transform: translate(-200%,0);}
+    to {transform: translate(0,0);}
+}
+
+.popop{
+    transform: translate(-50%,0);
+    animation: flowTop .7s linear;
+    box-shadow: 0px 22px 80px 1px rgba(0,0,0,0.75);
+
+    width: 90vw;
+    position: fixed;
+    left: 50%;
+    top: 2%;
+
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 200;
+    padding: 3%;
+    min-height: 20vh;
+    h3{
+        font-size: 1.3em;
+    }
+    
+    span{
+        cursor: pointer;
+        right: 6%;
+        top: 6%;
+        font-size: 2em;
+        position: absolute;
+    }
+}
+
+.popop-error-dark{
+    background-color: $dark-whiteColor;
+    border-left: 4vw solid $dark-contrastColor;
+    color: $dark-contrastColor;
+}
+.popop-success-dark{
+    background-color: $dark-whiteColor;
+    border-left: 4vw solid $dark-successColor;
+    color: $dark-successColor;
+}
+.popop-success-light{
+    background-color: $light-whiteColor;
+    border-left: 4vw solid $light-successColor;
+    color: $light-successColor;
+}
+.popop-error-light{
+    background-color: $light-whiteColor;
+    border-left: 4vw solid $light-contrastColor;
+    color: $light-contrastColor;
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 900px) {
+    .popop{
+        transform: translate(0,0);
+        animation: flowLeft .7s linear .001s;
+        box-shadow: 0px 22px 80px 1px rgba(0,0,0,0.75);
+
+        width: 60vw;
+        position: fixed;
+        left: 2%;
+        top: 2%;
+
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        z-index: 200;
+        padding-top: 2%;
+        min-height: 25vh;
+        span{
+            right: 5%;
+            top: 5%;
+            cursor: pointer;
+            font-size: 2em;
+            position: absolute;
+        }
+    }
+}

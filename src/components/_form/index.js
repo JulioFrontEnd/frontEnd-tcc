@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
 import API from "../services/base";
+import Popop from '../_popop/index';
 
 export default class form extends React.Component{
     state={
@@ -22,9 +23,7 @@ export default class form extends React.Component{
         }
     }
     
-    closePopop = ()=>{
-        this.setState({containerError:<span></span>,})
-    }
+
 
     handleChange = (e,aditional = "")=>{
         /*
@@ -134,15 +133,12 @@ export default class form extends React.Component{
         
         url = await url.substring(0,(url.length - 1));
         console.log(url);
-        API.post(url).then((response)=>{
+        API.post(url).then(async(response)=>{
+            await localStorage.setItem('popop-success',"true");
             window.location.href = this.props.posUrl;
         }).catch((error)=>{
             this.setState({error:error.response.data});
-            this.setState({containerError:<div className="popop-error">
-                <div onClick={this.closePopop}><i className="fas fa-times"></i></div>
-                <h3>OPPS...</h3>
-                <b>Algum dado inserido está incorreto, por favor preencha novamente!</b>
-            </div>,});
+            this.setState({containerError:<Popop theme={this.props.theme} msg="Algum dado inserido está incorreto, por favor preencha novamente!" type="error" />,});
         });
     }
 

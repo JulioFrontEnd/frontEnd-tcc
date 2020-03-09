@@ -1,20 +1,33 @@
 import React from 'react';
 import './index.scss';
+import Popop from '../_popop/index';
 
 class Intermediate extends React.Component{
-
+    state = {
+        containerSuccess:<span></span>,
+    }
     redirectTo(link){
         window.location.href = link;
+    }
+    componentDidMount(){
+        const success = localStorage.getItem('popop-success');
+        console.log(success)
+
+        if(success === "true"){
+            localStorage.setItem('popop-success',"false");
+            this.setState({containerSuccess:<Popop theme={this.props.theme} msg="Dado inserido com sucessso!" type="success" />,});
+        }
     }
 
     render(){
         // configuração de telas
         const data = this.props.data;
-
         const theme = this.props.theme;
+
         return(
             <div className={`main-page main-page-${theme} global-theme-${theme}`}>
                 /
+                {this.state.containerSuccess}
                 <h2>{this.props.title}</h2>
                 <div className="option-menu">
                 {

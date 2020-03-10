@@ -21,10 +21,12 @@ class companionPlusRead extends React.Component{
     }
 
     delete = (id)=>{
+        this.setState({containerSuccess:<Popop theme={this.props.theme} msg={<div className="confirm"><p>TEM CERTEZA?</p><br /><button onClick={()=>this.realDelete(id)}>CONFIRMAR</button></div>} type="error" reload={true} />,});
+    }
+    realDelete = (id)=>{
         API.delete('/deletarAcompanhante/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
-            this.close();
-            this.componentDidMount();
+            window.location.reload();
         });
     }
 

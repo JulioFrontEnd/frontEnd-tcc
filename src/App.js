@@ -73,6 +73,8 @@ function App() {
             <Route exact path="/popop/dentistPlus/add" component={dentistPlusCreate} />
             <Route exact path="/popop/dentistPlus/read/:id?" component={dentistPlusRead} />
             <Route exact path="/popop/dentistPlus/update/:id" component={dentistPlusUpdate} />
+            {/* CRUD PROCEDIMENTO */}
+            <Route exact path="/menu/dentistPlus" component={dentistPlus} />
 
           </Switch>
           {/*

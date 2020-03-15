@@ -84,7 +84,7 @@ class peoplePlusUpdate extends React.Component{
                 url:"/pesquisarAcompanhante",
                 placeholder:"DIGITE SEU ACOMPANHANTE/RESPONSÁVEL",
                 max:"255",
-                value:values[0].Acompanhante_idAcompanhante,
+                value:((values[0].Acompanhante_idAcompanhante === null)?"":values[0].Acompanhante_idAcompanhante),
             },
             {
                 name:"ativo",

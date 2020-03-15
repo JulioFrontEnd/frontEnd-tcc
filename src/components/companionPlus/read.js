@@ -13,8 +13,12 @@ class companionPlusRead extends React.Component{
         containerSuccess:<span></span>,
     }
 
-    close = ()=>{
-        this.setState({popop:<div></div>});
+    close = (refresh=false)=>{
+        if(refresh){
+            this.props.history.goBack();
+        }else{
+            this.setState({popop:<div></div>});
+        }
     }
     alterLink = (id)=>{
         window.location.href = "/popop/companionPlus/update/"+id;
@@ -45,9 +49,8 @@ class companionPlusRead extends React.Component{
     }
 
     // PRECISA SER CONFIGURADO
-    popopShow = async (id)=>{
+    popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
-
         const dataEspecifica = await datas.find((d=>{
             return d.id === id;
         }));
@@ -56,7 +59,7 @@ class companionPlusRead extends React.Component{
             <div className="icons-popop">
                 <div className="delete" onClick={()=>this.delete(dataEspecifica.id)}><i className="fas fa-trash-alt"></i></div>
                 <div className="alter" onClick={()=>this.alterLink(dataEspecifica.id)}><i className="fas fa-user-edit"></i></div>
-                <div className="close" onClick={this.close}><i className="fas fa-times"></i></div>
+                <div className="close" onClick={()=>this.close(refresh)}><i className="fas fa-times"></i></div>
             </div>
 
 
@@ -90,7 +93,7 @@ class companionPlusRead extends React.Component{
         if(id !== undefined){
             this.state.data.map(item=>{
                 if(item.id === parseInt(id)){
-                    return this.popopShow(parseInt(id));
+                    return this.popopShow(parseInt(id),true);
                 }else{
                     return false
                 }

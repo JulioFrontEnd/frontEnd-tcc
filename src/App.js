@@ -7,18 +7,29 @@ import BottomMenu from './components/bottomMenu';
 import mainPage from './components/mainPage';
 import userPage from './components/user';
 import back from './components/back';
+
+// PLUS CRUD ( INDEX )
 import peoplePlus from './components/peoplePlus';
 import companionPlus from './components/companionPlus';
 import dentistPlus from './components/dentistPlus';
+import procedurePlus from './components/procedurePlus';
 import collaboratorPlus from './components/collaboratorPlus';
+
+// CREATE CRUD (CREATE)
 import peoplePlusCreate from './components/peoplePlus/create.js';
 import companionPlusCreate from './components/companionPlus/create.js';
 import collaboratorPlusCreate from './components/collaboratorPlus/create.js';
 import dentistPlusCreate from './components/dentistPlus/create.js';
+import procedurePlusCreate from './components/procedurePlus/create.js';
+
+// READ CRUD (READ AND DELETE)
 import peoplePlusRead from './components/peoplePlus/read.js';
 import companionPlusRead from './components/companionPlus/read.js';
 import dentistPlusRead from './components/dentistPlus/read.js';
 import collaboratorPlusRead from './components/collaboratorPlus/read.js';
+import procedurePlusRead from './components/procedurePlus/read.js';
+
+// UPDATE CRUD (UPDATE)
 import peoplePlusUpdate from './components/peoplePlus/update.js';
 import companionPlusUpdate from './components/companionPlus/update.js';
 import collaboratorPlusUpdate from './components/collaboratorPlus/update.js';
@@ -74,7 +85,9 @@ function App() {
             <Route exact path="/popop/dentistPlus/read/:id?" component={dentistPlusRead} />
             <Route exact path="/popop/dentistPlus/update/:id" component={dentistPlusUpdate} />
             {/* CRUD PROCEDIMENTO */}
-            <Route exact path="/menu/dentistPlus" component={dentistPlus} />
+            <Route exact path="/menu/procedurePlus" component={procedurePlus} />
+            <Route exact path="/popop/procedurePlus/add" component={procedurePlusCreate} />
+            <Route exact path="/popop/procedurePlus/read/:id?" component={procedurePlusRead} />
 
           </Switch>
           {/*

@@ -30,12 +30,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-user-md",
                 path:"/menu/dentistPlus",
             },
-            // {
-            //     id:5,
-            //     title:"Procedimento",
-            //     iconId:"fas fa-user-md",
-            //     path:"/menu/procedurePlus",
-            // },
+            {
+                id:5,
+                title:"Procedimento",
+                iconId:"fas fa-clipboard-list",
+                path:"/menu/procedurePlus",
+            },
         ];
         const theme = this.props.theme;
         return(

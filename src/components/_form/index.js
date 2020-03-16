@@ -78,7 +78,7 @@ export default class form extends React.Component{
             let CEP = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
-        }else if(e.target.name === "salario"){
+        }else if(e.target.name === "salario" || e.target.name === "valor"){
             let salario = e.target.value.replace(/,\D/g, '');
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:salario}})
         }else if(e.target.name === "PIS"){
@@ -120,7 +120,7 @@ export default class form extends React.Component{
         let url = await this.props.url + "?";
         
         await data.map((item)=>{
-            if(item.name === "salario"){
+            if(item.name === "salario" || item.name === "valor"){
                 return(
                     ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name].replace(/,/, '') + "&")     
                 );
@@ -167,7 +167,7 @@ export default class form extends React.Component{
                         if(item.type === "binary"){
                             return(
                                 <div key={item.name}>
-                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    <span>{item.placeholder.split("DIGITE A ").reduce(function(p, c){ return c }).split("DIGITE O ").reduce(function(p, c){ return c }).split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
                                     
                                     <div className='hiped' style={hiped} onClick={()=>this.hipedBallHandler(item.name)}>
                                         <div className='hipedBall' style={({
@@ -186,7 +186,8 @@ export default class form extends React.Component{
                         }else if(item.type === "date"){
                             return(
                                 <div key={item.name}>
-                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    <span>{item.placeholder.split("DIGITE A ").reduce(function(p, c){ return c }).split("DIGITE O ").reduce(function(p, c){ return c }).split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
                                     name={item.name} placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
@@ -198,8 +199,7 @@ export default class form extends React.Component{
                         }else if(item.type === "select"){
                             return(
                                 <div key={item.name}>
-                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
-                                    
+                                    <span>{item.placeholder.split("DIGITE A ").reduce(function(p, c){ return c }).split("DIGITE O ").reduce(function(p, c){ return c }).split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>                                    
                                     
                                     {/* ====== INPUT ======== */}
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type="text" 
@@ -220,7 +220,8 @@ export default class form extends React.Component{
                         }else{
                             return(
                                 <div key={item.name}>
-                                    <span>{item.placeholder.split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>
+                                    <span>{item.placeholder.split("DIGITE A ").reduce(function(p, c){ return c }).split("DIGITE O ").reduce(function(p, c){ return c }).split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>                                    
+                                    
                                     <input autoComplete="off" maxLength={((!item.max)?"":item.max)} type={item.type} name={item.name} 
                                     placeholder={item.placeholder} onChange={this.handleChange} 
                                     value={((this.state.forSubmit[item.name] !== undefined)?this.state.forSubmit[item.name]:"")} 

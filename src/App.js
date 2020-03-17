@@ -34,6 +34,7 @@ import peoplePlusUpdate from './components/peoplePlus/update.js';
 import companionPlusUpdate from './components/companionPlus/update.js';
 import collaboratorPlusUpdate from './components/collaboratorPlus/update.js';
 import dentistPlusUpdate from './components/dentistPlus/update.js';
+import procedurePlusUpdate from './components/procedurePlus/update.js';
 
 function App() {
   return (
@@ -88,6 +89,7 @@ function App() {
             <Route exact path="/menu/procedurePlus" component={procedurePlus} />
             <Route exact path="/popop/procedurePlus/add" component={procedurePlusCreate} />
             <Route exact path="/popop/procedurePlus/read/:id?" component={procedurePlusRead} />
+            <Route exact path="/popop/procedurePlus/update/:id" component={procedurePlusUpdate} />
 
           </Switch>
           {/*

@@ -18,7 +18,7 @@ class procedurePlusRead extends React.Component{
         this.setState({popop:<div></div>});
     }
     alterLink = (id)=>{
-        window.location.href = "/popop/peoplePlus/update/"+id;
+        window.location.href = "/popop/procedurePlus/update/"+id;
     }
 
     delete = (id)=>{

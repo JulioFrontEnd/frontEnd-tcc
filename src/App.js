@@ -14,6 +14,7 @@ import companionPlus from './components/companionPlus';
 import dentistPlus from './components/dentistPlus';
 import procedurePlus from './components/procedurePlus';
 import collaboratorPlus from './components/collaboratorPlus';
+import queryPlus from './components/queryPlus';
 
 // CREATE CRUD (CREATE)
 import peoplePlusCreate from './components/peoplePlus/create.js';
@@ -21,6 +22,7 @@ import companionPlusCreate from './components/companionPlus/create.js';
 import collaboratorPlusCreate from './components/collaboratorPlus/create.js';
 import dentistPlusCreate from './components/dentistPlus/create.js';
 import procedurePlusCreate from './components/procedurePlus/create.js';
+import queryPlusCreate from './components/queryPlus/create.js';
 
 // READ CRUD (READ AND DELETE)
 import peoplePlusRead from './components/peoplePlus/read.js';
@@ -90,6 +92,12 @@ function App() {
             <Route exact path="/popop/procedurePlus/add" component={procedurePlusCreate} />
             <Route exact path="/popop/procedurePlus/read/:id?" component={procedurePlusRead} />
             <Route exact path="/popop/procedurePlus/update/:id" component={procedurePlusUpdate} />
+            {/* CRUD CONSULTA */}
+            <Route exact path="/menu/queryPlus" component={queryPlus} />
+            <Route exact path="/popop/queryPlus/add" component={queryPlusCreate} />
+            <Route exact path="/popop/queryPlus/read/:id?" component={procedurePlusRead} />
+            <Route exact path="/popop/queryPlus/update/:id" component={procedurePlusUpdate} />
+            
 
           </Switch>
           {/*

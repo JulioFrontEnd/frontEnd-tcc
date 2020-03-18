@@ -32,9 +32,15 @@ class MainPage extends React.Component{
             },
             {
                 id:5,
-                title:"Procedimento",
+                title:"Procedimentos",
                 iconId:"fas fa-clipboard-list",
                 path:"/menu/procedurePlus",
+            },
+            {
+                id:6,
+                title:"Consultas",
+                iconId:"fas fa-clipboard-check",
+                path:"/menu/queryPlus",
             },
         ];
         const theme = this.props.theme;

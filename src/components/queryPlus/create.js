@@ -7,15 +7,6 @@ class queryPlusCreate extends React.Component{
         // configuração de telas
         const data = [
             {
-                name:"tipoDeAtendimento",
-                option:false,
-                format:"EX: Urgência/Emergencia",
-                type:"text",
-                placeholder:"DIGITE O TIPO DE ATENDIMENTO",
-                max:"255",
-                value:""
-            },
-            {
                 name:"hora",
                 option:false,
                 format:false,

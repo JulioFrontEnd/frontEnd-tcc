@@ -70,7 +70,7 @@ function App() {
             {/* CRUD CLIENTE */}
             <Route exact path="/menu/peoplePlus" component={peoplePlus} />
             <Route exact path="/popop/peoplePlus/add" component={peoplePlusCreate} />
-            <Route exact path="/popop/peoplePlus/read" component={peoplePlusRead} />
+            <Route exact path="/popop/peoplePlus/read/:id?" component={peoplePlusRead} />
             <Route exact path="/popop/peoplePlus/update/:id" component={peoplePlusUpdate} />
             {/* CRUD ACOMPANHANTE */}
             <Route exact path="/menu/companionPlus" component={companionPlus} />

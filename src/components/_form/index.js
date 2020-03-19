@@ -58,7 +58,7 @@ export default class form extends React.Component{
                                     }
 
                                     document.getElementById("Content_id_"+item.id).classList.add("selected");
-                                }} className={"content content"+"-"+aditional.name}>
+                                }} className={"content content-"+aditional.name}>
                                 <p className="principal"><span>{aditional.option[0]}:</span><br></br>{item[aditional.option[0]]}</p>
                                 <p className="secondary"><span>{aditional.option[1]}:</span><br></br>{((aditional.option[1] === 'valor' )?(item[aditional.option[1]]/100).toFixed(2).toString().replace(".", ","):item[aditional.option[1]])} </p>
                             </div>

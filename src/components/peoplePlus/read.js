@@ -46,7 +46,7 @@ class peoplePlusRead extends React.Component{
     }
 
     // PRECISA SER CONFIGURADO
-    popopShow = async (id)=>{
+    popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
 
         const dataEspecifica = await datas.find((d=>{
@@ -59,7 +59,7 @@ class peoplePlusRead extends React.Component{
             <div className="icons-popop">
                 <div className="delete" onClick={()=>this.delete(dataEspecifica.id)}><i className="fas fa-trash-alt"></i></div>
                 <div className="alter" onClick={()=>this.alterLink(dataEspecifica.id)}><i className="fas fa-user-edit"></i></div>
-                <div className="close" onClick={this.close}><i className="fas fa-times"></i></div>
+                <div className="close" onClick={()=>this.close(refresh)}><i className="fas fa-times"></i></div>
             </div>
 
 
@@ -89,10 +89,20 @@ class peoplePlusRead extends React.Component{
     }
     
     
-    componentDidMount(){
-        API.get('/listarCliente').then((response)=>{
+    async componentDidMount(){
+        await API.get('/listarCliente').then((response)=>{
             this.setState({data:response.data,});
         });
+        const {id} = this.props.match.params;
+        if(id !== undefined){
+            this.state.data.map(item=>{
+                if(item.id === parseInt(id)){
+                    return this.popopShow(parseInt(id),true);
+                }else{
+                    return false
+                }
+            })
+        }
         const success = localStorage.getItem('popop-success-list');
         // eslint-disable-next-line
         if(success === "true"){

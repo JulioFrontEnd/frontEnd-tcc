@@ -30,6 +30,7 @@ import companionPlusRead from './components/companionPlus/read.js';
 import dentistPlusRead from './components/dentistPlus/read.js';
 import collaboratorPlusRead from './components/collaboratorPlus/read.js';
 import procedurePlusRead from './components/procedurePlus/read.js';
+import queryPlusRead from './components/queryPlus/read.js';
 
 // UPDATE CRUD (UPDATE)
 import peoplePlusUpdate from './components/peoplePlus/update.js';
@@ -95,7 +96,7 @@ function App() {
             {/* CRUD CONSULTA */}
             <Route exact path="/menu/queryPlus" component={queryPlus} />
             <Route exact path="/popop/queryPlus/add" component={queryPlusCreate} />
-            <Route exact path="/popop/queryPlus/read/:id?" component={procedurePlusRead} />
+            <Route exact path="/popop/queryPlus/read/:id?" component={queryPlusRead} />
             <Route exact path="/popop/queryPlus/update/:id" component={procedurePlusUpdate} />
             
 

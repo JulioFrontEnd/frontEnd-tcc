@@ -52,7 +52,7 @@ class queryPlusCreate extends React.Component{
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="MARQUE A CONSULTA" url="/cadastrarConsulta" posUrl="/menu/peoplePlus" update="false"/>
+                <Form theme={theme} data={data} title="MARQUE A CONSULTA" url="/cadastrarConsulta" posUrl="/menu/queryPlus" update="false"/>
             </div>
         );
     }

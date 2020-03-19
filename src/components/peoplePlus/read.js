@@ -14,8 +14,12 @@ class peoplePlusRead extends React.Component{
 
     }
 
-    close = ()=>{
-        this.setState({popop:<div></div>});
+    close = (refresh=false)=>{
+        if(refresh){
+            this.props.history.goBack();
+        }else{
+            this.setState({popop:<div></div>});
+        }
     }
     alterLink = (id)=>{
         window.location.href = "/popop/peoplePlus/update/"+id;

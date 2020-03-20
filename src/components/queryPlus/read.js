@@ -22,14 +22,14 @@ class queryPlusRead extends React.Component{
         }
     }
     alterLink = (id)=>{
-        window.location.href = "/popop/peoplePlus/update/"+id;
+        window.location.href = "/popop/queryPlus/update/"+id;
     }
 
     delete = (id)=>{
         this.setState({containerSuccess:<Popop theme={this.props.theme} msg={<div className="confirm"><p>TEM CERTEZA?</p><br /><button onClick={()=>this.realDelete(id)}>CONFIRMAR</button></div>} type="error" reload={true} />,});
     }
     realDelete = (id)=>{
-        API.delete('/deletarCliente/'+id).then(async(response)=>{
+        API.delete('/deletarConsulta/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
             window.location.reload();
         });
@@ -126,8 +126,9 @@ class queryPlusRead extends React.Component{
                 {this.state.data.map(item=>{
                     return(
                         <div key={item.id} onClick={()=>this.popopShow(item.id)} className="content">
-                            <p className="principal"><span>HORA:</span> {item.hora}</p>
-                            <p className="secondary"><span>PROCEDIMENTO:</span> {item.procedimento}</p>
+                            <p className="principal"><span>NOME:</span> {item.nome}</p>
+                            <p className="secondary"><span>HORA:</span> {item.hora}</p>
+                            <p className="secondary"><span>PROCEDIMENTO:</span> {item.tipo}</p>
                         </div>
                     );
                 })}

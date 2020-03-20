@@ -38,6 +38,7 @@ import companionPlusUpdate from './components/companionPlus/update.js';
 import collaboratorPlusUpdate from './components/collaboratorPlus/update.js';
 import dentistPlusUpdate from './components/dentistPlus/update.js';
 import procedurePlusUpdate from './components/procedurePlus/update.js';
+import queryPlusUpdate from './components/queryPlus/update.js';
 
 function App() {
   return (
@@ -97,7 +98,7 @@ function App() {
             <Route exact path="/menu/queryPlus" component={queryPlus} />
             <Route exact path="/popop/queryPlus/add" component={queryPlusCreate} />
             <Route exact path="/popop/queryPlus/read/:id?" component={queryPlusRead} />
-            <Route exact path="/popop/queryPlus/update/:id" component={procedurePlusUpdate} />
+            <Route exact path="/popop/queryPlus/update/:id" component={queryPlusUpdate} />
             
 
           </Switch>

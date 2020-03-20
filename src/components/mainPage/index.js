@@ -42,6 +42,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-clipboard-check",
                 path:"/menu/queryPlus",
             },
+            {
+                id:7,
+                title:"Prontuário",
+                iconId:"fas fa-laptop-medical",
+                path:"/menu/medicalRecordPlus",
+            },
         ];
         const theme = this.props.theme;
         return(

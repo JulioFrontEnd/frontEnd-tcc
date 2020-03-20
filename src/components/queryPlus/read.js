@@ -48,7 +48,9 @@ class queryPlusRead extends React.Component{
         
         
     }
-
+    popopShowing = (id)=>{
+        window.location.href = "/popop/queryPlus/read/"+id;
+    }
     // PRECISA SER CONFIGURADO
     popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
@@ -125,7 +127,7 @@ class queryPlusRead extends React.Component{
                 </div>
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShow(item.id)} className="content">
+                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
                             <p className="principal"><span>NOME:</span> {item.nome}</p>
                             <p className="secondary"><span>HORA:</span> {item.hora}</p>
                             <p className="secondary"><span>PROCEDIMENTO:</span> {item.tipo}</p>

@@ -50,6 +50,9 @@ class dentistPlusRead extends React.Component{
     }
 
     // PRECISA SER CONFIGURADO
+    popopShowing = (id)=>{
+        window.location.href = "/popop/dentistPlus/read/"+id;
+    }
     popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
 
@@ -131,7 +134,7 @@ class dentistPlusRead extends React.Component{
                 </div>
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShow(item.id)} className={"content "+((item.ativo === true)?"":"unable")}>
+                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className={"content "+((item.ativo === true)?"":"unable")}>
                             <p className="principal"><span>NOME:</span> {item.nome}</p>
                             <p className="secondary"><span>CPF:</span> {item.CPF}</p>
                             <p className="secondary"><span>CRO:</span> {item.CRO}</p>

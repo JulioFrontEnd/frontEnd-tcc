@@ -48,8 +48,11 @@ class procedurePlusRead extends React.Component{
         
         
     }
-
+    
     // PRECISA SER CONFIGURADO
+    popopShowing = (id)=>{
+        window.location.href = "/popop/procedurePlus/read/"+id;
+    }
     popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
 
@@ -115,7 +118,7 @@ class procedurePlusRead extends React.Component{
                 </div>
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShow(item.id)} className="content">
+                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
                             <p className="principal"><span>TIPO:</span> {item.tipo}</p>
                             <p className="secondary"><span>VALOR:</span> {((item.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
                         </div>

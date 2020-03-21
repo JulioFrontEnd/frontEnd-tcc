@@ -71,7 +71,7 @@ class queryPlusRead extends React.Component{
 
 
             <div className="special-content">
-                <p><span>HORA: </span><br />{dataEspecifica.hora}</p>
+                <p><span>HORA: </span><br />{dataEspecifica.hora.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
                 {
                 ((dataEspecifica.Cliente_idCliente !== null && dataEspecifica.Cliente_idCliente !== undefined)?
                     <a className="linked" href={"/popop/peoplePlus/read/"+dataEspecifica.Cliente_idCliente}><p><span>CLIQUE PARA VER O CLIENTE</span></p></a>:"")
@@ -129,7 +129,7 @@ class queryPlusRead extends React.Component{
                     return(
                         <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
                             <p className="principal"><span>NOME:</span> {item.nome}</p>
-                            <p className="secondary"><span>HORA:</span> {item.hora}</p>
+                            <p className="secondary"><span>HORA:</span> {item.hora.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
                             <p className="secondary"><span>PROCEDIMENTO:</span> {item.tipo}</p>
                         </div>
                     );

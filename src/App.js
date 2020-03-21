@@ -15,6 +15,7 @@ import dentistPlus from './components/dentistPlus';
 import procedurePlus from './components/procedurePlus';
 import collaboratorPlus from './components/collaboratorPlus';
 import queryPlus from './components/queryPlus';
+import medicalRecordPlus from './components/medicalRecordPlus';
 
 // CREATE CRUD (CREATE)
 import peoplePlusCreate from './components/peoplePlus/create.js';
@@ -23,6 +24,7 @@ import collaboratorPlusCreate from './components/collaboratorPlus/create.js';
 import dentistPlusCreate from './components/dentistPlus/create.js';
 import procedurePlusCreate from './components/procedurePlus/create.js';
 import queryPlusCreate from './components/queryPlus/create.js';
+import medicalRecordPlusCreate from './components/medicalRecordPlus/create.js';
 
 // READ CRUD (READ AND DELETE)
 import peoplePlusRead from './components/peoplePlus/read.js';
@@ -31,6 +33,7 @@ import dentistPlusRead from './components/dentistPlus/read.js';
 import collaboratorPlusRead from './components/collaboratorPlus/read.js';
 import procedurePlusRead from './components/procedurePlus/read.js';
 import queryPlusRead from './components/queryPlus/read.js';
+import medicalRecordPlusRead from './components/medicalRecordPlus/read.js';
 
 // UPDATE CRUD (UPDATE)
 import peoplePlusUpdate from './components/peoplePlus/update.js';
@@ -39,6 +42,7 @@ import collaboratorPlusUpdate from './components/collaboratorPlus/update.js';
 import dentistPlusUpdate from './components/dentistPlus/update.js';
 import procedurePlusUpdate from './components/procedurePlus/update.js';
 import queryPlusUpdate from './components/queryPlus/update.js';
+import medicalRecordPlusUpdate from './components/medicalRecordPlus/update.js';
 
 function App() {
   return (
@@ -99,8 +103,11 @@ function App() {
             <Route exact path="/popop/queryPlus/add" component={queryPlusCreate} />
             <Route exact path="/popop/queryPlus/read/:id?" component={queryPlusRead} />
             <Route exact path="/popop/queryPlus/update/:id" component={queryPlusUpdate} />
-            
-
+            {/* CRUD PRONTUÁRIO */}
+            <Route exact path="/menu/medicalRecordPlus" component={medicalRecordPlus} />
+            <Route exact path="/popop/medicalRecordPlus/add" component={medicalRecordPlusCreate} />
+            <Route exact path="/popop/medicalRecordPlus/read/:id?" component={medicalRecordPlusRead} />
+            <Route exact path="/popop/medicalRecordPlus/update/:id" component={medicalRecordPlusUpdate} />
           </Switch>
           {/*
             SWITCH DE ROTAS FIXAS DE BAIXO DAS PÁGINAS

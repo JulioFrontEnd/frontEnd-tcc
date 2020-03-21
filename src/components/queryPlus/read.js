@@ -39,7 +39,7 @@ class queryPlusRead extends React.Component{
         this.setState({searchDefaultValue:e.target.value});
 
         if(e.target.value !== ""){
-            API.get("/pesquisarClientes?nome="+e.target.value).then((response)=>{
+            API.get("/pesquisarConsultas?nome="+e.target.value).then((response)=>{
                 this.setState({data:response.data,});
             });
         }else{

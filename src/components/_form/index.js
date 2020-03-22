@@ -60,7 +60,19 @@ export default class form extends React.Component{
                                     document.getElementById("Content_id_"+aditional.name+"_"+item.id).classList.add("selected");
                                 }} className={"content content-"+aditional.name}>
                                 <p className="principal"><span>{aditional.option[0]}:</span><br></br>{item[aditional.option[0]]}</p>
-                                <p className="secondary"><span>{aditional.option[1]}:</span><br></br>{((aditional.option[1] === 'valor' )?(item[aditional.option[1]]/100).toFixed(2).toString().replace(".", ","):item[aditional.option[1]])} </p>
+                                <p className="secondary"><span>{aditional.option[1]}:</span><br></br>{
+                                    //config de valores
+                                    ((aditional.option[1] === 'valor' )?
+                                    (item[aditional.option[1]]/100).toFixed(2).toString().replace(".", ","):
+
+                                    // config de datetime
+                                    ((aditional.option[1] === "hora")?
+                                    item[aditional.option[1]].split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })}):
+
+                                    //DEFAULT
+                                    item[aditional.option[1]])
+                                )} </p>
+                                {((aditional.option[2]!==undefined)?<p className="secondary"><span>{aditional.option[2]}:</span><br></br>{item[aditional.option[2]]}</p>:"")}
                             </div>
                         );
                     })});
@@ -70,21 +82,31 @@ export default class form extends React.Component{
             let data = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             .replace(/(\d{2})(\d)/, '$1-$2')
-            .replace(/(\d{2})(\d)/, '$1-$2'); 
+            .replace(/(\d{2})(\d)/, '$1-$2');
             if(aditional.type === 'dataTime'){
-                console.log(this.state.forSubmit)
-                this.setState({forSubmit:{...this.state.forSubmit,[aditional.name]:this.state.forSubmit['data'+aditional.name]+" "+this.state.forSubmit['hora'+aditional.name]+":00",[e.target.name]:data.split("-").reduce(function(p, c){ return c + "-" +p })}});
+                this.setState({forSubmit:{...this.state.forSubmit,
+                [e.target.name]:data.split("-").reduce(function(p, c){ return c + "-" +p })}},
+                ()=>{
+                    this.setState({forSubmit:{...this.state.forSubmit,
+                        [aditional.name]:this.state.forSubmit['data'+aditional.name]+" "+this.state.forSubmit['hora'+aditional.name]+":00",}},)
+                });
             }else{
                 this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:data.split("-").reduce(function(p, c){ return c + "-" +p })}});
             }
             
         }else if(e.target.name.substring(0,4) === "hora"){
+            
             let data = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             .replace(/(\d{2})(\d)/, '$1:$2'); 
+            
             if(aditional.type === 'dataTime'){
-                console.log(this.state.forSubmit)
-                this.setState({forSubmit:{...this.state.forSubmit,[aditional.name]:this.state.forSubmit['data'+aditional.name]+" "+this.state.forSubmit['hora'+aditional.name]+":00",[e.target.name]:data}});
+                this.setState({forSubmit:{...this.state.forSubmit,
+                    [e.target.name]:data.split("-").reduce(function(p, c){ return c + "-" +p })}},
+                    ()=>{
+                        this.setState({forSubmit:{...this.state.forSubmit,
+                            [aditional.name]:this.state.forSubmit['data'+aditional.name]+" "+this.state.forSubmit['hora'+aditional.name]+":00",}},)
+                });
             }else{
                 this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:data}});
             }
@@ -93,7 +115,7 @@ export default class form extends React.Component{
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             .replace(/(\d{5})(\d)/, '$1-$2'); 
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
-        }else if(e.target.name === "RG"){
+        }else if(e.target.name === "RG" || e.target.name === "numeracaoDoDente"){
             let CEP = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
@@ -134,8 +156,15 @@ export default class form extends React.Component{
 
     beValue = async ()=>{
         const data = await this.props.data;
-        data.map((item)=>this.setState({forSubmit:{...this.state.forSubmit,[item.name]:item.value,}}));
+        data.map((item)=>{
+            if(item.type !== "dataTime"){
+                return(this.setState({forSubmit:{...this.state.forSubmit,[item.name]:item.value,}}));
+            }else{
+                return(this.setState({forSubmit:{...this.state.forSubmit,[item.name]:item.value,["hora"+item.name]:item.value.substr(-8,5),["data"+item.name]:item.value.substr(0,10)}}));
+            } 
+        });
     }
+
 
     submitContent = async ()=>{
         const data = await this.props.data;
@@ -224,15 +253,16 @@ export default class form extends React.Component{
                                 <span>{item.placeholder.split("DIGITE A ").reduce(function(p, c){ return c }).split("DIGITE O ").reduce(function(p, c){ return c }).split("DIGITE SEU ").reduce(function(p, c){ return c }).split("DIGITE SUA ").reduce(function(p, c){ return c }) + ": "}</span>                                    
                                 
                                 {/* ====== INPUT ======== */}
-                                <input autoComplete="off" type="text" maxLength="10"
-                                name={("data"+item.name)} placeholder="DD-MM-AAAA" onChange={(e)=>this.handleChange(e,item)} 
-                                value={((this.state.forSubmit["data"+item.name] !== undefined)?this.state.forSubmit["data"+item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
-                                className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
-        
                                 <input autoComplete="off" type="text" maxLength="5"
                                 name={("hora"+item.name)} placeholder="HH:MM" onChange={(e)=>this.handleChange(e,item)} 
                                 value={((this.state.forSubmit["hora"+item.name] !== undefined)?this.state.forSubmit["hora"+item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
                                 className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
+
+                                <input autoComplete="off" type="text" maxLength="10"
+                                name={("data"+item.name)} placeholder="DD-MM-AAAA" onChange={(e)=>this.handleChange(e,item)} 
+                                value={((this.state.forSubmit["data"+item.name] !== undefined)?this.state.forSubmit["data"+item.name].split("-").reduce(function(p, c){ return c + "-" +p }):"")} 
+                                className={((this.state.error === undefined)?"":((this.state.error[item.name] === undefined)?"":"error"))} />
+                                
                                 {/* ====== FORMAT ======== */}
                                 <div className="error-logger">{((this.state.error === undefined)?((!(item.format))?"":<p>{item.format}</p>):((this.state.error[item.name] === undefined)?((!(item.format))?"":<p>{item.format}</p>):<p>{this.state.error[item.name]}</p>))}</div>
                             </div>

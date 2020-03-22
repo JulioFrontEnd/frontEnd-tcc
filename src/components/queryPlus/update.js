@@ -10,7 +10,6 @@ class queryPlusUpdate extends React.Component{
     async componentDidMount(){
         let {id} = this.props.match.params;
         let values = await API.get('/editarConsulta/'+id).then((Response)=>{return Response.data});
-
         this.setState({data:[
             {
                 name:"hora",
@@ -19,7 +18,7 @@ class queryPlusUpdate extends React.Component{
                 type:"dataTime",
                 placeholder:"DIGITE A HORA DE ATENDIMENTO",
                 max:"255",
-                value:"",
+                value:values.hora,
             },
             {
                 name:"Colaborador_idColaborador",

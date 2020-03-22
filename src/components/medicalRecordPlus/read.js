@@ -29,7 +29,7 @@ class medicalRecordPlusRead extends React.Component{
         this.setState({containerSuccess:<Popop theme={this.props.theme} msg={<div className="confirm"><p>TEM CERTEZA?</p><br /><button onClick={()=>this.realDelete(id)}>CONFIRMAR</button></div>} type="error" reload={true} />,});
     }
     realDelete = (id)=>{
-        API.delete('/deletarProcedimento/'+id).then(async(response)=>{
+        API.delete('/deletarProntuarios/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
             window.location.reload();
         });
@@ -39,7 +39,7 @@ class medicalRecordPlusRead extends React.Component{
         this.setState({searchDefaultValue:e.target.value});
 
         if(e.target.value !== ""){
-            API.get("/pesquisarProntuario?nome="+e.target.value).then((response)=>{
+            API.get("/pesquisarProntuarios?nome="+e.target.value).then((response)=>{
                 this.setState({data:response.data,});
             });
         }else{
@@ -127,7 +127,7 @@ class medicalRecordPlusRead extends React.Component{
                         <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
                             <p className="principal"><span>NOME:</span> {item.nome}</p>
                             <p className="secondary"><span>DATA:</span> {item.dataDoProcedimento.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
-                            <p className="secondary"><span>RETORNO:</span> {item.dataDeRetorno.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
+                            <p className="secondary"><span>RETORNO:</span> {item.dataDeRetorno.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
                         </div>
                     );
                 })}

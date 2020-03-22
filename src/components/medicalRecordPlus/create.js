@@ -7,37 +7,59 @@ class medicalRecordPlusCreate extends React.Component{
         // configuração de telas
         const data = [
             {
-                name:"tipo",
+                name:"dataDeRetorno",
+                option:false,
+                format:false,
+                type:"dataTime",
+                placeholder:"DIGITE A DATA DE RETORNO",
+                max:"255",
+                value:""
+            },
+            {
+                name:"dataDoProcedimento",
+                option:false,
+                format:false,
+                type:"dataTime",
+                placeholder:"DIGITE A DATA DO PROCEDIMENTO",
+                max:"255",
+                value:""
+            },
+            {
+                name:"numeracaoDoDente",
                 option:false,
                 format:false,
                 type:"text",
-                placeholder:"DIGITE O TIPO",
-                max:"255",
+                placeholder:"DIGITE A NUMERAÇÃO DO DENTE",
+                max:"2",
                 value:""
             },
             {
-                name:"valor",
-                option:false,
-                format:"valor completo, exemplo: 1500,00",
-                type:"text",
-                placeholder:"DIGITE O PREÇO",
+                name:"Dentista_idDentista",
+                option:["nome","CPF","CRO"],
+                parameter:"?nome=",
+                format:"",
+                type:"select",
+                url:"/pesquisarDentista",
+                placeholder:"DIGITE O DENTISTA",
                 max:"255",
-                value:""
+                value:"",
             },
             {
-                name:"descricao",
-                option:false,
-                format:"Conte um pouco sobre o procedimento.",
-                type:"text",
-                placeholder:"DIGITE A DESCRIÇÃO",
+                name:"Consulta_idConsulta",
+                option:["nome","hora","tipo"],
+                parameter:"?nome=",
+                format:"",
+                type:"select",
+                url:"/pesquisarConsultas",
+                placeholder:"DIGITE A CONSULTA ( PELO NOME DO CLIENTE )",
                 max:"255",
-                value:""
+                value:"",
             },
         ];
         const theme = this.props.theme;
         return(
             <div>
-                <Form theme={theme} data={data} title="CADASTRE O PRONTUÁRIO" url="/cadastrarDentista" posUrl="/menu/medicalRecordPlus" update="false"/>
+                <Form theme={theme} data={data} title="CADASTRE O PRONTUÁRIO" url="/cadastrarProntuarios" posUrl="/menu/medicalRecordPlus" update="false"/>
             </div>
         );
     }

@@ -111,7 +111,7 @@ class collaboratorPlusCreate extends React.Component{
                 format:false,
                 type:"text",
                 placeholder:"DIGITE SUA CONTA",
-                max:"255",
+                max:"10",
                 value:""
             },
             {

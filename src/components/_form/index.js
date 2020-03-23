@@ -73,6 +73,7 @@ export default class form extends React.Component{
                                     item[aditional.option[1]])
                                 )} </p>
                                 {((aditional.option[2]!==undefined)?<p className="secondary"><span>{aditional.option[2]}:</span><br></br>{item[aditional.option[2]]}</p>:"")}
+                                {((aditional.option[3]!==undefined)?<p className="secondary"><span>{aditional.option[3]}:</span><br></br>{item[aditional.option[3]]}</p>:"")}
                             </div>
                         );
                     })});

@@ -16,6 +16,17 @@ class medicalRecordPlusCreate extends React.Component{
                 value:""
             },
             {
+                name:"Consulta_idConsulta",
+                option:["nome","hora","CPF","tipo"],
+                parameter:"?nome=",
+                format:"",
+                type:"select",
+                url:"/pesquisarConsultas",
+                placeholder:"DIGITE A CONSULTA ( PELO NOME DO CLIENTE )",
+                max:"255",
+                value:"",
+            },
+            {
                 name:"dataDoProcedimento",
                 option:false,
                 format:false,
@@ -44,17 +55,7 @@ class medicalRecordPlusCreate extends React.Component{
                 max:"255",
                 value:"",
             },
-            {
-                name:"Consulta_idConsulta",
-                option:["nome","hora","tipo"],
-                parameter:"?nome=",
-                format:"",
-                type:"select",
-                url:"/pesquisarConsultas",
-                placeholder:"DIGITE A CONSULTA ( PELO NOME DO CLIENTE )",
-                max:"255",
-                value:"",
-            },
+            
         ];
         const theme = this.props.theme;
         return(

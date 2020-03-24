@@ -71,8 +71,8 @@ class medicalRecordPlusRead extends React.Component{
 
 
             <div className="special-content">
+            {((dataEspecifica.dataDeRetorno !== null && dataEspecifica.dataDeRetorno !== undefined)?<p className="secondary"><span>DATA DE RETORNO:</span> {dataEspecifica.dataDeRetorno.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>:"")}
                 <p><span>DATA DO PROCEDIMENTO: </span><br />{dataEspecifica.dataDoProcedimento.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
-                <p><span>DATA DE RETORNO: </span><br />{dataEspecifica.dataDeRetorno.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
                 {
                 ((dataEspecifica.Consulta_idConsulta !== null && dataEspecifica.Consulta_idConsulta !== undefined)?
                     <a className="linked" href={"/popop/queryPlus/read/"+dataEspecifica.Consulta_idConsulta}><p><span>CLIQUE PARA VER A CONSULTA</span></p></a>:"")
@@ -127,7 +127,7 @@ class medicalRecordPlusRead extends React.Component{
                         <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
                             <p className="principal"><span>NOME:</span> {item.nome}</p>
                             <p className="secondary"><span>DATA:</span> {item.dataDoProcedimento.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
-                            <p className="secondary"><span>RETORNO:</span> {item.dataDeRetorno.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>
+                            {((item.dataDeRetorno !== null && item.dataDeRetorno !== undefined)?<p className="secondary"><span>RETORNO:</span> {item.dataDeRetorno.split(" ",2).reduce(function(p, c){ return c+" "+p.split("-").reduce(function(p, c){ return c + "-" +p })})}</p>:"")}
                         </div>
                     );
                 })}

@@ -53,11 +53,25 @@ export default class form extends React.Component{
                                     await this.setState({forSubmit:{...this.state.forSubmit, [aditional.name]:item.id}});
                                     let x = await document.querySelectorAll(".content-"+aditional.name);
                                     let i = await 0;
-                                    for (i = 0; i < x.length; i++) {
-                                        await x[i].classList.remove("selected");
+                                    if(!(document.getElementById("Content_id_"+aditional.name+"_"+item.id).classList.contains('selected'))){
+                                        for (i = 0; i < x.length; i++) {
+                                            await x[i].classList.remove("selected");
+                                        }
+                                        await document.getElementById("Content_id_"+aditional.name+"_"+item.id).classList.add("selected");
+                                    }else{
+                                        this.setState({forSubmit:{...this.state.forSubmit, [aditional.name]:""}});
+                                        for (i = 0; i < x.length; i++) {
+                                            await x[i].classList.remove("selected");
+                                        }
                                     }
+                                    
+                                    
+                                    
+                                    
+                                
 
-                                    document.getElementById("Content_id_"+aditional.name+"_"+item.id).classList.add("selected");
+                                    
+
                                 }} className={"content content-"+aditional.name}>
                                 <p className="principal"><span>{aditional.option[0]}:</span><br></br>{item[aditional.option[0]]}</p>
                                 <p className="secondary"><span>{aditional.option[1]}:</span><br></br>{

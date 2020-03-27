@@ -48,6 +48,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-laptop-medical",
                 path:"/menu/medicalRecordPlus",
             },
+            {
+                id:8,
+                title:"Fornecedor",
+                iconId:"fas fa-truck-loading",
+                path:"/menu/providerPlus",
+            },
         ];
         const theme = this.props.theme;
         return(

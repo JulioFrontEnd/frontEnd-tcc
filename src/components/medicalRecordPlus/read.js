@@ -31,7 +31,7 @@ class medicalRecordPlusRead extends React.Component{
     realDelete = (id)=>{
         API.delete('/deletarProntuarios/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
-            window.location.reload();
+            this.props.history.goBack();
         });
     }
 

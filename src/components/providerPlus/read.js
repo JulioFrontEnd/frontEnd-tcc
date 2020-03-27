@@ -4,7 +4,7 @@ import List from '../_list';
 import API from '../services/base';
 import Popop from '../_popop/index';
 
-class procedurePlusRead extends React.Component{
+class providerPlusRead extends React.Component{
     
     state={
         popop:<div></div>,
@@ -22,14 +22,14 @@ class procedurePlusRead extends React.Component{
         }
     }
     alterLink = (id)=>{
-        window.location.href = "/popop/procedurePlus/update/"+id;
+        window.location.href = "/popop/providerPlus/update/"+id;
     }
 
     delete = (id)=>{
         this.setState({containerSuccess:<Popop theme={this.props.theme} msg={<div className="confirm"><p>TEM CERTEZA?</p><br /><button onClick={()=>this.realDelete(id)}>CONFIRMAR</button></div>} type="error" reload={true} />,});
     }
     realDelete = (id)=>{
-        API.delete('/deletarProcedimento/'+id).then(async(response)=>{
+        API.delete('/deletarFornecedores/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
             this.props.history.goBack();
         });
@@ -39,7 +39,7 @@ class procedurePlusRead extends React.Component{
         this.setState({searchDefaultValue:e.target.value});
 
         if(e.target.value !== ""){
-            API.get("/pesquisarProcedimentos?nome="+e.target.value).then((response)=>{
+            API.get("/pesquisarFornecedores?nome="+e.target.value).then((response)=>{
                 this.setState({data:response.data,});
             });
         }else{
@@ -48,10 +48,10 @@ class procedurePlusRead extends React.Component{
         
         
     }
-    
+
     // PRECISA SER CONFIGURADO
     popopShowing = (id)=>{
-        window.location.href = "/popop/procedurePlus/read/"+id;
+        window.location.href = "/popop/providerPlus/read/"+id;
     }
     popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
@@ -72,9 +72,12 @@ class procedurePlusRead extends React.Component{
 
 
             <div className="special-content">
-                <p><span>TIPO: </span><br />{dataEspecifica.tipo}</p>
-                <p><span>VALOR: </span><br />{((dataEspecifica.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
-                <p><span>DESCRIÇÃO: </span><br />{dataEspecifica.descricao}</p>
+                <p><span>NOME: </span><br />{dataEspecifica.nome}</p>
+                <p><span>CNPJ: </span><br />{dataEspecifica.cnpj}</p>
+                <p><span>CEP: </span><br />{dataEspecifica.CEP}</p>
+                <p><span>ENDEREÇO: </span><br />{dataEspecifica.endereco}</p>
+                <p><span>TELEFONE: </span><br />{dataEspecifica.telefone}</p>
+                <p><span>DATA DE CADASTRO: </span><br />{dataEspecifica.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
             </div>
         </div>;
 
@@ -85,7 +88,7 @@ class procedurePlusRead extends React.Component{
     
     
     async componentDidMount(){
-        await API.get('/listarProcedimentos').then((response)=>{
+        await API.get('/listarFornecedores').then((response)=>{
             this.setState({data:response.data,});
         });
         const {id} = this.props.match.params;
@@ -110,7 +113,7 @@ class procedurePlusRead extends React.Component{
         const theme = this.props.theme;
         return(
             
-            <List theme={theme} title="LISTA DE PROCEDIMENTOS" popop={this.state.popop}>
+            <List theme={theme} title="LISTA DE FORNECEDORES" popop={this.state.popop}>
                 {this.state.containerSuccess}
                 <div className="list-input">
                     <input placeholder="DIGITE PARA PESQUISAR" onChange={this.search} value={this.state.searchDefaultValue} />
@@ -118,9 +121,9 @@ class procedurePlusRead extends React.Component{
                 </div>
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
-                            <p className="principal"><span>TIPO:</span> {item.tipo}</p>
-                            <p className="secondary"><span>VALOR:</span> {((item.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
+                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className={"content"}>
+                            <p className="principal"><span>NOME:</span> {item.nome}</p>
+                            <p className="secondary"><span>CNPJ:</span> {item.cnpj}</p>
                         </div>
                     );
                 })}
@@ -130,4 +133,4 @@ class procedurePlusRead extends React.Component{
 }
 
 
-export default connect(state=>({theme:state.actualTheme}))(procedurePlusRead);
+export default connect(state=>({theme:state.actualTheme}))(providerPlusRead);

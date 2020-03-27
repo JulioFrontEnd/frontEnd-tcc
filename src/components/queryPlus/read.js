@@ -31,7 +31,7 @@ class queryPlusRead extends React.Component{
     realDelete = (id)=>{
         API.delete('/deletarConsulta/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
-            window.location.reload();
+            this.props.history.goBack();
         });
     }
 

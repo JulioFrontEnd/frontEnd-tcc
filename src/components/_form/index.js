@@ -43,6 +43,15 @@ export default class form extends React.Component{
               .replace(/(-\d{2})\d+?$/, '$1');
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:cpf}})
 
+        }else if(e.target.name === "cnpj"){
+            let cpf = e.target.value
+              .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
+              .replace(/^(\d{2})(\d)/,"$1.$2") // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
+              .replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+              .replace(/\.(\d{3})(\d)/,".$1/$2")
+              .replace(/(\d{4})(\d)/,"$1-$2");
+            this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:cpf}})
+
         }else if(e.target.name.split("_").reduce(function(p, c){ return p }) === "search"){
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:e.target.value}})
             API.get(aditional.url+aditional.parameter+e.target.value).then((response)=>{

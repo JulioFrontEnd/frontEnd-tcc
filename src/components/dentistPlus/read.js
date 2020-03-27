@@ -31,7 +31,7 @@ class dentistPlusRead extends React.Component{
     realDelete = (id)=>{
         API.delete('/deleteDentista/'+id).then(async(response)=>{
             await localStorage.setItem('popop-success-list',"true");
-            window.location.reload();
+            this.props.history.goBack();
         });
     }
 

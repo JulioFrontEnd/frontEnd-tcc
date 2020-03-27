@@ -143,8 +143,10 @@ export default class form extends React.Component{
             let CEP = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
-        }else if(e.target.name === "salario" || e.target.name === "valor"){
-            let salario = e.target.value.replace(/,\D/g, '');
+        }else if(e.target.name === "salario" || e.target.name === "valor" || e.target.name === "preco"){
+            let salario = e.target.value.replace(/[^,\d]/g, '')
+                                        // eslint-disable-next-line
+                                        .replace(/^(\d*\,?)|(\d*)\,?/g, "$1$2");
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:salario}})
         }else if(e.target.name === "PIS"){
             let PIS = e.target.value
@@ -193,9 +195,11 @@ export default class form extends React.Component{
     submitContent = async ()=>{
         const data = await this.props.data;
         let url = await this.props.url + "?";
-        
+        function isNumber(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        }
         await data.map((item)=>{
-            if(item.name === "salario" || item.name === "valor"){
+            if((item.name === "salario" || item.name === "valor" || item.name === "preco") && !(isNumber(this.state.forSubmit[item.name]))){
                 return(
                     ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name].replace(/,/, '') + "&")     
                 );

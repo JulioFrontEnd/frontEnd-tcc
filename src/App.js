@@ -16,7 +16,9 @@ import procedurePlus from './components/procedurePlus';
 import collaboratorPlus from './components/collaboratorPlus';
 import queryPlus from './components/queryPlus';
 import medicalRecordPlus from './components/medicalRecordPlus';
+
 import providerPlus from './components/providerPlus';
+import materialPlus from './components/materialPlus';
 
 // CREATE CRUD (CREATE)
 import peoplePlusCreate from './components/peoplePlus/create.js';
@@ -26,7 +28,9 @@ import dentistPlusCreate from './components/dentistPlus/create.js';
 import procedurePlusCreate from './components/procedurePlus/create.js';
 import queryPlusCreate from './components/queryPlus/create.js';
 import medicalRecordPlusCreate from './components/medicalRecordPlus/create.js';
+
 import providerPlusCreate from './components/providerPlus/create.js';
+import materialPlusCreate from './components/materialPlus/create.js';
 
 // READ CRUD (READ AND DELETE)
 import peoplePlusRead from './components/peoplePlus/read.js';
@@ -36,7 +40,9 @@ import collaboratorPlusRead from './components/collaboratorPlus/read.js';
 import procedurePlusRead from './components/procedurePlus/read.js';
 import queryPlusRead from './components/queryPlus/read.js';
 import medicalRecordPlusRead from './components/medicalRecordPlus/read.js';
+
 import providerPlusRead from './components/providerPlus/read.js';
+import materialPlusRead from './components/materialPlus/read.js';
 
 // UPDATE CRUD (UPDATE)
 import peoplePlusUpdate from './components/peoplePlus/update.js';
@@ -46,7 +52,9 @@ import dentistPlusUpdate from './components/dentistPlus/update.js';
 import procedurePlusUpdate from './components/procedurePlus/update.js';
 import queryPlusUpdate from './components/queryPlus/update.js';
 import medicalRecordPlusUpdate from './components/medicalRecordPlus/update.js';
+
 import providerPlusUpdate from './components/providerPlus/update.js';
+import materialPlusUpdate from './components/materialPlus/update.js';
 
 
 function App() {
@@ -118,6 +126,13 @@ function App() {
             <Route exact path="/popop/providerPlus/add" component={providerPlusCreate} />
             <Route exact path="/popop/providerPlus/read/:id?" component={providerPlusRead} />
             <Route exact path="/popop/providerPlus/update/:id" component={providerPlusUpdate} />
+            {/* CRUD MATERIAL */}
+            <Route exact path="/menu/materialPlus" component={materialPlus} />
+            <Route exact path="/popop/materialPlus/add" component={materialPlusCreate} />
+            <Route exact path="/popop/materialPlus/read/:id?" component={materialPlusRead} />
+            <Route exact path="/popop/materialPlus/update/:id" component={materialPlusUpdate} />
+
+
           </Switch>
           {/*
             SWITCH DE ROTAS FIXAS DE BAIXO DAS PÁGINAS

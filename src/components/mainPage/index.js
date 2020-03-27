@@ -54,6 +54,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-truck-loading",
                 path:"/menu/providerPlus",
             },
+            {
+                id:9,
+                title:"Material",
+                iconId:"fas fa-boxes",
+                path:"/menu/materialPlus",
+            },
         ];
         const theme = this.props.theme;
         return(

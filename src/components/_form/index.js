@@ -139,7 +139,7 @@ export default class form extends React.Component{
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             .replace(/(\d{5})(\d)/, '$1-$2'); 
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
-        }else if(e.target.name === "RG" || e.target.name === "numeracaoDoDente"){
+        }else if(e.target.name === "RG" || e.target.name === "numeracaoDoDente" || e.target.name === "quantidade"){
             let CEP = e.target.value
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})

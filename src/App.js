@@ -19,6 +19,7 @@ import medicalRecordPlus from './components/medicalRecordPlus';
 
 import providerPlus from './components/providerPlus';
 import materialPlus from './components/materialPlus';
+import stockPlus from './components/stockPlus';
 
 // CREATE CRUD (CREATE)
 import peoplePlusCreate from './components/peoplePlus/create.js';
@@ -31,6 +32,7 @@ import medicalRecordPlusCreate from './components/medicalRecordPlus/create.js';
 
 import providerPlusCreate from './components/providerPlus/create.js';
 import materialPlusCreate from './components/materialPlus/create.js';
+import stockPlusCreate from './components/stockPlus/create.js';
 
 // READ CRUD (READ AND DELETE)
 import peoplePlusRead from './components/peoplePlus/read.js';
@@ -131,7 +133,9 @@ function App() {
             <Route exact path="/popop/materialPlus/add" component={materialPlusCreate} />
             <Route exact path="/popop/materialPlus/read/:id?" component={materialPlusRead} />
             <Route exact path="/popop/materialPlus/update/:id" component={materialPlusUpdate} />
-
+            {/* CRUD ESTOQUE */}
+            <Route exact path="/menu/stockPlus" component={stockPlus} />
+            <Route exact path="/popop/stockPlus/add" component={stockPlusCreate} />
 
           </Switch>
           {/*

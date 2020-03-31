@@ -60,6 +60,12 @@ class MainPage extends React.Component{
                 iconId:"fas fa-boxes",
                 path:"/menu/materialPlus",
             },
+            {
+                id:10,
+                title:"Estoque",
+                iconId:"fas fa-cubes",
+                path:"/menu/stockPlus",
+            },
         ];
         const theme = this.props.theme;
         return(

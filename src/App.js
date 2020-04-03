@@ -45,6 +45,8 @@ import medicalRecordPlusRead from './components/medicalRecordPlus/read.js';
 
 import providerPlusRead from './components/providerPlus/read.js';
 import materialPlusRead from './components/materialPlus/read.js';
+import stockPlusRead from './components/stockPlus/read.js';
+
 
 // UPDATE CRUD (UPDATE)
 import peoplePlusUpdate from './components/peoplePlus/update.js';
@@ -136,6 +138,8 @@ function App() {
             {/* CRUD ESTOQUE */}
             <Route exact path="/menu/stockPlus" component={stockPlus} />
             <Route exact path="/popop/stockPlus/add" component={stockPlusCreate} />
+            <Route exact path="/popop/stockPlus/read/:id?" component={stockPlusRead} />
+
 
           </Switch>
           {/*

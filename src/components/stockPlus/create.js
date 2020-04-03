@@ -7,7 +7,7 @@ class stockPlusCreate extends React.Component{
         // configuração de telas
         const data = [
             {
-                name:"Material_idMaterial ",
+                name:"Material_idMaterial",
                 option:["nome","preco"],
                 parameter:"?nome=",
                 format:"",

@@ -35,23 +35,10 @@ class stockPlusRead extends React.Component{
         });
     }
 
-    search = (e)=>{
-        this.setState({searchDefaultValue:e.target.value});
-
-        if(e.target.value !== ""){
-            API.get("/pesquisarEstoque?nome="+e.target.value).then((response)=>{
-                this.setState({data:response.data,});
-            });
-        }else{
-            this.componentDidMount();
-        }
-        
-        
-    }
     
     // PRECISA SER CONFIGURADO
     popopShowing = (id)=>{
-        window.location.href = "/popop/stockPlus/read/"+id;
+        window.location.href = "/popop/stockPlus/update/"+id;
     }
     popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
@@ -63,20 +50,8 @@ class stockPlusRead extends React.Component{
 
         const divder = 
         <div className={"popop-read popop-read-"+this.props.theme}>
-            <div className="icons-popop">
-                <div className="delete" onClick={()=>this.delete(dataEspecifica.id)}><i className="fas fa-trash-alt"></i></div>
-                <div className="alter" onClick={()=>this.alterLink(dataEspecifica.id)}><i className="fas fa-history"></i></div>
-                <div className="close" onClick={()=>this.close(refresh)}><i className="fas fa-times"></i></div>
-            </div>
-
-
-
             <div className="special-content">
                 <p><span>NOME: </span><br />{dataEspecifica.nome}</p>
-                <p><span>QUANTIDADE: </span><br />{dataEspecifica.quantidade}</p>
-                <p><span>CODIGO: </span><br />{dataEspecifica.codigo}</p>
-                <p><span>DATA: </span><br />{dataEspecifica.data.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
-
                 {
                 ((dataEspecifica.Material_idMaterial !== null && dataEspecifica.Material_idMaterial !== undefined)?
                     <a className="linked" href={"/popop/materialPlus/read/"+dataEspecifica.Material_idMaterial}><p><span>CLIQUE PARA VER O MATERIAL</span></p></a>:"")
@@ -95,40 +70,22 @@ class stockPlusRead extends React.Component{
     
     
     async componentDidMount(){
-        await API.get('/listarEstoque').then((response)=>{
+        
+        const {id} = this.props.match.params;
+        API.get('/listarEntradaSaida/'+id).then((response)=>{
             this.setState({data:response.data,});
         });
-        const {id} = this.props.match.params;
-        if(id !== undefined){
-            this.state.data.map(item=>{
-                if(item.id === parseInt(id)){
-                    return this.popopShow(parseInt(id),true);
-                }else{
-                    return false
-                }
-            })
-        }
-        const success = localStorage.getItem('popop-success-list');
-        // eslint-disable-next-line
-        if(success === "true"){
-            localStorage.setItem('popop-success-list',"false");
-            this.setState({containerSuccess:<Popop theme={this.props.theme} msg="Dado deletado com sucessso!" type="success" reload={true} />,});
-        }
     }
     render(){
         // configuração de telas
         const theme = this.props.theme;
         return(
             
-            <List theme={theme} title="ESTOQUE GERAL" popop={this.state.popop}>
+            <List theme={theme} title="Histórico de alterações" popop={this.state.popop}>
                 {this.state.containerSuccess}
-                <div className="list-input">
-                    <input placeholder="DIGITE PARA PESQUISAR" onChange={this.search} value={this.state.searchDefaultValue} />
-                    <div><i className="fas fa-search"></i></div>
-                </div>
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className="content">
+                        <div key={item.id} onClick={()=>this.popopShow(item.id)} className="content">
                             <p className="principal"><span>NOME:</span> {item.nome}</p>
                             <p className="secondary"><span>QUANTIDADE:</span> {item.quantidade}</p>
                         </div>

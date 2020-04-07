@@ -21,6 +21,7 @@ import providerPlus from './components/providerPlus';
 import materialPlus from './components/materialPlus';
 import stockPlus from './components/stockPlus';
 
+
 // CREATE CRUD (CREATE)
 import peoplePlusCreate from './components/peoplePlus/create.js';
 import companionPlusCreate from './components/companionPlus/create.js';
@@ -59,6 +60,11 @@ import medicalRecordPlusUpdate from './components/medicalRecordPlus/update.js';
 
 import providerPlusUpdate from './components/providerPlus/update.js';
 import materialPlusUpdate from './components/materialPlus/update.js';
+import stockPlusUpdate from './components/stockPlus/update.js';
+
+// Extra
+import stockPlusUp from './components/stockPlus/up.js';
+import stockPlusDown from './components/stockPlus/down.js';
 
 
 function App() {
@@ -139,6 +145,9 @@ function App() {
             <Route exact path="/menu/stockPlus" component={stockPlus} />
             <Route exact path="/popop/stockPlus/add" component={stockPlusCreate} />
             <Route exact path="/popop/stockPlus/read/:id?" component={stockPlusRead} />
+            <Route exact path="/popop/stockPlus/update/:id" component={stockPlusUpdate} />
+            <Route exact path="/popop/stockPlus/addStock" component={stockPlusUp} />
+            <Route exact path="/popop/stockPlus/removeStock" component={stockPlusDown} />
 
 
           </Switch>

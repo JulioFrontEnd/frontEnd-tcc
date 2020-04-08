@@ -50,6 +50,9 @@ class stockPlusRead extends React.Component{
 
         const divder = 
         <div className={"popop-read popop-read-"+this.props.theme}>
+            <div className="icons-popop">
+                <div className="close" onClick={()=>this.close(refresh)}><i className="fas fa-times"></i></div>
+            </div>
             <div className="special-content">
                 <p><span>QUANTIDADE: </span><br />{dataEspecifica.quantidade}</p>
                 <p><span>DATA: </span><br />{dataEspecifica.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>

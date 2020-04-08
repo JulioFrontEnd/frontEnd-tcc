@@ -51,14 +51,15 @@ class stockPlusRead extends React.Component{
         const divder = 
         <div className={"popop-read popop-read-"+this.props.theme}>
             <div className="special-content">
-                <p><span>NOME: </span><br />{dataEspecifica.nome}</p>
+                <p><span>QUANTIDADE: </span><br />{dataEspecifica.quantidade}</p>
+                <p><span>DATA: </span><br />{dataEspecifica.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
                 {
-                ((dataEspecifica.Material_idMaterial !== null && dataEspecifica.Material_idMaterial !== undefined)?
-                    <a className="linked" href={"/popop/materialPlus/read/"+dataEspecifica.Material_idMaterial}><p><span>CLIQUE PARA VER O MATERIAL</span></p></a>:"")
+                ((dataEspecifica.Colaborador_idColaborador !== null && dataEspecifica.Colaborador_idColaborador !== undefined)?
+                    <a className="linked" href={"/popop/collaboratorPlus/read/"+dataEspecifica.Colaborador_idColaborador}><p><span>CLIQUE PARA VER O COLABORADOR</span></p></a>:"")
                 }
                 {
-                ((dataEspecifica.Fornecedor_idFornecedor !== null && dataEspecifica.Fornecedor_idFornecedor !== undefined)?
-                    <a className="linked" href={"/popop/providerPlus/read/"+dataEspecifica.Fornecedor_idFornecedor}><p><span>CLIQUE PARA VER O FORNECEDOR</span></p></a>:"")
+                ((dataEspecifica.Estoque_idEstoque !== null && dataEspecifica.Estoque_idEstoque !== undefined)?
+                    <a className="linked" href={"/popop/stockPlus/read/"+dataEspecifica.Estoque_idEstoque}><p><span>CLIQUE PARA VER O ESTOQUE</span></p></a>:"")
                 }
             </div>
         </div>;
@@ -73,8 +74,15 @@ class stockPlusRead extends React.Component{
         
         const {id} = this.props.match.params;
         API.get('/listarEntradaSaida/'+id).then((response)=>{
-            this.setState({data:response.data,});
+            this.setState({data:response.data.entrada,classStyle:"",dataAll:response.data});
         });
+    }
+
+    primaryData = ()=>{
+        this.setState({data:this.state.dataAll.entrada,classStyle:"",});
+    }
+    secondaryData = async ()=>{
+        this.setState({data:this.state.dataAll.saida,classStyle:"saida",});
     }
     render(){
         // configuração de telas
@@ -83,11 +91,18 @@ class stockPlusRead extends React.Component{
             
             <List theme={theme} title="Histórico de alterações" popop={this.state.popop}>
                 {this.state.containerSuccess}
+                <div className="content"  onClick={()=>this.primaryData()}>
+                    <div className="btn-primary">ENTRADAS</div>
+                </div>
+                <div className="content saida" onClick={()=>this.secondaryData()}>
+                    <div className="btn-danger">SAÍDAS</div>
+                </div>
+                
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShow(item.id)} className="content">
-                            <p className="principal"><span>NOME:</span> {item.nome}</p>
-                            <p className="secondary"><span>QUANTIDADE:</span> {item.quantidade}</p>
+                        <div key={item.id} onClick={()=>this.popopShow(item.id)} className={"content "+this.state.classStyle}>
+                            <p className="principal"><span>QUANTIDADE:</span> {item.quantidade}</p>
+                            <p className="secondary"><span>DATA:</span> {item.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
                         </div>
                     );
                 })}

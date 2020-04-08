@@ -69,9 +69,6 @@
 
 }
 
-
-
-
 .list-dark{
     background-color: $dark-blackColor;
     color: $dark-whiteColor;
@@ -90,7 +87,14 @@
             color:$dark-blueColor;
         }
     }
+    
     .content{
+        .btn-primary{
+            color: $dark-blueColor;
+        }
+        .btn-danger{
+            color: $dark-contrastColor;
+        }
         background-color: $dark-extraBlackColor;
         border: .01px solid transparentize($color: $dark-blueColor, $amount: .4);
         &:hover{
@@ -100,6 +104,14 @@
         p{
             span{
                 color:$dark-blueColor;
+            }
+        }
+    }
+    .saida{
+        border: .01px solid $dark-contrastColor !important;
+        p{
+            span{
+                color:$dark-contrastColor;
             }
         }
     }
@@ -125,6 +137,13 @@
         }
     }
     .content{
+        .btn-primary{
+            color: $light-blueColor;
+        }
+        .btn-danger{
+            color: $light-contrastColor;
+            
+        }
         background-color: $light-whiteColor;
         &:hover{
             background-color: transparentize($color: $light-blueColor, $amount: .4);
@@ -132,6 +151,14 @@
         p{
             span{
                 color:$light-blueColor;
+            }
+        }
+    }
+    .saida{
+        border: .01px solid $light-contrastColor !important;
+        p{
+            span{
+                color:$light-contrastColor;
             }
         }
     }

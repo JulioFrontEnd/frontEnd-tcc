@@ -54,8 +54,8 @@ class BottomMenu extends React.Component{
         const theme = this.props.theme;
         return(
             <div className={`bottom-menu bottom-menu-${theme} ${this.state.classBottomMenu}`}>
-                <div onClick={()=>this.selectOption("history","/menu/history")} className={((this.state.classNames.history)?"clicked":"")}>
-                    <i className="fas fa-history"></i>
+                <div onClick={()=>this.selectOption("history","/menu/cashierPlus")} className={((this.state.classNames.history)?"clicked":"")}>
+                    <i class="fas fa-cash-register"></i>
                 </div>
                 
                 <div onClick={()=>this.selectOption("home")} className={((this.state.classNames.home)?"clicked":"")}>

@@ -20,6 +20,7 @@ import medicalRecordPlus from './components/medicalRecordPlus';
 import providerPlus from './components/providerPlus';
 import materialPlus from './components/materialPlus';
 import stockPlus from './components/stockPlus';
+import cashierPlus from './components/cashierPlus';
 
 
 // CREATE CRUD (CREATE)
@@ -34,6 +35,7 @@ import medicalRecordPlusCreate from './components/medicalRecordPlus/create.js';
 import providerPlusCreate from './components/providerPlus/create.js';
 import materialPlusCreate from './components/materialPlus/create.js';
 import stockPlusCreate from './components/stockPlus/create.js';
+import cashierPlusCreate from './components/cashierPlus/create.js';
 
 // READ CRUD (READ AND DELETE)
 import peoplePlusRead from './components/peoplePlus/read.js';
@@ -47,6 +49,7 @@ import medicalRecordPlusRead from './components/medicalRecordPlus/read.js';
 import providerPlusRead from './components/providerPlus/read.js';
 import materialPlusRead from './components/materialPlus/read.js';
 import stockPlusRead from './components/stockPlus/read.js';
+import cashierPlusRead from './components/cashierPlus/read.js';
 
 
 // UPDATE CRUD (UPDATE)
@@ -148,6 +151,11 @@ function App() {
             <Route exact path="/popop/stockPlus/update/:id" component={stockPlusUpdate} />
             <Route exact path="/popop/stockPlus/addStock" component={stockPlusUp} />
             <Route exact path="/popop/stockPlus/removeStock" component={stockPlusDown} />
+            {/* CRUD ESTOQUE */}
+            <Route exact path="/menu/cashierPlus" component={cashierPlus} />
+            <Route exact path="/popop/cashierPlus/add" component={cashierPlusCreate} />
+            <Route exact path="/popop/cashierPlus/read/:id?" component={cashierPlusRead} />
+
 
 
           </Switch>

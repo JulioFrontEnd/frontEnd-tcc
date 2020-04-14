@@ -144,9 +144,12 @@ export default class form extends React.Component{
             .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:CEP}})
         }else if(e.target.name === "salario" || e.target.name === "valor" || e.target.name === "preco"){
-            let salario = e.target.value.replace(/[^,\d]/g, '')
-                                        // eslint-disable-next-line
-                                        .replace(/^(\d*\,?)|(\d*)\,?/g, "$1$2");
+            function money(v){
+                v=v.replace(/\D/g,"") // permite digitar apenas numero
+                v=v.replace(/(\d{1})(\d{1,2})$/,"$1,$2") // coloca virgula antes dos ultimos 4 digitos
+                return v;
+                }
+            let salario = money(e.target.value);
             this.setState({forSubmit:{...this.state.forSubmit,[e.target.name]:salario}})
         }else if(e.target.name === "PIS"){
             let PIS = e.target.value
@@ -201,7 +204,7 @@ export default class form extends React.Component{
         await data.map((item)=>{
             if((item.name === "salario" || item.name === "valor" || item.name === "preco") && !(isNumber(this.state.forSubmit[item.name]))){
                 return(
-                    ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + this.state.forSubmit[item.name].replace(/,/, '') + "&")     
+                    ((this.state.forSubmit[item.name]===undefined || this.state.forSubmit[item.name]==="" )?"": url = url + item.name + "=" + ((this.state.forSubmit[item.name].replace(/,/, '').length > 2)?this.state.forSubmit[item.name].replace(/,/, ''):this.state.forSubmit[item.name].replace(/,/, '')+"0") + "&")     
                 );
             }else{
                 return(

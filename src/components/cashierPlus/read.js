@@ -123,7 +123,7 @@ class cashierPlusRead extends React.Component{
                 {this.state.data.map(item=>{
                     return(
                         <div key={item.id} onClick={()=>this.popopShowing(item.id)} className={"content "+((item.tipoDeEntrada === true)?"":"saida")}>
-                            <p className="principal"><span>COLABORADOR:</span> {item.nome}</p>
+                            <p className="principal"><span>CLIENTE (da consulta):</span> {item.nome}</p>
                             <p className="secondary"><span>Valor:</span> {((item.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
                         </div>
                     );

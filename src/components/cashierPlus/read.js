@@ -77,6 +77,7 @@ class cashierPlusRead extends React.Component{
                 ((dataEspecifica.id_Consulta  !== null && dataEspecifica.id_Consulta  !== undefined)?
                     <a className="linked" href={"/popop/queryPlus/read/"+dataEspecifica.id_Consulta }><p><span>CLIQUE PARA VER A CONSULTA</span></p></a>:"")
                 }
+                <p><span>DATA: </span><br />{dataEspecifica.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
             </div>
         </div>;
 
@@ -124,6 +125,7 @@ class cashierPlusRead extends React.Component{
                     return(
                         <div key={item.id} onClick={()=>this.popopShowing(item.id)} className={"content "+((item.tipoDeEntrada === true)?"":"saida")}>
                             <p className="principal"><span>Valor:</span> {((item.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
+                            <p className="secondary"><span>Data:</span> {item.created_at.split(" ",2).reduce(function(p, c){ return p}).split("-").reduce(function(p, c){ return c + "-" +p })}</p>
                         </div>
                     );
                 })}

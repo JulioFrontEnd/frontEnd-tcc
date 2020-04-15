@@ -48,7 +48,7 @@ class cashierPlusRead extends React.Component{
         
     }
     popopShowing = (id)=>{
-        window.location.href = "/popop/peoplePlus/read/"+id;
+        window.location.href = "/popop/cashierPlus/read/"+id;
     }
 
     popopShow = async (id,refresh=false)=>{
@@ -69,7 +69,7 @@ class cashierPlusRead extends React.Component{
 
             <div className="special-content">
                 <p><span>VALOR: </span><br />{((dataEspecifica.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
-                <p><span>TIPO DE ENTRADA: </span><br />{((dataEspecifica.tipoDeEntrada === 1)?"Entrada":"Saída")}</p>
+                <p><span>TIPO DE ENTRADA: </span><br />{((dataEspecifica.tipoDeEntrada === true)?"Entrada":"Saída")}</p>
                 {((dataEspecifica.id_Colaborador !== null && dataEspecifica.id_Colaborador !== undefined)?
                     <a className="linked" href={"/popop/collaboratorPlus/read/"+dataEspecifica.id_Colaborador}><p><span>CLIQUE PARA VER O COLABORADOR</span></p></a>:"")
                 }
@@ -122,7 +122,7 @@ class cashierPlusRead extends React.Component{
                 </div>
                 {this.state.data.map(item=>{
                     return(
-                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className={"content "+((item.tipoDeEntrada === 1)?"":"saida")}>
+                        <div key={item.id} onClick={()=>this.popopShowing(item.id)} className={"content "+((item.tipoDeEntrada === true)?"":"saida")}>
                             <p className="principal"><span>COLABORADOR:</span> {item.nome}</p>
                             <p className="secondary"><span>Valor:</span> {((item.valor/100).toFixed(2)).toString().replace(".", ",")}</p>
                         </div>

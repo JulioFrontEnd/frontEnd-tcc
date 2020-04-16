@@ -68,6 +68,7 @@ import stockPlusUpdate from './components/stockPlus/update.js';
 // Extra
 import stockPlusUp from './components/stockPlus/up.js';
 import stockPlusDown from './components/stockPlus/down.js';
+import medicalRecordPlusPrint from './components/medicalRecordPlus/print.js';
 
 
 function App() {
@@ -134,6 +135,7 @@ function App() {
             <Route exact path="/popop/medicalRecordPlus/add" component={medicalRecordPlusCreate} />
             <Route exact path="/popop/medicalRecordPlus/read/:id?" component={medicalRecordPlusRead} />
             <Route exact path="/popop/medicalRecordPlus/update/:id" component={medicalRecordPlusUpdate} />
+            <Route exact path="/popop/medicalRecordPlus/print/:id" component={medicalRecordPlusPrint} />
             {/* CRUD FORNECEDOR */}
             <Route exact path="/menu/providerPlus" component={providerPlus} />
             <Route exact path="/popop/providerPlus/add" component={providerPlusCreate} />

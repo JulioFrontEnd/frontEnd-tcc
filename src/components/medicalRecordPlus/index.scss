@@ -1,0 +1,19 @@
+@import '../../global/variables.scss';
+.print{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-left: 4%;
+    padding-right: 4%;
+
+    .btn-print{
+        max-width: 600px;
+    }
+    .special-content{
+        background-color: #cecece;
+        width: 21cm;
+        height: 29.7cm;
+    }
+}

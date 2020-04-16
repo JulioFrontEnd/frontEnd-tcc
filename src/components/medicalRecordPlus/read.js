@@ -24,6 +24,10 @@ class medicalRecordPlusRead extends React.Component{
     alterLink = (id)=>{
         window.location.href = "/popop/medicalRecordPlus/update/"+id;
     }
+    printLink = (id)=>{
+        window.location.href = "/popop/medicalRecordPlus/print/"+id;
+    }
+
 
     delete = (id)=>{
         this.setState({containerSuccess:<Popop theme={this.props.theme} msg={<div className="confirm"><p>TEM CERTEZA?</p><br /><button onClick={()=>this.realDelete(id)}>CONFIRMAR</button></div>} type="error" reload={true} />,});
@@ -65,6 +69,7 @@ class medicalRecordPlusRead extends React.Component{
             <div className="icons-popop">
                 <div className="delete" onClick={()=>this.delete(dataEspecifica.id)}><i className="fas fa-trash-alt"></i></div>
                 <div className="alter" onClick={()=>this.alterLink(dataEspecifica.id)}><i className="fas fa-user-edit"></i></div>
+                <div className="alter" onClick={()=>this.printLink(dataEspecifica.id)}><i class="fas fa-print"></i></div>
                 <div className="close" onClick={()=>this.close(refresh)}><i className="fas fa-times"></i></div>
             </div>
 

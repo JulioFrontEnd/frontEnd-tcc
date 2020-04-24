@@ -66,6 +66,7 @@ class peoplePlusRead extends React.Component{
             <div className="icons-popop">
                 <div className="delete" onClick={()=>this.delete(dataEspecifica.id)}><i className="fas fa-trash-alt"></i></div>
                 <div className="alter" onClick={()=>this.alterLink(dataEspecifica.id)}><i className="fas fa-user-edit"></i></div>
+                
                 <div className="close" onClick={()=>this.close(refresh)}><i className="fas fa-times"></i></div>
             </div>
 

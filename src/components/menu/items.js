@@ -2,15 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 export default class ListItems extends React.Component{
-    teste = ()=>{
-        if(localStorage.getItem('theme') === "dark"){
-            localStorage.setItem('theme',"light")
-        }else{
-            localStorage.setItem('theme',"dark")
-        }
-
-        console.log(localStorage.getItem('theme'))
-    }
     render(){
 
         // My Menu Items
@@ -20,16 +11,12 @@ export default class ListItems extends React.Component{
                 name:"Home",
                 icon:"fas fa-home",
                 link:"/menu/",
-            },{
+            }
+            ,{
                 id:2,
-                name:"Configurações",
-                icon:"fas fa-cog",
-                link:"/popop/config",
-            },{
-                id:3,
-                name:"Contato",
-                icon:"fas fa-id-badge",
-                link:"/popop/contact",
+                name:"Alterar tema",
+                icon:"fas fa-sun",
+                link:"/alterarTema",
             }
         ];
         return(
@@ -38,8 +25,10 @@ export default class ListItems extends React.Component{
                         animation: "menu-items ."+item.id+"s",
                     }
                 return(
-                    <div className="menu-item" key={item.id} style={style} onClick={this.teste}>
-                        <i className={item.icon}></i>
+                    <div className="menu-item" key={item.id} style={style}>
+                        <span className="icon-item">
+                            <i className={item.icon}></i>
+                        </span>
                         <Link to={item.link}>{item.name}</Link>
                     </div>
                 );

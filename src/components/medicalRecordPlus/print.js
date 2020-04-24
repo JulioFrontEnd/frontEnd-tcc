@@ -2,6 +2,7 @@ import React from 'react';
 import ReactToPrint from 'react-to-print';
 import './index.scss';
 import {connect} from 'react-redux';
+import logo from '../../img/icone-min.png';
 import API from '../services/base';
  
 
@@ -21,12 +22,16 @@ import API from '../services/base';
 class ComponentToPrint extends React.Component {
   render() {
       if(this.props.data.queryInformation !== undefined){
-        console.log()
+        console.log(this.props.data)
         return (
             <div>
                 <div className="special-content">
-                    <h2>TESTANDO A IMPRESSÃO</h2>
-                    <p>Teste:{this.props.data.queryInformation.dataQuery.client.nome}</p>
+                    <div className="logotype">
+                        <img alt='logo' src={logo} />
+                    </div>
+                    <div className="contentMain" style={({backgroundColor:"red",})}>
+                        <span>IMPRESSÃO AINDA NÃO FOI TOTALMENTE PROGRAMADA</span>
+                    </div>
                 </div>
             </div>
         );

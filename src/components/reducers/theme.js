@@ -14,7 +14,6 @@ const initial_state = {
 
 const reducer = (state = initial_state, action)=>{
     return state;
-
 }
 
 const ThemeStore = createStore(reducer);

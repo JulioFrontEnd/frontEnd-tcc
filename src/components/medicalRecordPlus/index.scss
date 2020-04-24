@@ -1,5 +1,7 @@
 @import '../../global/variables.scss';
+
 .print{
+    background-color: $dark-blackColor;
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -15,5 +17,20 @@
         background-color: #cecece;
         width: 21cm;
         height: 29.7cm;
+        padding: .5cm;
+        .logotype{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            img{
+                width: 2mm;
+            }
+        }
+        .contentMain{
+            width: 100%;
+            background-color: red;
+            padding: .5cm;
+        }
+
     }
 }

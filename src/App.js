@@ -69,7 +69,7 @@ import stockPlusUpdate from './components/stockPlus/update.js';
 import stockPlusUp from './components/stockPlus/up.js';
 import stockPlusDown from './components/stockPlus/down.js';
 import medicalRecordPlusPrint from './components/medicalRecordPlus/print.js';
-
+import alterTheme from './components/general/theme.js';
 
 function App() {
   return (
@@ -136,6 +136,7 @@ function App() {
             <Route exact path="/popop/medicalRecordPlus/read/:id?" component={medicalRecordPlusRead} />
             <Route exact path="/popop/medicalRecordPlus/update/:id" component={medicalRecordPlusUpdate} />
             <Route exact path="/popop/medicalRecordPlus/print/:id" component={medicalRecordPlusPrint} />
+            
             {/* CRUD FORNECEDOR */}
             <Route exact path="/menu/providerPlus" component={providerPlus} />
             <Route exact path="/popop/providerPlus/add" component={providerPlusCreate} />
@@ -159,7 +160,8 @@ function App() {
             <Route exact path="/popop/cashierPlus/read/:id?" component={cashierPlusRead} />
 
 
-
+            {/* ROTAS GENERALISTAS */}
+            <Route exact path="/alterarTema" component={alterTheme} />
           </Switch>
           {/*
             SWITCH DE ROTAS FIXAS DE BAIXO DAS PÁGINAS

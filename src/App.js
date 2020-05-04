@@ -8,6 +8,8 @@ import mainPage from './components/mainPage';
 import userPage from './components/user';
 import back from './components/back';
 
+
+import Login from './components/login';
 // PLUS CRUD ( INDEX )
 import peoplePlus from './components/peoplePlus';
 import companionPlus from './components/companionPlus';
@@ -97,7 +99,7 @@ function App() {
           */}
           <Switch>
             {/* ROTAS Principais */}
-            <Route exact path="/" render={()=>{window.location.href = "/menu";}}/>
+            <Route exact path="/" component={Login} />
             <Route exact path="/menu" component={mainPage} />
             <Route exact path="/popop/user" component={userPage} />
             {/* CRUD CLIENTE */}

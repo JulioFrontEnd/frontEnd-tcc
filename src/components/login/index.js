@@ -8,6 +8,7 @@ class login extends React.Component{
             <div className="container-login">
                 <div>
                     <div>
+                        <h1>SISTEMA NÃO ESTÁ OFF</h1>
                         <img src={logo} alt="Logotype" />
                         <h2>LOGIN</h2>
                     </div>

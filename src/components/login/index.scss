@@ -1,16 +1,33 @@
 @import '../../global/variables.scss';
 
 .container-login{
-    background-color: $dark-blackColor;
+    background: url('../../img/background.png');
+    background-size: auto 100%;
+    background-position: center;
     width: 100vw;
     height: 100vh;
-    div{
-        div{
-            display: flex;
-            width: 100%;
-            
-            img{
-                max-width: 4%;
+    .container-login-popop{
+        
+        .popop-popop{
+            margin: 6% 4%;
+            background-color: rgba(white, $alpha: .8);
+            padding: 8%;
+            height: 76vh;
+            width: 90%;
+            div{
+                display: flex;
+                width: 100%;
+                img{
+                    width: 60px;
+                    margin-left: 2%;
+                    margin-right: 6%;
+                }
+            }
+            .form-login{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                margin-top: 10%;
             }
         }
     }

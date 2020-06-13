@@ -6,18 +6,21 @@ class login extends React.Component{
     render(){
         return(
             <div className="container-login">
-                <div>
+                <div className="container-login-popop">
+                    /
+                    <div className="popop-popop">
                     <div>
-                        <h1>SISTEMA NÃO ESTÁ OFF, basta acessar o /menu</h1>
                         <img src={logo} alt="Logotype" />
-                        <h2>LOGIN</h2>
+                        <h2>MQUERY</h2>
                     </div>
-                    
-                    <input type="text" placeholder="LOGIN"/>
-                    <br />
-                    <input type="password" placeholder="SENHA"/>
-                    <br />
-                    <button>ENVIAR</button>
+                    <span className="form-login">
+                        <input type="text" placeholder="LOGIN"/>
+                        <br />
+                        <input type="password" placeholder="SENHA"/>
+                        <br />
+                        <button>ENVIAR</button>
+                    </span>
+                    </div>
                 </div>
             </div>
         );

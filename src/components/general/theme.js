@@ -9,7 +9,7 @@ class alterTheme extends React.Component{
         }else{
             await localStorage.setItem('theme',"dark")
         }
-        window.location.href = "./";
+        window.location.href = "./menu";
         
     }
     render(){

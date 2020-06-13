@@ -7,9 +7,8 @@ class login extends React.Component{
         return(
             <div className="container-login">
                 <div className="container-login-popop">
-                    /
                     <div className="popop-popop">
-                    <div>
+                    <div className="logotype-popop">
                         <img src={logo} alt="Logotype" />
                         <h2>MQUERY</h2>
                     </div>

@@ -62,7 +62,7 @@ class BottomMenu extends React.Component{
                     <i className="fas fa-home"></i>
                 </div>
 
-                <div onClick={()=>this.selectOption("user","/popop/user")} className={((this.state.classNames.user)?"clicked":"")}>
+                <div onClick={()=>this.selectOption("user","/menu/peoplePlus")} className={((this.state.classNames.user)?"clicked":"")}>
                     <i className="fas fa-user"></i>
                 </div>
             </div>

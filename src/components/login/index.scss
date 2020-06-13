@@ -6,19 +6,24 @@
     background-position: center;
     width: 100vw;
     height: 100vh;
+    position: relative;
     .container-login-popop{
-        
         .popop-popop{
-            margin: 6% 4%;
-            background-color: rgba(white, $alpha: .8);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background-color: rgba(white, $alpha: .6);
             padding: 8%;
             height: 76vh;
             width: 90%;
-            div{
+            .logotype-popop{
                 display: flex;
                 width: 100%;
+                align-items: center;
                 img{
-                    width: 60px;
+                    width: 40px;
+                    height: 51px;
                     margin-left: 2%;
                     margin-right: 6%;
                 }
@@ -27,7 +32,30 @@
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
-                margin-top: 10%;
+                margin-top: 50%;
+                transform: translate(0,-50%);
+                input{
+                    margin: 4% 0;
+                    background-color: transparent;
+                    border: none;
+                    font-size: 1.2em;
+                    border-bottom: 1px solid $dark-blackColor;
+                }
+                button{
+                    font-size: 1.2em;
+                    border-radius: 10px;
+                    background-color: $dark-blackColor;
+                    border: 1px solid $dark-blackColor;
+                    color: $dark-whiteColor;
+                    font-weight: bold;
+                    padding: 4%;
+                    cursor: pointer;
+                    &:hover{
+                        transition:all .7s;
+                        background-color: transparent;
+                        color:  $dark-blackColor;
+                    }
+                }
             }
         }
     }

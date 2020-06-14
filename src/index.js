@@ -16,7 +16,7 @@ if(sessionStorage.getItem('loading-page') !== 'true'){
 	);
 }
 
-API.get('/listarCliente').then(async (response)=>{
+API.get('/testeLogin').then(async (response)=>{
 	await sessionStorage.setItem('loading-page','true');
 	ReactDOM.render(
 		<App />,

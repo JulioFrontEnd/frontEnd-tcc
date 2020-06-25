@@ -48,7 +48,7 @@ class collaboratorPlusRead extends React.Component{
         
     }
     popopShowing = (id)=>{
-        window.location.href = "/popop/peoplePlus/read/"+id;
+        window.location.href = "/popop/collaboratorPlus/read/"+id;
     }
 
     popopShow = async (id,refresh=false)=>{

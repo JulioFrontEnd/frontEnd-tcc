@@ -50,7 +50,7 @@ class companionPlusRead extends React.Component{
 
     // PRECISA SER CONFIGURADO
     popopShowing = (id)=>{
-        window.location.href = "/popop/peoplePlus/read/"+id;
+        window.location.href = "/popop/companionPlus/read/"+id;
     }
     popopShow = async (id,refresh=false)=>{
         const datas = await this.state.data;
